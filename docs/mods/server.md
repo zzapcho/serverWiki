@@ -1,69 +1,68 @@
 <span class="page-kicker">SERVER SYSTEMS</span>
 
-# 서버 시스템
+# 서버 시스템 & 내부 구성
 
-<p class="page-lead">클라이언트에서 모드 이름을 볼 필요는 없지만, 플레이할 때 반드시 알아야 하는 서버 측 기능입니다.</p>
+<p class="page-lead">플레이어 기능, 복구, 프록시, 성능, 라이브러리를 분리해 “무엇이 무엇을 담당하는지”가 꼬이지 않게 정리합니다.</p>
 
-## EconomyCraft
+## 플레이어에게 직접 보이는 서버 기능
 
-<span class="status-chip is-live">사용 중</span>
+| 모드 / 시스템 | 역할 | 플레이어 사용법 |
+|---|---|---|
+| EconomyCraft | 가상 화폐·판매·상점·주문 | `/bal`, `/sell`, `/shop`, `/orders` 등 |
+| Universal Graves | 사망 아이템 보호 | 사망 시 자동, `/graves` |
+| Simple Voice Chat | 근거리 음성 | 클라이언트 설치 + `V` GUI |
+| Discord Integration | MC↔Discord 채팅/이벤트 | 일반 채팅, 자동 이벤트 |
+| DiscordIO / Velocity | 계정 연결·화이트리스트 | Discord에서 인증 |
+| FabricProxy-Lite | Velocity 프록시 전달/직접 접속 보호 | 플레이어 조작 없음 |
 
-서버의 화폐, 송금, 서버 상점, 플레이어 상점과 주문 시스템을 담당합니다.
+→ [EconomyCraft](/mods/economycraft) · [Graves](/mods/graves) · [Voice](/mods/voice-chat) · [Discord](/mods/discord)
 
-| 기능 | 사용 방법 |
+## 관리자 / 복구 계층
+
+복구 도구는 한 모드가 모든 것을 책임지게 하지 않고 **문제 종류별로 역할을 분리**합니다.
+
+| 도구 | 담당 |
 |---|---|
-| 잔액 | `/bal` |
-| 송금 | `/pay <플레이어> <금액>` |
-| 일일 보상 | `/daily` |
-| 서버 상점 | `/servershop` |
-| 플레이어 상점 | `/shop`, `/shop list ...` |
-| 주문 | `/orders` |
+| Universal Graves | 정상적인 플레이어 사망/아이템 회수 |
+| Death Backup | 사망 시점 인벤토리 백업/관리 복구 보조 |
+| InvView | 필요 시 플레이어 인벤토리 확인/관리 |
+| Ledger | 블록/상호작용 기록 추적 |
+| Bkups | 월드/서버 백업 |
+| LuckPerms | 권한 그룹/노드 관리 |
+| Universal Perms | Fabric 권한 연동 보조 |
 
-→ [경제 시스템 전체 보기](/economy/) · [명령어 전체 보기](/commands/)
+이 구조 덕분에 “누가 블록을 바꿨는가”, “죽기 전 인벤토리가 무엇이었나”, “월드 전체를 되돌려야 하나”를 서로 다른 도구로 해결할 수 있습니다.
 
-## Universal Graves
+## 성능 / 진단
 
-<span class="status-chip is-live">사용 중</span>
+| 모드 | 역할 | 플레이어 조작 |
+|---|---|---|
+| Lithium | 게임 로직 최적화 | 없음 |
+| FerriteCore | 메모리 사용량 절감 | 없음 |
+| Krypton | 네트워크 처리 최적화 | 없음 |
+| ServerCore | 서버 성능 관련 최적화 | 없음 |
+| Chunky | 월드 사전 생성 | 관리자용 |
+| spark | TPS/CPU/성능 프로파일링 | 관리자 진단 |
 
-사망 시 아이템을 바닥에 흩뿌리는 대신 **무덤 시스템**으로 보호합니다. 사망 위치와 무덤을 찾는 흐름이 생기므로, 죽기 전에 [생존 & 죽음 가이드](/guide/survival)를 확인하는 것을 권장합니다.
+C2ME처럼 변경 범위가 큰 최적화는 무조건 넣지 않고, 실제 spark 프로파일에서 청크 병목이 확인될 때 검토하는 방식이 안전합니다.
 
-향후 인벤세이브권이 구현되면 **세이브권이 먼저 처리되고, 사용되지 않은 경우 무덤이 생성되는 구조**를 목표로 합니다.
+## 기반 / 의존성
 
-## Simple Voice Chat
+| 라이브러리 | 주 사용처 / 역할 |
+|---|---|
+| Fabric API | Fabric 공통 API |
+| Architectury API | EconomyCraft 등 크로스플랫폼 기반 |
+| Resourceful Lib | Friends&Foes 등 기반 |
+| FactoryTools | Gone Fishing 의존성 |
+| Polymer Bundled | 서버 측 가상 콘텐츠/리소스 기반, Universal Graves·Gone Fishing 계열에서 필요 |
+| Lithostitched | 월드 생성 계열 기반 |
+| Fabric Language Kotlin | Kotlin 기반 Fabric 모드 런타임 |
+| Collective | 일부 Serilum 계열/공통 기능 기반 |
 
-<span class="status-chip is-live">사용 중</span>
-
-서버 안에서 거리 기반 음성채팅을 제공합니다. 클라이언트에도 음성채팅 모드가 있어야 하며, 서버 접속 후 음성 연결 상태를 확인할 수 있습니다.
-
-주요 기본 키는 `V` 설정, `Caps Lock` 푸시투톡, `M` 마이크 음소거, `G` 그룹 메뉴입니다. 모든 키는 Minecraft 조작 설정에서 변경할 수 있습니다.
-
-→ [Discord & Voice](/community/) · [조작법](/controls/)
-
-## Discord Integration
-
-<span class="status-chip is-live">사용 중</span>
-
-Minecraft 채팅과 Discord 채널을 연결합니다.
-
-- Minecraft 채팅 → Discord 전달
-- Discord 메시지 → Minecraft 표시
-- 접속/퇴장/사망/발전과제 알림
-- 서버 시작/종료 상태 알림
-
-플레이어는 별도 키를 누를 필요 없이 일반 채팅을 사용하면 됩니다.
-
-## DiscordIO / Velocity 인증
-
-<span class="status-chip is-live">사용 중</span>
-
-프록시 앞단에서 Discord 계정 연동과 화이트리스트를 담당합니다. 서버 접속 전 Discord에서 인증이 완료되어야 정상적으로 입장할 수 있습니다.
-
-→ [처음 접속하기](/getting-started)
-
-## 서버 내부 / 관리자 계열
-
-LuckPerms, FabricProxy-Lite, 백업·로그·성능 모드처럼 **일반 플레이어가 조작할 필요가 없는 구성요소**도 사용합니다. 이런 모드는 플레이에 직접 필요한 기능이나 명령어가 생길 때만 위키에 노출합니다.
-
-::: info 왜 전부 나열하지 않나요?
-의존성 라이브러리까지 전부 노출하면 플레이어가 필요한 정보를 찾기 어려워집니다. 이 위키의 기준은 **“플레이 중 알아야 하는가?”**입니다.
+::: danger 의존성은 “안 쓰는 모드”가 아닙니다
+직접 메뉴가 없다고 삭제하면 상위 모드가 로드되지 않을 수 있습니다. 특히 Polymer는 현재 서버 구성이 요구하므로 제거 대상이 아닙니다.
 :::
+
+## 현재 운영에서 확인할 경고
+
+서버가 부팅된다는 사실과 “문제 없음”은 다릅니다. Resourceful Lib 권한 경고, Furniture 데이터 픽서 경고, Gone Fishing의 일부 차원 loot table 경고, Discord Integration refmap 경고 등은 [현재 알려진 문제](/troubleshooting/#현재-알려진-문제)에서 추적합니다.
