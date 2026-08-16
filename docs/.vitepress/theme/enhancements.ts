@@ -1,5 +1,5 @@
 type RouterLike = {
-  onAfterRouteChanged?: (to: string) => void | Promise<void>
+  onAfterRouteChange?: (to: string) => void | Promise<void>
 }
 
 let installed = false
@@ -142,9 +142,9 @@ export function installEnhancements(router: RouterLike) {
     window.addEventListener('load', preparePage, { once: true })
   }
 
-  const previousAfterRouteChanged = router.onAfterRouteChanged
-  router.onAfterRouteChanged = async (to) => {
-    await previousAfterRouteChanged?.(to)
+  const previousAfterRouteChange = router.onAfterRouteChange
+  router.onAfterRouteChange = async (to) => {
+    await previousAfterRouteChange?.(to)
     preparePage()
   }
 
