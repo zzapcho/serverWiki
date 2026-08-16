@@ -10,14 +10,14 @@ Official player-facing wiki for ZZAPCHO SERVER.
 ## Local commands
 
 ```bash
-npm install
+npm ci
 npm run docs:check
 npm run docs:dev
 npm run docs:build
 npm run docs:preview
 ```
 
-`main` is deployed automatically through GitHub Actions. The deploy job runs the static validation gate before the production VitePress build.
+`package-lock.json` is committed, so local/CI installs resolve the same dependency graph. `main` is deployed automatically through GitHub Actions; validation runs before the production VitePress build.
 
 ## Structure
 
