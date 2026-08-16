@@ -28,6 +28,7 @@
     padding: max(18px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-right)) max(30px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-left)) !important;
     overflow-x: clip;
     overscroll-behavior: contain;
+    transition: opacity var(--zz-fast) var(--zz-ease), transform 260ms var(--zz-ease) !important;
   }
   .VPSidebar.open { opacity: 1 !important; visibility: visible !important; transform: translateX(0) !important; }
   .VPBackdrop { display: none !important; }

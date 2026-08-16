@@ -79,6 +79,7 @@ if (/\bcollapsed\s*:/.test(navigationSource)) errors.push('navigation.mts: sideb
 if (!/disableQueryPersistence:\s*true/.test(configSource) || !/fuzzy:\s*0\.22/.test(configSource) || !/prefix:\s*true/.test(configSource)) errors.push('config.mts: local search must clear stale queries and keep fuzzy/prefix matching')
 if (!/\.VPSidebar\.open\s*\{[^}]*transform:\s*translateX\(0\)\s*!important/s.test(mobileCss)) errors.push('mobile.css: mobile sidebar open state must override the off-canvas transform')
 if (!/\.VPSidebar\s*\{[^}]*width:\s*100%\s*!important[^}]*height:\s*100dvh\s*!important/s.test(mobileCss)) errors.push('mobile.css: mobile sidebar must be a full-screen dynamic-viewport surface')
+if (!/\.VPSidebar\s*\{[^}]*transition:[^}]*transform\s+260ms/s.test(mobileCss)) errors.push('mobile.css: mobile sidebar transform must use the short 260ms motion contract')
 if (/@media\s*\(max-width:\s*420px\)[\s\S]*?\.VPSidebar\s*\{[^}]*\bwidth:/s.test(mobileCss)) errors.push('mobile.css: narrow breakpoint must not override the shared sidebar width')
 if (!/\.VPLocalSearchBox \.search-actions button\s*\{[^}]*min-width:\s*var\(--zz-touch\)[^}]*min-height:\s*var\(--zz-touch\)/s.test(mobileCss)) errors.push('mobile.css: search action buttons must keep the shared touch target')
 if (!/\.VPLocalSearchBox \.search-bar input[^\{]*\{[^}]*flex:\s*1 1 auto\s*!important/s.test(mobileCss)) errors.push('mobile.css: search input must retain flexible width on narrow screens')
