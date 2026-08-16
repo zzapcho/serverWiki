@@ -24,6 +24,8 @@ npm run docs:preview
 
 See [ARCHITECTURE.md](./ARCHITECTURE.md). The theme deliberately separates semantic tokens, base rules, components, motion, and mobile overrides so the same selector is not owned by multiple unrelated files.
 
+AI coding agents must read [AI_README.md](./AI_README.md) before changing UI, navigation, player-facing facts, recipes, validation, or deployment behavior. [AGENTS.md](./AGENTS.md) is the short automatic entry point.
+
 ## Content accuracy
 
 For values that can change with a mod/server update, the source-of-truth order is:

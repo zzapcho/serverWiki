@@ -63,6 +63,9 @@ for (const file of themeFiles) {
   if (/overflow-x:\s*hidden/.test(source)) warnings.push(`${rel}: overflow-x:hidden can mask layout bugs; prefer fixing the cause or intentional clip`)
 }
 
+const baseCss = await readFile(join(themeRoot, 'base.css'), 'utf8')
+if (/\bmin-width:\s*320px/.test(baseCss)) errors.push('base.css: a 320px root minimum creates horizontal scrolling when a vertical scrollbar consumes layout width')
+
 const enhancements = await readFile(join(themeRoot, 'enhancements.ts'), 'utf8')
 if (/window\.scrollTo\(\{\s*top:\s*0/.test(enhancements)) errors.push('enhancements.ts: unconditional route scroll-to-top breaks hash/search-result navigation')
 
@@ -87,6 +90,20 @@ if (!/export const sidebar = sidebarSections/.test(navigationSource)) errors.pus
 if (!/function installSidebarGestures\(\)/.test(enhancements) || !/html\.zz-sidebar-open \.VPLocalNav \.menu/.test(mobileCss)) errors.push('mobile sidebar: full-screen close control and touch gesture support are required')
 
 const allDocs = (await Promise.all(markdownFiles.map((file) => readFile(file, 'utf8')))).join('\n')
+for (const result of allDocs.matchAll(/<span class="recipe-result-icon">([\s\S]*?)<\/span>/g)) {
+  const imageCount = (result[1].match(/<img\b/g) ?? []).length
+  if (imageCount !== 1) errors.push(`docs: every recipe result slot must contain exactly one item image; found ${imageCount}`)
+}
+if (/\.recipe-result\s+span\s*\{/.test(componentsCss)) errors.push('components.css: do not style every recipe result span; target the icon and text wrapper separately')
+
+const blazeRodTexture = await readFile(join(docsRoot, 'public', 'items', 'gofish-blaze-rod.png'))
+if (blazeRodTexture.toString('ascii', 1, 4) !== 'PNG') {
+  errors.push('gofish-blaze-rod.png: expected a PNG item texture')
+} else {
+  const width = blazeRodTexture.readUInt32BE(16)
+  const height = blazeRodTexture.readUInt32BE(20)
+  if (width !== 16 || height !== 16) errors.push(`gofish-blaze-rod.png: browser asset must be one 16x16 animation frame, found ${width}x${height}`)
+}
 if (/Caps Lock[^\n]*(푸시|PTT)|푸시투톡[^\n]*Caps Lock/i.test(allDocs)) errors.push('docs: Simple Voice Chat PTT must not be documented as Caps Lock default on current versions')
 if (/그룹[^\n]*기본키[^\n]*`G`|`G`[^\n]*그룹[^\n]*기본키/i.test(allDocs)) errors.push('docs: do not document G as the current default group-chat key')
 

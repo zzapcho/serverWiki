@@ -89,7 +89,7 @@ Minecraft 제작대는 **가로 3칸 × 세로 3칸, 총 9칸**입니다. 아래
     </div>
     <div class="recipe-arrow" aria-hidden="true">→</div>
     <div class="recipe-result">
-      <span class="recipe-result-icon"><img src="/items/gofish-blaze-rod.png" alt="블레이즈 낚싯대 2개"><b class="recipe-count" aria-hidden="true">2</b></span>
+      <span class="recipe-result-icon"><img src="/items/gofish-blaze-rod.png" alt="블레이즈 낚싯대"><b class="recipe-count" aria-hidden="true">2</b></span>
       <span><strong>블레이즈 낚싯대</strong><span>모양 고정 · 2개 제작 · 잡은 결과 자동 가열</span></span>
     </div>
   </div>

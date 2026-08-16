@@ -56,7 +56,7 @@
 
 /* Home --------------------------------------------------------------- */
 .VPHomeHero .container, .VPHomeFeatures .container, .VPHome .vp-doc { width: min(var(--zz-page-max), calc(100% - (2 * var(--zz-page-gutter)))); max-width: var(--zz-page-max); margin-inline: auto; }
-.VPHome .vp-doc { padding-inline: 0; }
+.VPHome .vp-doc { padding: 40px 0 0; }
 .VPHomeHero { padding-block: 72px 42px; }
 .VPHomeHero .main { max-width: 790px; }
 .VPHomeHero .name { font-size: clamp(38px, 5vw, 62px); line-height: .98; letter-spacing: -0.055em; }
@@ -174,10 +174,11 @@ kbd { min-width: 28px; padding: 3px 7px; display: inline-flex; align-items: cent
 .recipe-result { min-width: 0; display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 10px; align-items: center; }
 .recipe-result-icon { position: relative; width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--vp-c-divider); border-radius: 9px; background: var(--vp-c-bg); }
 .recipe-count { position: absolute; inset-inline-end: 3px; inset-block-end: 2px; color: #fff; text-shadow: 1px 1px 0 #202020, -1px -1px 0 #202020, 1px -1px 0 #202020, -1px 1px 0 #202020; font: 700 13px/1 var(--vp-font-family-base); }
-.recipe-result > span:last-child { min-width: 0; }
-.recipe-result strong, .recipe-result span { display: block; }
+.recipe-result-icon { margin: 0 !important; color: inherit; font-size: inherit; line-height: normal; }
+.recipe-result > span:last-child { min-width: 0; margin: 0; color: inherit; font-size: inherit; line-height: normal; }
+.recipe-result strong, .recipe-result > span:last-child > span { display: block; }
 .recipe-result strong { font-size: 13.5px; line-height: 1.4; }
-.recipe-result span { margin-block-start: 3px; color: var(--vp-c-text-3); font-size: 11.5px; line-height: 1.4; }
+.recipe-result > span:last-child > span { margin-block-start: 3px; color: var(--vp-c-text-3); font-size: 11.5px; line-height: 1.4; }
 
 /* Global feedback ----------------------------------------------------- */
 .zz-reading-progress { position: fixed; z-index: 10000; inset: 0 0 auto; height: 2px; transform: scaleX(0); transform-origin: left center; pointer-events: none; background: linear-gradient(90deg, var(--vp-c-brand-2), var(--vp-c-brand-1)); }
