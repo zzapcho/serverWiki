@@ -1,9 +1,104 @@
 import { defineConfig } from 'vitepress'
 
+const start = [
+  {
+    text: '시작하기',
+    collapsed: false,
+    items: [
+      { text: '처음 접속하기', link: '/getting-started' },
+      { text: '서버 가이드', link: '/guide/' }
+    ]
+  }
+]
+
+const guide = [
+  ...start,
+  {
+    text: '서버 가이드',
+    collapsed: false,
+    items: [
+      { text: '가이드 개요', link: '/guide/' },
+      { text: '바닐라와 달라진 점', link: '/guide/vanilla-differences' },
+      { text: '농사 & 요리', link: '/guide/farming-cooking' },
+      { text: '낚시', link: '/guide/fishing' },
+      { text: '건축 & 가구', link: '/guide/building' },
+      { text: '탐험 & 월드', link: '/guide/exploration' },
+      { text: '생존 & 죽음', link: '/guide/survival' }
+    ]
+  },
+  {
+    text: '참고',
+    collapsed: true,
+    items: [
+      { text: '모드 전체보기', link: '/mods/' },
+      { text: '조합법', link: '/recipes/' },
+      { text: '조작법 & 단축키', link: '/controls/' }
+    ]
+  }
+]
+
+const mods = [
+  ...start,
+  {
+    text: '모드 & 시스템',
+    collapsed: false,
+    items: [
+      { text: '전체보기', link: '/mods/' },
+      { text: '플레이 콘텐츠', link: '/mods/gameplay' },
+      { text: '서버 시스템', link: '/mods/server' },
+      { text: '클라이언트 & QoL', link: '/mods/client' },
+      { text: '조합법', link: '/recipes/' }
+    ]
+  },
+  {
+    text: '플레이',
+    collapsed: true,
+    items: [
+      { text: '조작법 & 단축키', link: '/controls/' },
+      { text: '전체 명령어', link: '/commands/' },
+      { text: '경제 시스템', link: '/economy/' }
+    ]
+  }
+]
+
+const play = [
+  ...start,
+  {
+    text: '플레이',
+    collapsed: false,
+    items: [
+      { text: '조작법 & 단축키', link: '/controls/' },
+      { text: '전체 명령어', link: '/commands/' },
+      { text: '경제 시스템', link: '/economy/' }
+    ]
+  },
+  {
+    text: '참고',
+    collapsed: true,
+    items: [
+      { text: '모드 전체보기', link: '/mods/' },
+      { text: '조합법', link: '/recipes/' }
+    ]
+  }
+]
+
+const support = [
+  ...start,
+  {
+    text: '커뮤니티 & 지원',
+    collapsed: false,
+    items: [
+      { text: 'Discord & Voice', link: '/community/' },
+      { text: '문제 해결', link: '/troubleshooting/' },
+      { text: '업데이트', link: '/changelog/' }
+    ]
+  }
+]
+
 export default defineConfig({
   lang: 'ko-KR',
   title: 'ZZAPCHO SERVER WIKI',
-  description: 'ZZAPCHO SERVER 공식 가이드 · 명령어 · 경제 · 조작법',
+  description: 'ZZAPCHO SERVER 공식 가이드 · 모드 · 조합법 · 명령어 · 경제 · 조작법',
   base: '/',
   cleanUrls: true,
   lastUpdated: true,
@@ -16,7 +111,7 @@ export default defineConfig({
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' }],
     ['meta', { property: 'og:site_name', content: 'ZZAPCHO SERVER WIKI' }],
     ['meta', { property: 'og:title', content: 'ZZAPCHO SERVER WIKI' }],
-    ['meta', { property: 'og:description', content: '서버 플레이에 필요한 가이드, 명령어, 경제, 조작법을 한 곳에서 확인하세요.' }]
+    ['meta', { property: 'og:description', content: '서버 플레이에 필요한 가이드, 모드, 조합법, 명령어와 조작법을 한 곳에서 확인하세요.' }]
   ],
 
   themeConfig: {
@@ -24,12 +119,13 @@ export default defineConfig({
 
     nav: [
       { text: '가이드', link: '/guide/', activeMatch: '^/guide/' },
+      { text: '모드', link: '/mods/', activeMatch: '^/(mods|recipes)/' },
       { text: '명령어', link: '/commands/', activeMatch: '^/commands/' },
       { text: '경제', link: '/economy/', activeMatch: '^/economy/' },
-      { text: '조작법', link: '/controls/', activeMatch: '^/controls/' },
       {
         text: '더보기',
         items: [
+          { text: '조작법 & 단축키', link: '/controls/' },
           { text: 'Discord & Voice', link: '/community/' },
           { text: '문제 해결', link: '/troubleshooting/' },
           { text: '업데이트', link: '/changelog/' }
@@ -58,53 +154,18 @@ export default defineConfig({
       }
     },
 
-    sidebar: [
-      {
-        text: '시작하기',
-        collapsed: false,
-        items: [
-          { text: '홈', link: '/' },
-          { text: '처음 접속하기', link: '/getting-started' }
-        ]
-      },
-      {
-        text: '서버 가이드',
-        collapsed: false,
-        items: [
-          { text: '가이드 개요', link: '/guide/' },
-          { text: '바닐라와 달라진 점', link: '/guide/vanilla-differences' },
-          { text: '농사 & 요리', link: '/guide/farming-cooking' },
-          { text: '낚시', link: '/guide/fishing' },
-          { text: '건축 & 가구', link: '/guide/building' },
-          { text: '탐험 & 월드', link: '/guide/exploration' },
-          { text: '생존 & 죽음', link: '/guide/survival' }
-        ]
-      },
-      {
-        text: '플레이',
-        collapsed: false,
-        items: [
-          { text: '조작법 & 단축키', link: '/controls/' },
-          { text: '전체 명령어', link: '/commands/' },
-          { text: '경제 시스템', link: '/economy/' }
-        ]
-      },
-      {
-        text: '커뮤니티',
-        collapsed: false,
-        items: [
-          { text: 'Discord & Voice', link: '/community/' }
-        ]
-      },
-      {
-        text: '지원',
-        collapsed: false,
-        items: [
-          { text: '문제 해결', link: '/troubleshooting/' },
-          { text: '업데이트', link: '/changelog/' }
-        ]
-      }
-    ],
+    sidebar: {
+      '/guide/': guide,
+      '/mods/': mods,
+      '/recipes/': mods,
+      '/controls/': play,
+      '/commands/': play,
+      '/economy/': play,
+      '/community/': support,
+      '/troubleshooting/': support,
+      '/changelog/': support,
+      '/getting-started': start
+    },
 
     outline: {
       level: [2, 3],

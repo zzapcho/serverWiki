@@ -2,6 +2,7 @@ import DefaultTheme from 'vitepress/theme'
 import type { Theme } from 'vitepress'
 import './custom.css'
 import './enhancements.css'
+import './mobile.css'
 import { installEnhancements } from './enhancements'
 
 export default {

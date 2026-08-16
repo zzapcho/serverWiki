@@ -11,11 +11,13 @@
   <a class="content-card" href="/guide/building"><span class="card-icon">🏠</span><strong>건축 & 가구</strong><span>세로 반블록과 가구를 이용해 건축 표현을 넓힙니다.</span></a>
   <a class="content-card" href="/guide/exploration"><span class="card-icon">🧭</span><strong>탐험 & 월드</strong><span>달라진 지형, 구조물과 탐험 포인트를 확인합니다.</span></a>
   <a class="content-card" href="/guide/survival"><span class="card-icon">🛡</span><strong>생존 & 죽음</strong><span>무덤, 겉날개 슬롯과 서버 생존 규칙을 확인합니다.</span></a>
+  <a class="content-card" href="/mods/"><span class="card-icon">⚒</span><strong>모드 & 시스템</strong><span>모드별 기능, 상호작용, 필수 키를 한 번에 확인합니다.</span></a>
+  <a class="content-card" href="/recipes/"><span class="card-icon">▦</span><strong>조합법</strong><span>핵심 제작 흐름과 JEI 레시피 확인법을 정리합니다.</span></a>
 </div>
 
-## 읽는 순서
+## 처음이라면 이 순서
 
-처음이라면 **바닐라와 달라진 점 → 생존 & 죽음 → 조작법 → 경제** 정도만 먼저 보면 충분합니다. 나머지는 플레이하다 필요할 때 검색해서 찾으면 됩니다.
+**바닐라와 달라진 점 → 생존 & 죽음 → 조작법 → 경제** 정도만 먼저 보면 충분합니다. 플레이하다 모르는 아이템이나 기능이 생기면 상단 검색에서 바로 찾으세요.
 
 ## 문서 표기
 
@@ -24,5 +26,5 @@
 - <span class="status-chip is-plan">계획</span> 아직 구현/밸런싱 중인 서버 전용 기능
 
 ::: info 모드 이름은 참고 정보입니다
-가이드 본문은 플레이어 기준으로 작성하고, 실제 구현 모드 이름은 필요한 곳에서만 함께 표시합니다.
+가이드 본문은 플레이어 기준으로 작성하고, 구현 모드·조합법·키가 궁금할 때 [모드 & 시스템](/mods/) 문서로 들어가면 됩니다.
 :::

@@ -1,0 +1,159 @@
+/* Mobile polish ------------------------------------------------------- */
+
+/* Keep one clear focus ring around the search bar. The global focus
+   outline is useful elsewhere, but looked like a second green rectangle
+   inside the mobile search field. */
+.VPLocalSearchBox input:focus,
+.VPLocalSearchBox input:focus-visible,
+.VPLocalSearchBox .search-input:focus,
+.VPLocalSearchBox .search-input:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.VPLocalSearchBox .search-bar {
+  border: 1px solid var(--vp-c-divider);
+  transition:
+    border-color var(--zz-fast) var(--zz-ease),
+    box-shadow var(--zz-fast) var(--zz-ease),
+    background-color var(--zz-fast) var(--zz-ease);
+}
+
+.VPLocalSearchBox .search-bar:focus-within {
+  border-color: color-mix(in srgb, var(--vp-c-brand-1) 72%, var(--vp-c-divider));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--vp-c-brand-soft) 72%, transparent);
+}
+
+@media (max-width: 959px) {
+  /* Contextual sidebar: touchable, stable and not edge-to-edge. */
+  .VPSidebar {
+    width: min(88vw, 390px) !important;
+    max-width: 390px !important;
+    padding: 22px 18px calc(30px + env(safe-area-inset-bottom)) !important;
+    scrollbar-gutter: stable;
+    overscroll-behavior: contain;
+    transition: transform 260ms var(--zz-ease), opacity 200ms var(--zz-ease) !important;
+  }
+
+  .VPSidebar .nav {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .VPSidebarItem.level-0 {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid color-mix(in srgb, var(--vp-c-divider) 76%, transparent);
+  }
+
+  .VPSidebarItem.level-0:last-child {
+    margin-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .VPSidebarItem.level-0 > .item {
+    min-height: 46px;
+  }
+
+  .VPSidebarItem.level-0 > .item > .text {
+    font-size: 12.5px;
+    font-weight: 800;
+  }
+
+  .VPSidebarItem .item {
+    min-height: 44px;
+  }
+
+  .VPSidebarItem .link {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    border-radius: 11px;
+  }
+
+  .VPSidebarItem.is-active > .item .link {
+    background: color-mix(in srgb, var(--vp-c-brand-soft) 92%, transparent);
+  }
+
+  .VPNavBarHamburger,
+  .VPLocalNavOutlineDropdown button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Search is a focused task on phones: a padded full-screen sheet with
+     one stable search field and scrollable results. */
+  .VPLocalSearchBox {
+    align-items: flex-start !important;
+    padding:
+      max(14px, env(safe-area-inset-top))
+      14px
+      max(14px, env(safe-area-inset-bottom)) !important;
+    background: color-mix(in srgb, var(--vp-c-bg) 96%, transparent) !important;
+  }
+
+  .VPLocalSearchBox .shell {
+    width: 100% !important;
+    max-width: none !important;
+    max-height: calc(100dvh - 28px) !important;
+    margin: 0 !important;
+    overflow: hidden;
+    border: 0 !important;
+    border-radius: 16px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .VPLocalSearchBox .search-bar {
+    min-height: 56px;
+    margin: 0 !important;
+    padding: 0 10px !important;
+    border-radius: 14px !important;
+    background: color-mix(in srgb, var(--vp-c-bg-soft) 84%, transparent) !important;
+  }
+
+  .VPLocalSearchBox .search-bar input,
+  .VPLocalSearchBox input[type='text'],
+  .VPLocalSearchBox input[type='search'] {
+    min-width: 0;
+    height: 54px;
+    font-size: 16px !important;
+    line-height: 1.4;
+  }
+
+  .VPLocalSearchBox .results {
+    max-height: calc(100dvh - 92px) !important;
+    padding: 10px 2px 18px !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+  }
+
+  .VPLocalSearchBox .result {
+    min-height: 48px;
+    border-radius: 11px !important;
+  }
+
+  .VPLocalSearchBox .result + .result {
+    margin-top: 4px;
+  }
+
+  .VPLocalSearchBox .result .title {
+    line-height: 1.45;
+  }
+}
+
+@media (max-width: 420px) {
+  .VPSidebar {
+    width: min(90vw, 374px) !important;
+    padding-inline: 16px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .VPSidebar,
+  .VPLocalSearchBox .search-bar {
+    transition: none !important;
+  }
+}
