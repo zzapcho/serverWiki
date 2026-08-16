@@ -15,6 +15,124 @@
 | 어디에 쓰이는지 | 아이템 위에 마우스를 올리고 `U` |
 | 특정 모드만 좁혀 보기 | 검색창에서 모드 이름/아이템 이름을 함께 검색 |
 
+## JEI 화면 읽는 법
+
+| 화면 영역 | 의미 |
+|---|---|
+| 인벤토리 오른쪽 아이템 목록 | 현재 검색 조건에 맞는 아이템. 페이지가 많으면 목록의 이전/다음 조작 사용 |
+| 아래쪽 검색창 | 아이템 이름과 현재 JEI가 지원하는 필터로 후보 좁히기 |
+| 레시피 화면의 위쪽 탭 | 제작대, 화로, Cutting, Cooking처럼 **어디서 처리하는지** 구분 |
+| 재료 칸 | 고정 재료 또는 태그로 묶인 대체 가능 재료. 순환하는 후보를 확인 |
+| 화살표/시간/경험치 | 가공 시간이나 경험치가 있는 레시피에서 표시 |
+| 출력 칸 | 결과 아이템과 수량. 현재 로드된 서버 레시피의 최종 기준 |
+
+## 원하는 아이템을 찾는 전체 순서
+
+1. 인벤토리를 열고 JEI 검색창을 클릭합니다.
+2. 이름 전체보다 `tomato`, `rod`, `cabinet`처럼 구분되는 일부만 입력합니다.
+3. 아이템에 마우스를 올린 상태에서 <kbd>R</kbd>을 눌러 만드는 법을 엽니다.
+4. 레시피 유형이 여러 개면 위쪽 탭으로 제작대·도마·냄비·가열 방식을 바꿔 봅니다.
+5. 재료 칸이 여러 아이템을 번갈아 보여 주면 마우스를 올려 허용 후보를 확인합니다.
+6. 결과 아이템에 <kbd>U</kbd>를 눌러 다음 단계의 음식·장비·건축 재료까지 따라갑니다.
+
+### 재료에서 시작할 때
+
+새 물고기나 작물을 얻었으면 <kbd>R</kbd>보다 <kbd>U</kbd>가 먼저입니다. “이 재료로 무엇을 만들 수 있나”를 모두 본 뒤 원하는 결과에 <kbd>R</kbd>을 누르면 생산 흐름을 거꾸로 추적할 수 있습니다.
+
+### 아이템 목록이 안 보일 때
+
+- 검색창의 이전 입력을 모두 지웁니다.
+- 검색 결과 페이지가 여러 장인지 확인합니다.
+- JEI 목록 숨김 단축키가 눌렸는지 **설정 → 조작 설정 → JEI**에서 확인합니다.
+- 한글 번역이 애매하면 영문 이름 일부를 검색합니다.
+- 모드 이름 필터 문법은 현재 JEI 검색 도움말을 기준으로 사용합니다.
+
+::: warning 키가 동작하지 않을 때
+<kbd>R</kbd>/<kbd>U</kbd>는 아이템 스택 위에 마우스를 올린 상태에서 눌러야 합니다. 채팅창이나 검색 입력칸에 커서가 있으면 글자 입력이 되는 것이 정상입니다. 다른 모드와 키가 겹치면 현재 Minecraft 키 설정을 최종 기준으로 바꾸세요.
+:::
+
+## 실제 아이콘으로 보는 3×3 제작대
+
+Minecraft 제작대는 **가로 3칸 × 세로 3칸, 총 9칸**입니다. 아래 아이콘은 Minecraft 26.2와 현재 Gone Fishing 1.12.0+26.2 파일에서 실제로 사용하는 인벤토리 텍스처입니다.
+
+<div class="recipe-visuals">
+  <div class="recipe-visual">
+    <div class="recipe-craft" role="img" aria-label="다이아몬드 강화 낚싯대 조합: 가운데 낚싯대, 위 아래 왼쪽 오른쪽에 다이아몬드">
+      <span class="recipe-slot"></span>
+      <span class="recipe-slot"><img src="/items/minecraft-diamond.png" alt="다이아몬드"></span>
+      <span class="recipe-slot"></span>
+      <span class="recipe-slot"><img src="/items/minecraft-diamond.png" alt="다이아몬드"></span>
+      <span class="recipe-slot"><img src="/items/minecraft-fishing-rod.png" alt="낚싯대"></span>
+      <span class="recipe-slot"><img src="/items/minecraft-diamond.png" alt="다이아몬드"></span>
+      <span class="recipe-slot"></span>
+      <span class="recipe-slot"><img src="/items/minecraft-diamond.png" alt="다이아몬드"></span>
+      <span class="recipe-slot"></span>
+    </div>
+    <div class="recipe-arrow" aria-hidden="true">→</div>
+    <div class="recipe-result">
+      <span class="recipe-result-icon"><img src="/items/gofish-diamond-reinforced-rod.png" alt="다이아몬드 강화 낚싯대"></span>
+      <span><strong>Diamond Reinforced Rod</strong><span>모양 고정 · 내구도 300</span></span>
+    </div>
+  </div>
+
+  <div class="recipe-visual">
+    <div class="recipe-craft" role="img" aria-label="블레이즈 낚싯대 조합: 오른쪽 위부터 대각선으로 블레이즈 막대 3개, 오른쪽 가운데와 아래에 실 2개">
+      <span class="recipe-slot"></span>
+      <span class="recipe-slot"></span>
+      <span class="recipe-slot"><img src="/items/minecraft-blaze-rod.png" alt="블레이즈 막대"></span>
+      <span class="recipe-slot"></span>
+      <span class="recipe-slot"><img src="/items/minecraft-blaze-rod.png" alt="블레이즈 막대"></span>
+      <span class="recipe-slot"><img src="/items/minecraft-string.png" alt="실"></span>
+      <span class="recipe-slot"><img src="/items/minecraft-blaze-rod.png" alt="블레이즈 막대"></span>
+      <span class="recipe-slot"></span>
+      <span class="recipe-slot"><img src="/items/minecraft-string.png" alt="실"></span>
+    </div>
+    <div class="recipe-arrow" aria-hidden="true">→</div>
+    <div class="recipe-result">
+      <span class="recipe-result-icon"><img src="/items/gofish-blaze-rod.png" alt="블레이즈 낚싯대"></span>
+      <span><strong>Blaze Rod</strong><span>모양 고정 · 잡은 결과 자동 가열</span></span>
+    </div>
+  </div>
+
+  <div class="recipe-visual">
+    <div class="recipe-craft" role="img" aria-label="간단한 루어 조합: 왼쪽 위에 깃털, 위 가운데와 오른쪽, 가운데 왼쪽과 오른쪽에 철 조각">
+      <span class="recipe-slot"><img src="/items/minecraft-feather.png" alt="깃털"></span>
+      <span class="recipe-slot"><img src="/items/minecraft-iron-nugget.png" alt="철 조각"></span>
+      <span class="recipe-slot"><img src="/items/minecraft-iron-nugget.png" alt="철 조각"></span>
+      <span class="recipe-slot"><img src="/items/minecraft-iron-nugget.png" alt="철 조각"></span>
+      <span class="recipe-slot"></span>
+      <span class="recipe-slot"><img src="/items/minecraft-iron-nugget.png" alt="철 조각"></span>
+      <span class="recipe-slot"></span>
+      <span class="recipe-slot"></span>
+      <span class="recipe-slot"></span>
+    </div>
+    <div class="recipe-arrow" aria-hidden="true">→</div>
+    <div class="recipe-result">
+      <span class="recipe-result-icon"><img src="/items/gofish-simple-lure.png" alt="간단한 루어"></span>
+      <span><strong>Simple Lure</strong><span>모양 고정 · 인벤토리에서 루어 +1</span></span>
+    </div>
+  </div>
+
+  <div class="recipe-visual">
+    <div class="recipe-craft" role="img" aria-label="영혼 루어 무형 조합: 영혼 연어 2마리와 간단한 루어 1개를 아무 칸에 배치">
+      <span class="recipe-slot"><img src="/items/gofish-soul-salmon.png" alt="영혼 연어"></span>
+      <span class="recipe-slot"><img src="/items/gofish-soul-salmon.png" alt="영혼 연어"></span>
+      <span class="recipe-slot"><img src="/items/gofish-simple-lure.png" alt="간단한 루어"></span>
+      <span class="recipe-slot"></span><span class="recipe-slot"></span><span class="recipe-slot"></span>
+      <span class="recipe-slot"></span><span class="recipe-slot"></span><span class="recipe-slot"></span>
+    </div>
+    <div class="recipe-arrow" aria-hidden="true">→</div>
+    <div class="recipe-result">
+      <span class="recipe-result-icon"><img src="/items/gofish-soul-lure.png" alt="영혼 루어"></span>
+      <span><strong>Soul Lure</strong><span>무형 조합 · 세 재료는 어느 칸이어도 됨</span></span>
+    </div>
+  </div>
+</div>
+
+::: tip 모양 고정과 무형 조합
+“모양 고정”은 그림과 같은 위치 관계를 지켜야 합니다. “무형 조합”은 재료 종류와 개수만 맞으면 9칸 어디에 놓아도 됩니다. 서버 데이터팩이 바뀌었으면 JEI 화면을 최종 기준으로 확인하세요.
+:::
+
 ::: tip 위키와 JEI의 역할
 **JEI = 모든 실제 레시피 데이터의 색인**, **위키 = 어떤 블록을 어떻게 상호작용하고 왜 쓰는지 설명**입니다. 모드가 업데이트되면 출력 수량·재료가 달라질 수 있으므로 수백 개 레시피를 복제해 오래된 정보를 만드는 것보다 이 구조가 안전합니다.
 :::
@@ -62,6 +180,8 @@
 
 → [Farmer's Delight 상세](/mods/farmers-delight)
 
+대표 음식의 실제 3.6.15 재료와 프라이팬·큰 접시 음식 사용법은 [요리 방법 & 대표 레시피](/guide/cooking-catalog)에서 단계별로 확인할 수 있습니다.
+
 ## Skniro's Furniture
 
 가구 종류가 많기 때문에 이름을 JEI에서 검색한 뒤 <kbd>R</kbd>이 가장 빠릅니다. 제작 뒤에는 블록별 기능이 다릅니다.
@@ -72,6 +192,8 @@
 - 조명 등 상호작용형: 우클릭으로 상태가 변하는지 확인.
 
 → [Furniture 상세](/mods/furniture)
+
+거실·주방·침실별 카테고리와 검색어는 [가구·건축 카탈로그](/guide/building-catalog)에 정리되어 있습니다.
 
 ## Friends&Foes
 
@@ -90,6 +212,8 @@
 
 → [Gone Fishing 상세](/mods/gone-fishing)
 
+낚시 전용 획득물은 JEI에 제작법이 없어도 정상입니다. 바이옴·날씨·차원별 가중치와 낚싯대 획득 상자는 [물고기 확률 & 낚싯대](/guide/fishing-catalog)에서 확인하세요.
+
 ## 레시피가 안 보일 때
 
 - 아이템 이름의 일부만 검색.
@@ -97,6 +221,8 @@
 - `R`로 아무것도 안 나오면 `U`로 먼저 사용처 확인.
 - 서버 배포 팩과 클라이언트 모드 버전 비교.
 - 레시피가 서버 설정/데이터팩으로 비활성화된 것은 아닌지 확인.
+- 제작법이 없는 낚시·상자·몹 전리품·월드 생성 전용 아이템인지 상세 문서에서 확인.
+- 검색 목록은 보이지만 레시피가 다르면 서버와 클라이언트의 모드/데이터팩 버전을 비교.
 
 ## “웹에 모든 레시피”가 꼭 필요할 때
 

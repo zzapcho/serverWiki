@@ -52,13 +52,26 @@ docs/**/*.md
 - Search inputs stay at least 16px to avoid mobile input zoom.
 - Dynamic search surfaces use `svh` fallback and `dvh` when available.
 - Safe-area padding is used for fixed/full-screen mobile surfaces.
+- Search action buttons keep the shared touch target and the input owns remaining width.
+- The navigation search stays a compact 44px action; the full search surface opens only on demand.
+- Local search clears stale queries and uses prefix, bounded fuzzy matching and a small Korean synonym map.
+- The off-canvas sidebar `open` state is explicitly regression-tested against transform/cascade conflicts.
+- Mobile sidebars leave a 48px outside strip so backdrop close and the menu control remain reachable at 320px.
+- Sidebar groups omit `collapsed` entirely so the context navigation is always visible and cannot be accidentally hidden.
 - Do not introduce `100vw` for page-width layout.
 
 ### Tables
 
 - Comparison tables may scroll horizontally when required.
+- Wrapped tables restore native table layout so desktop columns fill the shell instead of leaving a false empty panel.
 - A table wrapper becomes a keyboard-focusable `region` only when it actually overflows horizontally.
 - Non-overflowing tables must not create an unnecessary Tab stop.
+
+### Player-facing content
+
+- Runtime-generated page outlines reuse real heading anchors and add no global listeners.
+- Related-document links receive one shared chip treatment instead of page-specific styling.
+- Recipe visuals use the real Minecraft/mod item textures and always include text alternatives; JEI remains the complete current recipe source.
 
 ### Motion
 
@@ -83,6 +96,8 @@ docs/**/*.md
 - accidental `100vw` theme layout
 - unconditional route scroll-to-top regression
 - known incorrect Simple Voice Chat key documentation
+- raw Markdown links trapped inside HTML blocks
+- missing mobile search/sidebar invariants
 
 The production VitePress build is the second gate. A successful build and deploy is necessary but does not replace real-device visual testing on Android/iOS after major UI changes.
 

@@ -61,4 +61,4 @@
 
 이 서버의 생활 콘텐츠는 완전 자동 공장보다 **직접 플레이와 거래가 남는 정도**가 목표입니다. 대규모 자동 농장을 만들기 전에는 서버 규칙과 성능 영향을 확인하세요.
 
-→ [Farmer's Delight 상세](/mods/farmers-delight) · [EconomyCraft](/mods/economycraft)
+→ [요리 방법 & 대표 레시피](/guide/cooking-catalog) · [Farmer's Delight 상세](/mods/farmers-delight) · [EconomyCraft](/mods/economycraft)

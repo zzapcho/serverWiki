@@ -21,6 +21,8 @@
 
 Gone Fishing 계열은 추가 물고기, 낚시 관련 장비/트링킷, 수생 음식, 희귀 loot crate, 네더/엔드 낚시 같은 확장을 제공합니다.
 
+바이옴별 어종, 날씨·보름달 조건, 상자 가중치와 낚싯대 획득 경로는 [물고기 확률·조건 & 낚싯대 도감](/guide/fishing-catalog)에 실제 1.12.0+26.2 데이터 기준으로 정리되어 있습니다.
+
 ## 돈 벌기
 
 낚시는 반복 생산 가능한 생활 수입원이지만 모든 희귀 전리품을 서버가 무제한으로 사면 탐험/수집 가치가 사라집니다.
@@ -41,4 +43,4 @@ Gone Fishing 계열은 추가 물고기, 낚시 관련 장비/트링킷, 수생 
 
 특정 차원에서만 결과가 이상하면 “낚시 전체가 고장”이라고 보기보다 차원/loot table 범위를 좁혀 제보하세요.
 
-→ [Gone Fishing 상세](/mods/gone-fishing) · [문제 해결](/troubleshooting/#낚시가-이상해요)
+→ [물고기 확률 & 낚싯대](/guide/fishing-catalog) · [Gone Fishing 상세](/mods/gone-fishing) · [문제 해결](/troubleshooting/#낚시가-이상해요)

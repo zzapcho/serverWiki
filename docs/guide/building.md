@@ -32,6 +32,8 @@
 
 가구는 JEI로 제작법을 찾고, 설치 뒤 **우클릭**으로 기능 여부를 확인하는 것이 기본입니다. 비슷하게 생겼어도 장식 전용과 수납/상호작용형이 다를 수 있습니다.
 
+거실·주방·침실·서재별 가구 종류와 검색어는 [가구·건축 카탈로그](/guide/building-catalog)에서 확인할 수 있습니다.
+
 ### 수납형 가구 주의
 
 현재 서버 로그에 Furniture data fixer 관련 경고가 관찰된 적이 있어, 중요한 수납 가구는 **재시작 후 내용 유지 테스트**가 중요합니다.
@@ -47,4 +49,4 @@
 - `R`로 필요한 재료량 비교.
 - `U`로 같은 재료가 어떤 장식에 더 쓰이는지 확인.
 
-→ [Skniro Furniture 상세](/mods/furniture) · [조합법](/recipes/)
+→ [가구 & 건축 카탈로그](/guide/building-catalog) · [Skniro Furniture 상세](/mods/furniture) · [조합법](/recipes/)

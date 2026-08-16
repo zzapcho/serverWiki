@@ -7,8 +7,11 @@
 <div class="content-grid">
   <a class="content-card" href="/guide/vanilla-differences"><span class="card-icon">V</span><strong>바닐라와 달라진 점</strong><span>서버 전체 변경사항과 시스템 연결을 가장 빠르게 훑습니다.</span></a>
   <a class="content-card" href="/guide/farming-cooking"><span class="card-icon">🌾</span><strong>농사 & 요리</strong><span>재료 → 가공 → 요리 → 판매로 이어지는 생활 루프를 봅니다.</span></a>
+  <a class="content-card" href="/guide/cooking-catalog"><span class="card-icon">🍲</span><strong>요리 방법 & 레시피</strong><span>도마·냄비·프라이팬 사용과 3.6.15 대표 조합을 확인합니다.</span></a>
   <a class="content-card" href="/guide/fishing"><span class="card-icon">🎣</span><strong>낚시</strong><span>추가 전리품, 활용, 경제와 현재 차원별 검증 상태를 확인합니다.</span></a>
+  <a class="content-card" href="/guide/fishing-catalog"><span class="card-icon">%</span><strong>물고기 확률 & 낚싯대</strong><span>바이옴·날씨·차원 가중치와 장비 획득법을 봅니다.</span></a>
   <a class="content-card" href="/guide/building"><span class="card-icon">🏠</span><strong>건축 & 가구</strong><span>세로 반블록, 가구, 수납과 안전한 배치 흐름을 정리합니다.</span></a>
+  <a class="content-card" href="/guide/building-catalog"><span class="card-icon">▦</span><strong>가구 & 건축 카탈로그</strong><span>방별 가구 종류, 검색어와 배치 순서를 확인합니다.</span></a>
   <a class="content-card" href="/guide/exploration"><span class="card-icon">🧭</span><strong>탐험 & 월드</strong><span>새 지형, 구조물, 몹과 지도 활용법을 확인합니다.</span></a>
   <a class="content-card" href="/guide/survival"><span class="card-icon">🛡</span><strong>생존 & 죽음</strong><span>무덤, 복구 흐름, 겉날개 슬롯과 향후 세이브권을 구분합니다.</span></a>
   <a class="content-card" href="/mods/"><span class="card-icon">⚒</span><strong>모드 & 시스템</strong><span>실제 설치 버전과 모드별 상호작용/키/문제 해결을 봅니다.</span></a>
@@ -18,9 +21,9 @@
 ## 처음이라면 이 순서
 
 <div class="flow-grid">
-  <div class="flow-card"><span class="flow-number">01</span><strong>차이 파악</strong><p>[바닐라와 달라진 점](/guide/vanilla-differences)에서 서버의 큰 변화를 훑습니다.</p></div>
-  <div class="flow-card"><span class="flow-number">02</span><strong>실수 방지</strong><p>[생존 & 죽음](/guide/survival)에서 죽었을 때 아이템 처리와 무덤을 확인합니다.</p></div>
-  <div class="flow-card"><span class="flow-number">03</span><strong>플레이 시작</strong><p>[30초 빠른 참조](/quick-reference)만 기억하고 나머지는 필요할 때 검색합니다.</p></div>
+  <div class="flow-card"><span class="flow-number">01</span><strong>차이 파악</strong><p><a href="/guide/vanilla-differences">바닐라와 달라진 점</a>에서 서버의 큰 변화를 훑습니다.</p></div>
+  <div class="flow-card"><span class="flow-number">02</span><strong>실수 방지</strong><p><a href="/guide/survival">생존 &amp; 죽음</a>에서 죽었을 때 아이템 처리와 무덤을 확인합니다.</p></div>
+  <div class="flow-card"><span class="flow-number">03</span><strong>플레이 시작</strong><p><a href="/quick-reference">30초 빠른 참조</a>만 기억하고 나머지는 필요할 때 검색합니다.</p></div>
 </div>
 
 ## 문서 표기

@@ -1,7 +1,6 @@
 const start = [
   {
     text: '시작하기',
-    collapsed: false,
     items: [
       { text: '처음 접속하기', link: '/getting-started' },
       { text: '30초 빠른 참조', link: '/quick-reference' },
@@ -14,20 +13,21 @@ const guide = [
   ...start,
   {
     text: '서버 가이드',
-    collapsed: false,
     items: [
       { text: '가이드 개요', link: '/guide/' },
       { text: '바닐라와 달라진 점', link: '/guide/vanilla-differences' },
       { text: '농사 & 요리', link: '/guide/farming-cooking' },
+      { text: '요리 방법 & 레시피', link: '/guide/cooking-catalog' },
       { text: '낚시', link: '/guide/fishing' },
+      { text: '물고기 확률 & 낚싯대', link: '/guide/fishing-catalog' },
       { text: '건축 & 가구', link: '/guide/building' },
+      { text: '가구 & 건축 카탈로그', link: '/guide/building-catalog' },
       { text: '탐험 & 월드', link: '/guide/exploration' },
       { text: '생존 & 죽음', link: '/guide/survival' }
     ]
   },
   {
     text: '참고',
-    collapsed: true,
     items: [
       { text: '모드 전체보기', link: '/mods/' },
       { text: '조합법', link: '/recipes/' },
@@ -41,7 +41,6 @@ const mods = [
   ...start,
   {
     text: '모드 & 시스템',
-    collapsed: false,
     items: [
       { text: '전체보기', link: '/mods/' },
       { text: '플레이 콘텐츠', link: '/mods/gameplay' },
@@ -52,7 +51,6 @@ const mods = [
   },
   {
     text: '콘텐츠 상세',
-    collapsed: true,
     items: [
       { text: "Farmer's Delight", link: '/mods/farmers-delight' },
       { text: 'Gone Fishing', link: '/mods/gone-fishing' },
@@ -65,7 +63,6 @@ const mods = [
   },
   {
     text: '서버 기능 상세',
-    collapsed: true,
     items: [
       { text: 'EconomyCraft', link: '/mods/economycraft' },
       { text: 'Universal Graves', link: '/mods/graves' },
@@ -75,7 +72,6 @@ const mods = [
   },
   {
     text: '플레이',
-    collapsed: true,
     items: [
       { text: '조작법 & 단축키', link: '/controls/' },
       { text: '전체 명령어', link: '/commands/' },
@@ -88,7 +84,6 @@ const play = [
   ...start,
   {
     text: '플레이',
-    collapsed: false,
     items: [
       { text: '조작법 & 단축키', link: '/controls/' },
       { text: '전체 명령어', link: '/commands/' },
@@ -97,7 +92,6 @@ const play = [
   },
   {
     text: '참고',
-    collapsed: true,
     items: [
       { text: '모드 전체보기', link: '/mods/' },
       { text: '조합법', link: '/recipes/' },
@@ -110,7 +104,6 @@ const support = [
   ...start,
   {
     text: '커뮤니티 & 지원',
-    collapsed: false,
     items: [
       { text: 'Discord & Voice', link: '/community/' },
       { text: '문제 해결', link: '/troubleshooting/' },

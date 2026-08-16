@@ -39,7 +39,10 @@ function collectLinks(source) {
 for (const file of markdownFiles) {
   const source = await readFile(file, 'utf8')
   const rel = relative(root, file)
-  if (!/^---\n[\s\S]*?\n---\n|<span class="page-kicker">|^#\s/m.test(source)) warnings.push(`${rel}: page has no obvious title/frontmatter marker`)
+  if (!/^---\r?\n[\s\S]*?\r?\n---\r?\n|<span class="page-kicker">|^#\s/m.test(source)) warnings.push(`${rel}: page has no obvious title/frontmatter marker`)
+  if (/<(?:p|span|strong|div)\b[^>]*>[^<]*\[[^\]]+\]\(\/[^)]+\)/i.test(source)) {
+    errors.push(`${rel}: Markdown link syntax inside raw HTML renders as visible text; use an <a> element`)
+  }
   for (const link of collectLinks(source)) {
     if (/^(https?:|mailto:|tel:)/i.test(link) || link.startsWith('#')) continue
     if (/^javascript:/i.test(link)) {
@@ -62,6 +65,22 @@ for (const file of themeFiles) {
 
 const enhancements = await readFile(join(themeRoot, 'enhancements.ts'), 'utf8')
 if (/window\.scrollTo\(\{\s*top:\s*0/.test(enhancements)) errors.push('enhancements.ts: unconditional route scroll-to-top breaks hash/search-result navigation')
+
+const mobileCss = await readFile(join(themeRoot, 'mobile.css'), 'utf8')
+const componentsCss = await readFile(join(themeRoot, 'components.css'), 'utf8')
+const navigationSource = await readFile(join(root, 'docs', '.vitepress', 'navigation.mts'), 'utf8')
+const configSource = await readFile(join(root, 'docs', '.vitepress', 'config.mts'), 'utf8')
+if (!/\.vp-doc \.zz-table-shell table\s*\{[^}]*display:\s*table/s.test(componentsCss)) errors.push('components.css: wrapped tables must use table layout instead of VitePress block layout')
+if (!/\.VPSidebarItem\.is-active[^}]+\.link::before\s*\{[^}]*content:\s*none/s.test(componentsCss)) errors.push('components.css: active sidebar links must not render the caret-like color bar')
+if (!/\.VPSidebar:focus[^}]*\{[^}]*outline:\s*none/s.test(componentsCss)) errors.push('components.css: programmatic sidebar focus must not draw a full-height color rail')
+if (!/\.VPNavBarSearch button[\s\S]*?width:\s*var\(--zz-touch\)\s*!important/.test(componentsCss)) errors.push('components.css: navigation search must stay collapsed to the shared touch target')
+if (/\bcollapsed\s*:/.test(navigationSource)) errors.push('navigation.mts: sidebar groups must remain always visible and non-collapsible')
+if (!/disableQueryPersistence:\s*true/.test(configSource) || !/fuzzy:\s*0\.22/.test(configSource) || !/prefix:\s*true/.test(configSource)) errors.push('config.mts: local search must clear stale queries and keep fuzzy/prefix matching')
+if (!/\.VPSidebar\.open\s*\{[^}]*transform:\s*translateX\(0\)\s*!important/s.test(mobileCss)) errors.push('mobile.css: mobile sidebar open state must override the off-canvas transform')
+if (!/\.VPSidebar\s*\{[^}]*width:\s*min\(calc\(100% - 48px\),\s*390px\)\s*!important/s.test(mobileCss)) errors.push('mobile.css: mobile sidebar must leave a 48px outside close target')
+if (/@media\s*\(max-width:\s*420px\)[\s\S]*?\.VPSidebar\s*\{[^}]*\bwidth:/s.test(mobileCss)) errors.push('mobile.css: narrow breakpoint must not override the shared sidebar width')
+if (!/\.VPLocalSearchBox \.search-actions button\s*\{[^}]*min-width:\s*var\(--zz-touch\)[^}]*min-height:\s*var\(--zz-touch\)/s.test(mobileCss)) errors.push('mobile.css: search action buttons must keep the shared touch target')
+if (!/\.VPLocalSearchBox \.search-bar input[^\{]*\{[^}]*flex:\s*1 1 auto\s*!important/s.test(mobileCss)) errors.push('mobile.css: search input must retain flexible width on narrow screens')
 
 const allDocs = (await Promise.all(markdownFiles.map((file) => readFile(file, 'utf8')))).join('\n')
 if (/Caps Lock[^\n]*(푸시|PTT)|푸시투톡[^\n]*Caps Lock/i.test(allDocs)) errors.push('docs: Simple Voice Chat PTT must not be documented as Caps Lock default on current versions')

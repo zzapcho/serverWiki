@@ -63,3 +63,7 @@ JEI 키는 **아이템 스택 위에 마우스를 올린 상태**에서 사용�
 AppleSkin, Sodium, Lithium, FerriteCore, ImmediatelyFast, Entity Culling, Continuity, Chat Heads처럼 자동 적용되거나 설정 화면 중심인 모드는 플레이 중 별도 키를 외울 필요가 없습니다.
 
 → [클라이언트 & QoL 전체보기](/mods/client)
+
+## JEI를 더 자세히
+
+아이템 검색, 레시피 유형 전환, 대체 재료 확인, 레시피가 없는 전리품 구분은 [JEI 사용법과 제작 흐름](/recipes/)을 확인하세요.

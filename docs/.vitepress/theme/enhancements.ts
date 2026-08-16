@@ -14,6 +14,7 @@ let prepareFrame2 = 0
 let prepareGeneration = 0
 
 const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
+const headingText = (heading: HTMLElement) => heading.textContent?.replace(/\u200b/g, '').trim() ?? ''
 
 function isEditableTarget(target: EventTarget | null) {
   if (!(target instanceof HTMLElement)) return false
@@ -107,19 +108,75 @@ function updateTableAccessibility(shell: HTMLElement) {
   if (scrollable) {
     shell.tabIndex = 0
     shell.setAttribute('role', 'region')
-    if (!shell.getAttribute('aria-label')) {
-      const heading = shell.closest('.vp-doc')?.querySelector('h1')?.textContent?.trim() ?? '문서'
-      shell.setAttribute('aria-label', `${heading}의 표. 가로로 스크롤할 수 있습니다.`)
+    const doc = shell.closest('.vp-doc')
+    const headings = Array.from(doc?.querySelectorAll<HTMLElement>('h1[id], h2[id], h3[id]') ?? [])
+    const heading = headings.filter((candidate) => candidate.compareDocumentPosition(shell) & Node.DOCUMENT_POSITION_FOLLOWING).at(-1)
+    if (heading?.id) {
+      shell.setAttribute('aria-labelledby', heading.id)
+      shell.removeAttribute('aria-label')
+    } else if (!shell.getAttribute('aria-label')) {
+      const title = doc?.querySelector('h1')?.textContent?.trim() ?? '문서'
+      shell.setAttribute('aria-label', `${title}의 표. 가로로 스크롤할 수 있습니다.`)
     }
   } else {
     shell.removeAttribute('tabindex')
     shell.removeAttribute('role')
     shell.removeAttribute('aria-label')
+    shell.removeAttribute('aria-labelledby')
   }
 }
 
 function refreshTableAccessibility() {
   document.querySelectorAll<HTMLElement>('.zz-table-shell').forEach(updateTableAccessibility)
+}
+
+function prepareInlineToc() {
+  const doc = document.querySelector<HTMLElement>('.VPDoc .vp-doc')
+  if (!doc) return
+  const existing = Array.from(doc.querySelectorAll<HTMLElement>('.zz-inline-toc'))
+  if (existing.length) {
+    existing.slice(1).forEach((duplicate) => duplicate.remove())
+    return
+  }
+  const headings = Array.from(doc.querySelectorAll<HTMLElement>('h2[id]'))
+    .filter((heading) => !heading.closest('.custom-block'))
+  if (headings.length < 2) return
+
+  const nav = document.createElement('nav')
+  nav.className = 'zz-inline-toc'
+  nav.setAttribute('aria-label', '이 페이지의 제목')
+
+  const head = document.createElement('div')
+  head.className = 'zz-inline-toc-head'
+  const title = document.createElement('strong')
+  title.textContent = '이 페이지에서'
+  const count = document.createElement('span')
+  count.textContent = `${headings.length}개 제목`
+  head.append(title, count)
+
+  const list = document.createElement('ol')
+  list.className = 'zz-inline-toc-list'
+  headings.forEach((heading) => {
+    const item = document.createElement('li')
+    const link = document.createElement('a')
+    link.href = `#${heading.id}`
+    link.textContent = headingText(heading) || heading.id
+    item.appendChild(link)
+    list.appendChild(item)
+  })
+
+  nav.append(head, list)
+  headings[0].before(nav)
+}
+
+function prepareRelatedLinks() {
+  document.querySelectorAll<HTMLElement>('.vp-doc h2').forEach((heading) => {
+    if (headingText(heading) !== '관련 문서') return
+    const paragraph = heading.nextElementSibling
+    if (paragraph instanceof HTMLParagraphElement && paragraph.querySelector('a')) {
+      paragraph.classList.add('zz-related-links')
+    }
+  })
 }
 
 function prepareTables(root: ParentNode = document) {
@@ -172,6 +229,7 @@ function installRevealAnimations(root: ParentNode = document) {
   const items = Array.from(root.querySelectorAll<HTMLElement>([
     '.VPHomeHero .main', '.VPFeature', '.home-status', '.home-section-head', '.quick-card', '.step-card',
     '.content-card', '.stat-card', '.flow-card', '.vp-doc > h1', '.vp-doc > h2', '.vp-doc > .custom-block',
+    '.vp-doc > .zz-inline-toc', '.vp-doc > .zz-related-links',
     '.vp-doc > .zz-table-shell', '.VPDocFooter'
   ].join(',')))
 
@@ -211,6 +269,8 @@ function preparePage() {
     prepareFrame2 = window.requestAnimationFrame(() => {
       if (generation !== prepareGeneration) return
       ensureGlobalUI()
+      prepareInlineToc()
+      prepareRelatedLinks()
       prepareTables()
       installRevealAnimations()
       playRouteTransition()

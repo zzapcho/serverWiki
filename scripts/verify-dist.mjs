@@ -46,6 +46,7 @@ for (const file of htmlFiles) {
   const rel = relative(distRoot, file)
 
   if (!/<title>[^<]+<\/title>/i.test(source)) errors.push(`${rel}: missing document title`)
+  if (/\[[^\]]+\]\(\/[^)]+\)/.test(source)) errors.push(`${rel}: generated HTML contains unrendered internal Markdown link syntax`)
 
   for (const match of source.matchAll(/\b(?:href|src)=["']([^"']+)["']/gi)) {
     const url = match[1]
