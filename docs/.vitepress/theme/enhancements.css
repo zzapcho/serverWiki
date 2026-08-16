@@ -1,0 +1,307 @@
+/* Search -------------------------------------------------------------- */
+
+.VPNavBarSearch {
+  display: flex;
+  align-items: center;
+}
+
+.VPNavBarSearch button,
+.DocSearch-Button {
+  border: 1px solid var(--vp-c-divider) !important;
+  background: color-mix(in srgb, var(--vp-c-bg-soft) 86%, transparent) !important;
+  transition:
+    width var(--zz-normal) var(--zz-ease),
+    border-color var(--zz-fast) var(--zz-ease),
+    background-color var(--zz-fast) var(--zz-ease),
+    box-shadow var(--zz-fast) var(--zz-ease),
+    transform var(--zz-fast) var(--zz-ease) !important;
+}
+
+@media (min-width: 960px) {
+  .VPNavBarSearch button,
+  .DocSearch-Button {
+    width: clamp(180px, 17vw, 236px);
+    min-height: 40px;
+    justify-content: flex-start;
+    padding-inline: 12px !important;
+    border-radius: 11px !important;
+  }
+}
+
+@media (hover: hover) {
+  .VPNavBarSearch button:hover,
+  .DocSearch-Button:hover {
+    border-color: color-mix(in srgb, var(--vp-c-brand-1) 46%, var(--vp-c-divider)) !important;
+    background: color-mix(in srgb, var(--vp-c-bg-soft) 92%, var(--vp-c-brand-soft)) !important;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--vp-c-brand-soft) 55%, transparent);
+  }
+}
+
+.VPLocalSearchBox {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.VPLocalSearchBox .shell,
+.VPLocalSearchBox .search-bar,
+.VPLocalSearchBox .results {
+  border-radius: var(--zz-radius-lg);
+}
+
+.VPLocalSearchBox .shell {
+  animation: zz-search-in 180ms var(--zz-ease) both;
+}
+
+.VPLocalSearchBox .result {
+  border-radius: var(--zz-radius-sm);
+  transition:
+    background-color var(--zz-fast) var(--zz-ease),
+    transform var(--zz-fast) var(--zz-ease);
+}
+
+@media (hover: hover) {
+  .VPLocalSearchBox .result:hover {
+    transform: translateX(2px);
+  }
+}
+
+/* Flexible tables ----------------------------------------------------- */
+
+.zz-table-shell {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin: 24px 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: var(--zz-radius-md);
+  background: var(--vp-c-bg);
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--vp-c-text-3) 55%, transparent) transparent;
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--vp-c-divider) 70%, transparent);
+}
+
+.zz-table-shell:focus-visible {
+  outline-offset: 3px;
+}
+
+.zz-table-shell::-webkit-scrollbar {
+  height: 9px;
+}
+
+.zz-table-shell::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.zz-table-shell::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background-clip: padding-box;
+  background-color: color-mix(in srgb, var(--vp-c-text-3) 52%, transparent);
+}
+
+.vp-doc .zz-table-shell table {
+  width: 100%;
+  min-width: 620px;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: auto;
+  overflow: visible;
+}
+
+.vp-doc .zz-table-shell table.zz-table--compact {
+  min-width: 100%;
+}
+
+.vp-doc .zz-table-shell table.zz-table--wide {
+  min-width: 820px;
+}
+
+.vp-doc .zz-table-shell th,
+.vp-doc .zz-table-shell td {
+  min-width: 0;
+  max-width: 440px;
+  padding: 12px 14px;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  vertical-align: top;
+  border-right-color: var(--vp-c-divider);
+  border-bottom-color: var(--vp-c-divider);
+}
+
+.vp-doc .zz-table-shell th {
+  position: relative;
+  white-space: nowrap;
+  background: color-mix(in srgb, var(--vp-c-bg-soft) 92%, transparent);
+  font-size: 12.5px;
+  font-weight: 780;
+  letter-spacing: -0.01em;
+}
+
+.vp-doc .zz-table-shell td {
+  min-width: 116px;
+  font-size: 13.5px;
+  line-height: 1.62;
+}
+
+.vp-doc .zz-table-shell table.zz-table--compact td {
+  min-width: 0;
+}
+
+.vp-doc .zz-table-shell tbody tr {
+  transition: background-color var(--zz-fast) var(--zz-ease);
+}
+
+.vp-doc .zz-table-shell tbody tr:nth-child(even) {
+  background: color-mix(in srgb, var(--vp-c-bg-soft) 42%, transparent);
+}
+
+@media (hover: hover) {
+  .vp-doc .zz-table-shell tbody tr:hover {
+    background: color-mix(in srgb, var(--vp-c-brand-soft) 42%, transparent);
+  }
+}
+
+.vp-doc .zz-table-shell code {
+  white-space: nowrap;
+}
+
+.vp-doc .zz-table-shell a {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 700px) {
+  .zz-table-shell {
+    margin-inline: -2px;
+    width: calc(100% + 4px);
+  }
+
+  .vp-doc .zz-table-shell table:not(.zz-table--compact) {
+    min-width: 680px;
+  }
+
+  .vp-doc .zz-table-shell table.zz-table--wide {
+    min-width: 900px;
+  }
+
+  .vp-doc .zz-table-shell th,
+  .vp-doc .zz-table-shell td {
+    padding: 11px 12px;
+  }
+}
+
+/* Motion -------------------------------------------------------------- */
+
+.zz-reveal {
+  opacity: 0;
+  transform: translate3d(0, 10px, 0);
+  transition:
+    opacity 360ms var(--zz-ease) var(--zz-reveal-delay, 0ms),
+    transform 420ms var(--zz-ease) var(--zz-reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.zz-reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  will-change: auto;
+}
+
+.zz-route-enter .VPDoc .content-container,
+.zz-route-enter .VPHomeHero .container,
+.zz-route-enter .VPHomeFeatures .container,
+.zz-route-enter .VPHome .vp-doc {
+  animation: zz-route-in 260ms var(--zz-ease) both;
+}
+
+.VPButton:active,
+.quick-card:active,
+.VPFeature:active,
+.VPDocFooter .pager-link:active {
+  transform: scale(.985);
+}
+
+.VPSidebarItem.is-active > .item .link {
+  position: relative;
+  overflow: hidden;
+}
+
+.VPSidebarItem.is-active > .item .link::before {
+  content: '';
+  position: absolute;
+  inset: 7px auto 7px 0;
+  width: 2px;
+  border-radius: 999px;
+  background: var(--vp-c-brand-1);
+  animation: zz-indicator-in 180ms var(--zz-ease) both;
+}
+
+@media (hover: hover) {
+  .VPDocFooter .pager-link {
+    transition:
+      transform var(--zz-fast) var(--zz-ease),
+      border-color var(--zz-fast) var(--zz-ease),
+      background-color var(--zz-fast) var(--zz-ease);
+  }
+
+  .VPDocFooter .pager-link:hover {
+    transform: translateY(-1px);
+    border-color: color-mix(in srgb, var(--vp-c-brand-1) 42%, var(--vp-c-divider));
+  }
+}
+
+@keyframes zz-route-in {
+  from {
+    opacity: .78;
+    transform: translate3d(0, 5px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes zz-search-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -8px, 0) scale(.992);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes zz-indicator-in {
+  from {
+    opacity: 0;
+    transform: scaleY(.35);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zz-reveal,
+  .zz-reveal.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .zz-route-enter .VPDoc .content-container,
+  .zz-route-enter .VPHomeHero .container,
+  .zz-route-enter .VPHomeFeatures .container,
+  .zz-route-enter .VPHome .vp-doc,
+  .VPLocalSearchBox .shell,
+  .VPSidebarItem.is-active > .item .link::before {
+    animation: none !important;
+  }
+}
