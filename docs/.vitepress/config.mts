@@ -9,8 +9,11 @@ export default defineConfig({
   lastUpdated: true,
 
   head: [
-    ['meta', { name: 'theme-color', content: '#101612' }],
-    ['meta', { name: 'color-scheme', content: 'light dark' }]
+    ['meta', { name: 'theme-color', content: '#0d100e' }],
+    ['meta', { name: 'color-scheme', content: 'light dark' }],
+    ['meta', { name: 'mobile-web-app-capable', content: 'yes' }],
+    ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
+    ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' }]
   ],
 
   themeConfig: {
@@ -18,18 +21,36 @@ export default defineConfig({
 
     nav: [
       { text: '가이드', link: '/guide/' },
+      { text: '조작법', link: '/controls/' },
       { text: '명령어', link: '/commands/' },
-      { text: '경제', link: '/economy/' },
-      { text: '조작법', link: '/controls/' }
+      { text: '경제', link: '/economy/' }
     ],
 
     search: {
-      provider: 'local'
+      provider: 'local',
+      options: {
+        translations: {
+          button: {
+            buttonText: '검색',
+            buttonAriaLabel: '문서 검색'
+          },
+          modal: {
+            noResultsText: '검색 결과가 없습니다.',
+            resetButtonTitle: '검색 초기화',
+            footer: {
+              selectText: '선택',
+              navigateText: '이동',
+              closeText: '닫기'
+            }
+          }
+        }
+      }
     },
 
     sidebar: [
       {
         text: '시작하기',
+        collapsed: false,
         items: [
           { text: '홈', link: '/' },
           { text: '처음 접속하기', link: '/getting-started' }
@@ -37,6 +58,7 @@ export default defineConfig({
       },
       {
         text: '가이드',
+        collapsed: false,
         items: [
           { text: '가이드 개요', link: '/guide/' },
           { text: '바닐라와 달라진 점', link: '/guide/vanilla-differences' }
@@ -44,30 +66,35 @@ export default defineConfig({
       },
       {
         text: '조작법',
+        collapsed: false,
         items: [
           { text: '조작법 & 단축키', link: '/controls/' }
         ]
       },
       {
         text: '명령어',
+        collapsed: false,
         items: [
           { text: '전체 명령어', link: '/commands/' }
         ]
       },
       {
         text: '경제',
+        collapsed: false,
         items: [
           { text: '경제 시스템', link: '/economy/' }
         ]
       },
       {
         text: '커뮤니티',
+        collapsed: false,
         items: [
           { text: 'Discord & Voice', link: '/community/' }
         ]
       },
       {
         text: '도움말',
+        collapsed: false,
         items: [
           { text: '문제 해결', link: '/troubleshooting/' },
           { text: '업데이트', link: '/changelog/' }
@@ -81,8 +108,8 @@ export default defineConfig({
     },
 
     docFooter: {
-      prev: '이전 페이지',
-      next: '다음 페이지'
+      prev: '이전',
+      next: '다음'
     },
 
     lastUpdated: {
@@ -99,7 +126,7 @@ export default defineConfig({
 
     footer: {
       message: 'ZZAPCHO SERVER 공식 위키',
-      copyright: 'Built with VitePress'
+      copyright: 'Minecraft 26.2 · Fabric'
     }
   }
 })
