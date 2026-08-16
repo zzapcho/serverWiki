@@ -1,4 +1,4 @@
-import { readdir, readFile, stat } from 'node:fs/promises'
+import { readdir, readFile } from 'node:fs/promises'
 import { extname, join, normalize, relative, resolve } from 'node:path'
 
 const root = process.cwd()
@@ -26,10 +26,7 @@ function routeCandidates(rawPath) {
   if (!pathname.startsWith('/')) return []
   if (pathname === '/') return [join(docsRoot, 'index.md')]
   const trimmed = pathname.replace(/^\/+|\/+$/g, '')
-  return [
-    join(docsRoot, `${trimmed}.md`),
-    join(docsRoot, trimmed, 'index.md')
-  ].map(normalize)
+  return [join(docsRoot, `${trimmed}.md`), join(docsRoot, trimmed, 'index.md')].map(normalize)
 }
 
 function collectLinks(source) {
@@ -42,11 +39,7 @@ function collectLinks(source) {
 for (const file of markdownFiles) {
   const source = await readFile(file, 'utf8')
   const rel = relative(root, file)
-
-  if (!/^---\n[\s\S]*?\n---\n|<span class="page-kicker">|^#\s/m.test(source)) {
-    warnings.push(`${rel}: page has no obvious title/frontmatter marker`)
-  }
-
+  if (!/^---\n[\s\S]*?\n---\n|<span class="page-kicker">|^#\s/m.test(source)) warnings.push(`${rel}: page has no obvious title/frontmatter marker`)
   for (const link of collectLinks(source)) {
     if (/^(https?:|mailto:|tel:)/i.test(link) || link.startsWith('#')) continue
     if (/^javascript:/i.test(link)) {
@@ -55,9 +48,7 @@ for (const file of markdownFiles) {
     }
     if (!link.startsWith('/')) continue
     const candidates = routeCandidates(link)
-    if (candidates.length && !candidates.some((candidate) => markdownSet.has(candidate))) {
-      errors.push(`${rel}: broken internal route ${link}`)
-    }
+    if (candidates.length && !candidates.some((candidate) => markdownSet.has(candidate))) errors.push(`${rel}: broken internal route ${link}`)
   }
 }
 
@@ -70,24 +61,16 @@ for (const file of themeFiles) {
 }
 
 const enhancements = await readFile(join(themeRoot, 'enhancements.ts'), 'utf8')
-if (/window\.scrollTo\(\{\s*top:\s*0/.test(enhancements)) {
-  errors.push('enhancements.ts: unconditional route scroll-to-top breaks hash/search-result navigation')
-}
+if (/window\.scrollTo\(\{\s*top:\s*0/.test(enhancements)) errors.push('enhancements.ts: unconditional route scroll-to-top breaks hash/search-result navigation')
 
 const allDocs = (await Promise.all(markdownFiles.map((file) => readFile(file, 'utf8')))).join('\n')
-if (/Caps Lock[^\n]*(푸시|PTT)|푸시투톡[^\n]*Caps Lock/i.test(allDocs)) {
-  errors.push('docs: Simple Voice Chat PTT must not be documented as Caps Lock default on current versions')
-}
-if (/Group Chats[^\n]*`G`|그룹[^\n]*`G`[^\n]*기본/i.test(allDocs)) {
-  errors.push('docs: Simple Voice Chat group chat is unbound by default on 1.21.6+; do not document G as current default')
-}
+if (/Caps Lock[^\n]*(푸시|PTT)|푸시투톡[^\n]*Caps Lock/i.test(allDocs)) errors.push('docs: Simple Voice Chat PTT must not be documented as Caps Lock default on current versions')
+if (/그룹[^\n]*기본키[^\n]*`G`|`G`[^\n]*그룹[^\n]*기본키/i.test(allDocs)) errors.push('docs: do not document G as the current default group-chat key')
 
 for (const warning of warnings) console.warn(`WARN  ${warning}`)
 for (const error of errors) console.error(`ERROR ${error}`)
-
 if (errors.length) {
   console.error(`\nValidation failed with ${errors.length} error(s).`)
   process.exit(1)
 }
-
 console.log(`Validated ${markdownFiles.length} Markdown pages and ${themeFiles.length} theme files.`)

@@ -3,6 +3,7 @@ type RouterLike = {
 }
 
 let installed = false
+let routerHookInstalled = false
 let revealObserver: IntersectionObserver | null = null
 let tableResizeObserver: ResizeObserver | null = null
 let routeTimer: number | undefined
@@ -12,8 +13,7 @@ let prepareFrame = 0
 let prepareFrame2 = 0
 let prepareGeneration = 0
 
-const prefersReducedMotion = () =>
-  window.matchMedia('(prefers-reduced-motion: reduce)').matches
+const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 function isEditableTarget(target: EventTarget | null) {
   if (!(target instanceof HTMLElement)) return false
@@ -43,7 +43,6 @@ function ensureGlobalUI() {
     progress.setAttribute('aria-hidden', 'true')
     document.body.appendChild(progress)
   }
-
   if (!document.querySelector('.zz-toast')) {
     const toast = document.createElement('div')
     toast.className = 'zz-toast'
@@ -89,7 +88,6 @@ async function copyText(text: string) {
       return true
     } catch {}
   }
-
   const input = document.createElement('textarea')
   input.value = text
   input.setAttribute('readonly', '')
@@ -106,7 +104,6 @@ async function copyText(text: string) {
 function updateTableAccessibility(shell: HTMLElement) {
   const scrollable = shell.scrollWidth > shell.clientWidth + 1
   shell.dataset.scrollable = String(scrollable)
-
   if (scrollable) {
     shell.tabIndex = 0
     shell.setAttribute('role', 'region')
@@ -137,11 +134,9 @@ function prepareTables(root: ParentNode = document) {
       table.classList.add('zz-table')
       if (columnCount <= 3) table.classList.add('zz-table--compact')
       if (columnCount >= 5) table.classList.add('zz-table--wide')
-
       table.querySelectorAll('thead th').forEach((header) => {
         if (!header.hasAttribute('scope')) header.setAttribute('scope', 'col')
       })
-
       const firstHeader = table.querySelector('thead th')?.textContent?.trim() ?? ''
       if (firstHeader.includes('명령어')) {
         table.classList.add('zz-command-table')
@@ -159,7 +154,6 @@ function prepareTables(root: ParentNode = document) {
           cell.appendChild(button)
         })
       }
-
       const shell = document.createElement('div')
       shell.className = 'zz-table-shell'
       table.parentNode?.insertBefore(shell, table)
@@ -175,24 +169,21 @@ function prepareTables(root: ParentNode = document) {
 
 function installRevealAnimations(root: ParentNode = document) {
   revealObserver?.disconnect()
-
   const items = Array.from(root.querySelectorAll<HTMLElement>([
-    '.VPHomeHero .main', '.VPFeature', '.home-status', '.home-section-head', '.quick-card',
-    '.step-card', '.content-card', '.stat-card', '.flow-card', '.vp-doc > h1', '.vp-doc > h2',
-    '.vp-doc > .custom-block', '.vp-doc > .zz-table-shell', '.VPDocFooter'
+    '.VPHomeHero .main', '.VPFeature', '.home-status', '.home-section-head', '.quick-card', '.step-card',
+    '.content-card', '.stat-card', '.flow-card', '.vp-doc > h1', '.vp-doc > h2', '.vp-doc > .custom-block',
+    '.vp-doc > .zz-table-shell', '.VPDocFooter'
   ].join(',')))
 
   if (prefersReducedMotion() || typeof IntersectionObserver === 'undefined') {
     items.forEach((item) => item.classList.add('zz-reveal', 'is-visible'))
     return
   }
-
   items.forEach((item, index) => {
     item.classList.add('zz-reveal')
     item.classList.remove('is-visible')
     item.style.setProperty('--zz-reveal-delay', `${Math.min(index % 5, 4) * 28}ms`)
   })
-
   revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return
@@ -200,7 +191,6 @@ function installRevealAnimations(root: ParentNode = document) {
       revealObserver?.unobserve(entry.target)
     })
   }, { threshold: 0.06, rootMargin: '0px 0px -20px' })
-
   items.forEach((item) => revealObserver?.observe(item))
 }
 
@@ -217,7 +207,6 @@ function preparePage() {
   const generation = ++prepareGeneration
   window.cancelAnimationFrame(prepareFrame)
   window.cancelAnimationFrame(prepareFrame2)
-
   prepareFrame = window.requestAnimationFrame(() => {
     prepareFrame2 = window.requestAnimationFrame(() => {
       if (generation !== prepareGeneration) return
@@ -239,7 +228,6 @@ function installGlobalActions() {
     if (!value) return
     void copyText(value).then((copied) => showToast(copied ? '클립보드에 복사했습니다.' : '복사하지 못했습니다. 직접 선택해 주세요.'))
   })
-
   window.addEventListener('scroll', scheduleProgressUpdate, { passive: true })
   window.addEventListener('resize', () => {
     scheduleProgressUpdate()
@@ -249,19 +237,19 @@ function installGlobalActions() {
 
 export function installEnhancements(router: RouterLike) {
   if (typeof window === 'undefined') return
-
   if (!installed) {
     installed = true
     installSearchShortcuts()
     installGlobalActions()
     window.addEventListener('load', preparePage, { once: true })
   }
-
-  const previousAfterRouteChange = router.onAfterRouteChange
-  router.onAfterRouteChange = async (to) => {
-    await previousAfterRouteChange?.(to)
-    preparePage()
+  if (!routerHookInstalled) {
+    routerHookInstalled = true
+    const previousAfterRouteChange = router.onAfterRouteChange
+    router.onAfterRouteChange = async (to) => {
+      await previousAfterRouteChange?.(to)
+      preparePage()
+    }
   }
-
   preparePage()
 }
