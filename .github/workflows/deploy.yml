@@ -34,11 +34,14 @@ jobs:
       - name: Install locked dependencies
         run: npm ci --no-audit --no-fund
 
-      - name: Validate docs and internal links
+      - name: Validate source docs and internal links
         run: npm run docs:check
 
       - name: Build with VitePress
         run: npm run docs:build
+
+      - name: Verify generated site
+        run: npm run docs:verify
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

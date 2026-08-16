@@ -9,6 +9,7 @@
     "docs:dev": "vitepress dev docs",
     "docs:check": "node scripts/validate.mjs",
     "docs:build": "vitepress build docs",
+    "docs:verify": "node scripts/verify-dist.mjs",
     "docs:preview": "vitepress preview docs"
   },
   "devDependencies": {
