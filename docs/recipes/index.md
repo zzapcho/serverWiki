@@ -53,7 +53,7 @@
 
 ## 실제 아이콘으로 보는 3×3 제작대
 
-Minecraft 제작대는 **가로 3칸 × 세로 3칸, 총 9칸**입니다. 아래 아이콘은 Minecraft 26.2와 현재 Gone Fishing 1.12.0+26.2 파일에서 실제로 사용하는 인벤토리 텍스처입니다.
+Minecraft 제작대는 **가로 3칸 × 세로 3칸, 총 9칸**입니다. 아래 그림은 게임 인벤토리에서 보이는 실제 아이템 모양과 같은 텍스처를 사용합니다.
 
 <div class="recipe-visuals">
   <div class="recipe-visual">
@@ -71,7 +71,7 @@ Minecraft 제작대는 **가로 3칸 × 세로 3칸, 총 9칸**입니다. 아래
     <div class="recipe-arrow" aria-hidden="true">→</div>
     <div class="recipe-result">
       <span class="recipe-result-icon"><img src="/items/gofish-diamond-reinforced-rod.png" alt="다이아몬드 강화 낚싯대"></span>
-      <span><strong>Diamond Reinforced Rod</strong><span>모양 고정 · 내구도 300</span></span>
+      <span><strong>다이아몬드 강화 낚싯대</strong><span>모양 고정 · 내구도 300</span></span>
     </div>
   </div>
 
@@ -89,8 +89,8 @@ Minecraft 제작대는 **가로 3칸 × 세로 3칸, 총 9칸**입니다. 아래
     </div>
     <div class="recipe-arrow" aria-hidden="true">→</div>
     <div class="recipe-result">
-      <span class="recipe-result-icon"><img src="/items/gofish-blaze-rod.png" alt="블레이즈 낚싯대"></span>
-      <span><strong>Blaze Rod</strong><span>모양 고정 · 잡은 결과 자동 가열</span></span>
+      <span class="recipe-result-icon"><img src="/items/gofish-blaze-rod.png" alt="블레이즈 낚싯대 2개"><b class="recipe-count" aria-hidden="true">2</b></span>
+      <span><strong>블레이즈 낚싯대</strong><span>모양 고정 · 2개 제작 · 잡은 결과 자동 가열</span></span>
     </div>
   </div>
 
@@ -109,7 +109,7 @@ Minecraft 제작대는 **가로 3칸 × 세로 3칸, 총 9칸**입니다. 아래
     <div class="recipe-arrow" aria-hidden="true">→</div>
     <div class="recipe-result">
       <span class="recipe-result-icon"><img src="/items/gofish-simple-lure.png" alt="간단한 루어"></span>
-      <span><strong>Simple Lure</strong><span>모양 고정 · 인벤토리에서 루어 +1</span></span>
+      <span><strong>간단한 루어</strong><span>모양 고정 · 인벤토리에서 루어 +1</span></span>
     </div>
   </div>
 
@@ -124,7 +124,7 @@ Minecraft 제작대는 **가로 3칸 × 세로 3칸, 총 9칸**입니다. 아래
     <div class="recipe-arrow" aria-hidden="true">→</div>
     <div class="recipe-result">
       <span class="recipe-result-icon"><img src="/items/gofish-soul-lure.png" alt="영혼 루어"></span>
-      <span><strong>Soul Lure</strong><span>무형 조합 · 세 재료는 어느 칸이어도 됨</span></span>
+      <span><strong>영혼 루어</strong><span>무형 조합 · 세 재료는 어느 칸이어도 됨</span></span>
     </div>
   </div>
 </div>
@@ -180,7 +180,7 @@ Minecraft 제작대는 **가로 3칸 × 세로 3칸, 총 9칸**입니다. 아래
 
 → [Farmer's Delight 상세](/mods/farmers-delight)
 
-대표 음식의 실제 3.6.15 재료와 프라이팬·큰 접시 음식 사용법은 [요리 방법 & 대표 레시피](/guide/cooking-catalog)에서 단계별로 확인할 수 있습니다.
+대표 음식의 재료와 프라이팬·큰 접시 음식 사용법은 [요리 방법 & 대표 레시피](/guide/cooking-catalog)에서 단계별로 확인할 수 있습니다.
 
 ## Skniro's Furniture
 

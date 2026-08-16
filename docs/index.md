@@ -32,13 +32,6 @@ features:
     link: /economy/
 ---
 
-<div class="home-status" aria-label="서버 위키 상태">
-  <div class="home-status-item"><span class="home-status-label">GAME</span><strong>Minecraft 26.2</strong></div>
-  <div class="home-status-item"><span class="home-status-label">LOADER</span><strong>Fabric</strong></div>
-  <div class="home-status-item"><span class="home-status-label">STYLE</span><strong>Vanilla++</strong></div>
-  <div class="home-status-item"><span class="home-status-label">DOCS</span><strong>v1.0</strong></div>
-</div>
-
 <section class="home-section">
   <div class="home-section-head">
     <div>

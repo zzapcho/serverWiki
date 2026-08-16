@@ -2,13 +2,11 @@
 
 # 가구·건축 카탈로그
 
-<p class="page-lead">Skniro's Furniture 1.5.2-26.2-Fabric과 EVS Vertical Slabs 2.7.0을 기준으로, 방별로 어떤 가구를 찾고 어떻게 배치할지 정리합니다.</p>
-
-<span class="status-chip is-live">1.5.2 데이터 기준</span>
+<p class="page-lead">방별로 어떤 가구를 찾고, 어떻게 배치하고, 설치 뒤 무엇을 확인해야 하는지 쉽게 정리합니다.</p>
 
 ## 실제로 무엇이 있나요?
 
-1.5.2 공식 데이터에는 목재·염색·형태 변형을 포함해 2천 개가 넘는 제작 항목이 있습니다. 모든 변형 이름을 긴 표로 복제하기보다 JEI에서 아래 카테고리를 검색하는 편이 빠르고 정확합니다.
+현재 서버에는 목재·염색·형태 변형을 포함해 2천 개가 넘는 가구 제작 항목이 있습니다. 모든 변형 이름을 긴 표로 복제하기보다 JEI에서 아래 카테고리를 검색하는 편이 빠르고 정확합니다.
 
 | 공간 | JEI에서 찾아볼 종류 | 배치 포인트 |
 |---|---|---|
@@ -76,3 +74,5 @@
 ## 관련 문서
 
 [건축 & 가구](/guide/building) · [Skniro Furniture 상세](/mods/furniture) · [Vertical Slabs 상세](/mods/vertical-slabs) · [JEI 사용법](/recipes/)
+
+<p class="data-source-note">문서 데이터: Skniro's Furniture 1.5.2-26.2-Fabric · EVS Vertical Slabs 2.7.0</p>

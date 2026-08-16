@@ -2,9 +2,7 @@
 
 # 요리 방법 & 대표 레시피
 
-<p class="page-lead">Farmer's Delight Refabricated 26.2-3.6.15의 실제 레시피 데이터를 기준으로, 재료를 얻는 단계부터 도마·냄비·프라이팬 사용과 완성 음식 선택까지 연결합니다.</p>
-
-<span class="status-chip is-live">3.6.15 기준</span>
+<p class="page-lead">재료를 얻는 단계부터 도마·냄비·프라이팬 사용과 완성 음식 선택까지 한 흐름으로 연결합니다.</p>
 
 ## 먼저 기억할 것
 
@@ -50,7 +48,7 @@
 
 ### 냄비 대표 레시피
 
-| 결과 | 3.6.15 데이터의 핵심 재료 | 활용 |
+| 결과 | 핵심 재료 | 활용 |
 |---|---|---|
 | 비프 스튜 | 생소고기 + 당근 + 감자 | 초반 고기·밭작물 식사 |
 | 치킨 수프 | 생닭고기 + 당근 + 잎채소 + 채소 | 여러 밭작물 소비 |
@@ -103,3 +101,5 @@
 ## 관련 문서
 
 [농사 & 요리](/guide/farming-cooking) · [Farmer's Delight 상세](/mods/farmers-delight) · [JEI 사용법](/recipes/) · [낚시 도감](/guide/fishing-catalog)
+
+<p class="data-source-note">문서 데이터: Farmer's Delight Refabricated 26.2-3.6.15</p>

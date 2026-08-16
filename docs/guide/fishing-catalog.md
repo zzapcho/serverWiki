@@ -2,7 +2,7 @@
 
 # 물고기 확률·조건 & 낚싯대 도감
 
-<p class="page-lead">Gone Fishing 1.12.0+26.2의 실제 loot table과 아이템 동작을 기준으로, 어디서 무엇을 노리고 어떤 낚싯대를 얻을 수 있는지 정리합니다.</p>
+<p class="page-lead">어디서 어떤 물고기를 노려야 하는지, 확률은 어떻게 읽는지, 낚싯대와 루어는 어떻게 얻는지 정리합니다.</p>
 
 <span class="status-chip is-beta">차원 전리품 검증 중</span>
 
@@ -132,3 +132,5 @@
 ## 관련 문서
 
 [낚시 시작 가이드](/guide/fishing) · [Gone Fishing 상세](/mods/gone-fishing) · [요리 방법](/guide/cooking-catalog) · [알려진 문제](/troubleshooting/#낚시가-이상해요)
+
+<p class="data-source-note">문서 데이터: Gone Fishing 1.12.0+26.2 공식 loot table</p>

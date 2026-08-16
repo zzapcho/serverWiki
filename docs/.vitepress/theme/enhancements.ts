@@ -6,12 +6,18 @@ let installed = false
 let routerHookInstalled = false
 let revealObserver: IntersectionObserver | null = null
 let tableResizeObserver: ResizeObserver | null = null
+let sidebarObserver: MutationObserver | null = null
 let routeTimer: number | undefined
 let toastTimer: number | undefined
 let progressFrame = 0
 let prepareFrame = 0
 let prepareFrame2 = 0
 let prepareGeneration = 0
+let gestureStartX = 0
+let gestureStartY = 0
+let gestureMode: 'open' | 'close' | null = null
+let gestureMoved = false
+let suppressNextClick = false
 
 const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
 const headingText = (heading: HTMLElement) => heading.textContent?.replace(/\u200b/g, '').trim() ?? ''
@@ -23,6 +29,102 @@ function isEditableTarget(target: EventTarget | null) {
 
 function openSearch() {
   document.querySelector<HTMLButtonElement>('.VPNavBarSearch button, .DocSearch-Button')?.click()
+}
+
+function mobileSidebar() {
+  return document.querySelector<HTMLElement>('.VPSidebar')
+}
+
+function sidebarIsOpen() {
+  return mobileSidebar()?.classList.contains('open') ?? false
+}
+
+function syncSidebarState() {
+  const open = sidebarIsOpen() && window.innerWidth < 960
+  document.documentElement.classList.toggle('zz-sidebar-open', open)
+  const headerTrigger = document.querySelector<HTMLButtonElement>('.VPNavBarHamburger')
+  headerTrigger?.setAttribute('aria-expanded', String(open))
+  headerTrigger?.setAttribute('aria-controls', 'VPSidebarNav')
+  const localTrigger = document.querySelector<HTMLButtonElement>('.VPLocalNav button.menu, .VPLocalNav .menu')
+  localTrigger?.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기')
+}
+
+function toggleSidebar() {
+  if (sidebarIsOpen()) {
+    document.querySelector<HTMLElement>('.VPBackdrop')?.click()
+    return
+  }
+  document.querySelector<HTMLButtonElement>('.VPLocalNav button.menu, .VPLocalNav .menu')?.click()
+}
+
+function ensureSidebarControls() {
+  const sidebar = mobileSidebar()
+  if (!sidebar) return
+
+  if (!document.querySelector('.zz-sidebar-edge')) {
+    const edge = document.createElement('div')
+    edge.className = 'zz-sidebar-edge'
+    edge.setAttribute('aria-hidden', 'true')
+    document.body.appendChild(edge)
+  }
+
+  sidebarObserver?.disconnect()
+  sidebarObserver = new MutationObserver(syncSidebarState)
+  sidebarObserver.observe(sidebar, { attributes: true, attributeFilter: ['class'] })
+  syncSidebarState()
+}
+
+function installSidebarGestures() {
+  document.addEventListener('click', (event) => {
+    const target = event.target as HTMLElement | null
+    const headerTrigger = target?.closest('.VPNavBarHamburger')
+    const openCloseTrigger = sidebarIsOpen() && target?.closest('.VPLocalNav .menu')
+    if (window.innerWidth >= 960 || (!headerTrigger && !openCloseTrigger)) return
+    event.preventDefault()
+    event.stopImmediatePropagation()
+    toggleSidebar()
+  }, true)
+
+  document.addEventListener('pointerdown', (event) => {
+    if (event.pointerType !== 'touch' || window.innerWidth >= 960 || document.querySelector('.VPLocalSearchBox')) return
+    const target = event.target as HTMLElement | null
+    const open = sidebarIsOpen()
+    if (open && target?.closest('.VPSidebar')) gestureMode = 'close'
+    else if (!open && event.clientX <= 24) gestureMode = 'open'
+    else gestureMode = null
+    if (!gestureMode) return
+    gestureStartX = event.clientX
+    gestureStartY = event.clientY
+    gestureMoved = false
+  }, { passive: true })
+
+  document.addEventListener('pointermove', (event) => {
+    if (!gestureMode) return
+    const dx = event.clientX - gestureStartX
+    const dy = event.clientY - gestureStartY
+    if (Math.abs(dx) > 16 && Math.abs(dx) > Math.abs(dy) * 1.25) gestureMoved = true
+  }, { passive: true })
+
+  document.addEventListener('pointerup', (event) => {
+    if (!gestureMode) return
+    const dx = event.clientX - gestureStartX
+    const dy = Math.abs(event.clientY - gestureStartY)
+    const shouldOpen = gestureMode === 'open' && dx >= 72 && dy <= 56
+    const shouldClose = gestureMode === 'close' && dx <= -72 && dy <= 56
+    gestureMode = null
+    if (!gestureMoved || (!shouldOpen && !shouldClose)) return
+    toggleSidebar()
+    suppressNextClick = true
+    window.setTimeout(() => { suppressNextClick = false }, 0)
+  }, { passive: true })
+
+  document.addEventListener('pointercancel', () => { gestureMode = null }, { passive: true })
+  document.addEventListener('click', (event) => {
+    if (!suppressNextClick) return
+    suppressNextClick = false
+    event.preventDefault()
+    event.stopImmediatePropagation()
+  }, true)
 }
 
 function installSearchShortcuts() {
@@ -52,6 +154,7 @@ function ensureGlobalUI() {
     toast.setAttribute('aria-atomic', 'true')
     document.body.appendChild(toast)
   }
+  ensureSidebarControls()
 }
 
 function updateReadingProgress() {
@@ -150,19 +253,15 @@ function prepareInlineToc() {
   head.className = 'zz-inline-toc-head'
   const title = document.createElement('strong')
   title.textContent = '이 페이지에서'
-  const count = document.createElement('span')
-  count.textContent = `${headings.length}개 제목`
-  head.append(title, count)
+  head.append(title)
 
-  const list = document.createElement('ol')
+  const list = document.createElement('div')
   list.className = 'zz-inline-toc-list'
   headings.forEach((heading) => {
-    const item = document.createElement('li')
     const link = document.createElement('a')
     link.href = `#${heading.id}`
     link.textContent = headingText(heading) || heading.id
-    item.appendChild(link)
-    list.appendChild(item)
+    list.appendChild(link)
   })
 
   nav.append(head, list)
@@ -227,7 +326,7 @@ function prepareTables(root: ParentNode = document) {
 function installRevealAnimations(root: ParentNode = document) {
   revealObserver?.disconnect()
   const items = Array.from(root.querySelectorAll<HTMLElement>([
-    '.VPHomeHero .main', '.VPFeature', '.home-status', '.home-section-head', '.quick-card', '.step-card',
+    '.VPHomeHero .main', '.VPFeature', '.home-section-head', '.quick-card', '.step-card',
     '.content-card', '.stat-card', '.flow-card', '.vp-doc > h1', '.vp-doc > h2', '.vp-doc > .custom-block',
     '.vp-doc > .zz-inline-toc', '.vp-doc > .zz-related-links',
     '.vp-doc > .zz-table-shell', '.VPDocFooter'
@@ -291,6 +390,7 @@ function installGlobalActions() {
   window.addEventListener('scroll', scheduleProgressUpdate, { passive: true })
   window.addEventListener('resize', () => {
     scheduleProgressUpdate()
+    syncSidebarState()
     if (!tableResizeObserver) refreshTableAccessibility()
   }, { passive: true })
 }
@@ -300,6 +400,7 @@ export function installEnhancements(router: RouterLike) {
   if (!installed) {
     installed = true
     installSearchShortcuts()
+    installSidebarGestures()
     installGlobalActions()
     window.addEventListener('load', preparePage, { once: true })
   }

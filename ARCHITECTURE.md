@@ -9,7 +9,7 @@ docs/.vitepress/config.mts
   site metadata, search, theme configuration only
 
 docs/.vitepress/navigation.mts
-  top navigation + contextual sidebar information architecture
+  top navigation + one shared full sidebar information architecture
 
 docs/.vitepress/theme/tokens.css
   semantic colors, spacing, radius, typography, motion constants
@@ -28,7 +28,7 @@ docs/.vitepress/theme/mobile.css
 
 docs/.vitepress/theme/enhancements.ts
   progressive client-side behavior: search shortcuts, copy buttons,
-  table accessibility, reading progress, reveal effects
+  table accessibility, mobile sidebar controls, reading progress, reveal effects
 
 scripts/validate.mjs
   release gate for internal routes and known regression patterns
@@ -43,7 +43,7 @@ docs/**/*.md
 
 - Never force scroll-to-top after every SPA route change; hash/search-result navigation must remain intact.
 - Browser back/forward remains owned by the VitePress router.
-- Contextual sidebars keep mobile menus short instead of rendering every category at once.
+- Every route uses the same complete sidebar so navigation never disappears or changes by page.
 
 ### Mobile
 
@@ -55,9 +55,9 @@ docs/**/*.md
 - Search action buttons keep the shared touch target and the input owns remaining width.
 - The navigation search stays a compact 44px action; the full search surface opens only on demand.
 - Local search clears stale queries and uses prefix, bounded fuzzy matching and a small Korean synonym map.
-- The off-canvas sidebar `open` state is explicitly regression-tested against transform/cascade conflicts.
-- Mobile sidebars leave a 48px outside strip so backdrop close and the menu control remain reachable at 320px.
-- Sidebar groups omit `collapsed` entirely so the context navigation is always visible and cannot be accidentally hidden.
+- The mobile sidebar is a full-screen surface with its own 44px close control and safe-area padding.
+- Touch users can swipe right from the left edge to open it and swipe left inside it to close it; the hamburger remains the accessible primary control.
+- Sidebar groups omit `collapsed` entirely and one shared array is used on every route, so no section disappears.
 - Do not introduce `100vw` for page-width layout.
 
 ### Tables
@@ -82,7 +82,7 @@ docs/**/*.md
 ### Runtime enhancement safety
 
 - Global event listeners are installed once.
-- Resize/Intersection observers are disconnected before replacement.
+- Resize/Intersection/Mutation observers are disconnected before replacement.
 - scheduled page preparation is generation-guarded and old animation frames are cancelled.
 - toast timeouts are cancelled before a new toast is scheduled.
 - copy UI reports failure instead of always claiming success.

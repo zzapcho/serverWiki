@@ -1,16 +1,11 @@
-const start = [
+const sidebarSections = [
   {
     text: '시작하기',
     items: [
       { text: '처음 접속하기', link: '/getting-started' },
-      { text: '30초 빠른 참조', link: '/quick-reference' },
-      { text: '서버 가이드', link: '/guide/' }
+      { text: '30초 빠른 참조', link: '/quick-reference' }
     ]
-  }
-]
-
-const guide = [
-  ...start,
+  },
   {
     text: '서버 가이드',
     items: [
@@ -27,43 +22,19 @@ const guide = [
     ]
   },
   {
-    text: '참고',
-    items: [
-      { text: '모드 전체보기', link: '/mods/' },
-      { text: '조합법', link: '/recipes/' },
-      { text: '조작법 & 단축키', link: '/controls/' },
-      { text: '알려진 문제', link: '/troubleshooting/#현재-알려진-문제' }
-    ]
-  }
-]
-
-const mods = [
-  ...start,
-  {
     text: '모드 & 시스템',
     items: [
-      { text: '전체보기', link: '/mods/' },
+      { text: '모드 전체보기', link: '/mods/' },
       { text: '플레이 콘텐츠', link: '/mods/gameplay' },
       { text: '서버 시스템', link: '/mods/server' },
-      { text: '클라이언트 & QoL', link: '/mods/client' },
-      { text: '조합법', link: '/recipes/' }
-    ]
-  },
-  {
-    text: '콘텐츠 상세',
-    items: [
+      { text: '클라이언트 & 편의 기능', link: '/mods/client' },
       { text: "Farmer's Delight", link: '/mods/farmers-delight' },
       { text: 'Gone Fishing', link: '/mods/gone-fishing' },
       { text: 'Vertical Slabs', link: '/mods/vertical-slabs' },
       { text: 'Skniro Furniture', link: '/mods/furniture' },
       { text: 'Friends&Foes', link: '/mods/friends-and-foes' },
       { text: 'Elytra Slot', link: '/mods/elytra-slot' },
-      { text: '월드 생성', link: '/mods/worldgen' }
-    ]
-  },
-  {
-    text: '서버 기능 상세',
-    items: [
+      { text: '월드 생성', link: '/mods/worldgen' },
       { text: 'EconomyCraft', link: '/mods/economycraft' },
       { text: 'Universal Graves', link: '/mods/graves' },
       { text: 'Simple Voice Chat', link: '/mods/voice-chat' },
@@ -71,37 +42,14 @@ const mods = [
     ]
   },
   {
-    text: '플레이',
+    text: '플레이 도구',
     items: [
-      { text: '조작법 & 단축키', link: '/controls/' },
-      { text: '전체 명령어', link: '/commands/' },
-      { text: '경제 시스템', link: '/economy/' }
-    ]
-  }
-]
-
-const play = [
-  ...start,
-  {
-    text: '플레이',
-    items: [
+      { text: '조합법 & JEI', link: '/recipes/' },
       { text: '조작법 & 단축키', link: '/controls/' },
       { text: '전체 명령어', link: '/commands/' },
       { text: '경제 시스템', link: '/economy/' }
     ]
   },
-  {
-    text: '참고',
-    items: [
-      { text: '모드 전체보기', link: '/mods/' },
-      { text: '조합법', link: '/recipes/' },
-      { text: '문제 해결', link: '/troubleshooting/' }
-    ]
-  }
-]
-
-const support = [
-  ...start,
   {
     text: '커뮤니티 & 지원',
     items: [
@@ -129,16 +77,6 @@ export const nav = [
   }
 ]
 
-export const sidebar = {
-  '/guide/': guide,
-  '/mods/': mods,
-  '/recipes/': mods,
-  '/controls/': play,
-  '/commands/': play,
-  '/economy/': play,
-  '/community/': support,
-  '/troubleshooting/': support,
-  '/changelog/': support,
-  '/quick-reference': start,
-  '/getting-started': start
-}
+// 모든 문서에서 같은 전체 목차를 보여 줍니다. 페이지에 따라 메뉴가
+// 사라지거나 바뀌면 사용자가 현재 위치를 잃기 쉽기 때문입니다.
+export const sidebar = sidebarSections

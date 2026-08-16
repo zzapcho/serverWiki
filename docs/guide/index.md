@@ -7,7 +7,7 @@
 <div class="content-grid">
   <a class="content-card" href="/guide/vanilla-differences"><span class="card-icon">V</span><strong>바닐라와 달라진 점</strong><span>서버 전체 변경사항과 시스템 연결을 가장 빠르게 훑습니다.</span></a>
   <a class="content-card" href="/guide/farming-cooking"><span class="card-icon">🌾</span><strong>농사 & 요리</strong><span>재료 → 가공 → 요리 → 판매로 이어지는 생활 루프를 봅니다.</span></a>
-  <a class="content-card" href="/guide/cooking-catalog"><span class="card-icon">🍲</span><strong>요리 방법 & 레시피</strong><span>도마·냄비·프라이팬 사용과 3.6.15 대표 조합을 확인합니다.</span></a>
+  <a class="content-card" href="/guide/cooking-catalog"><span class="card-icon">🍲</span><strong>요리 방법 & 레시피</strong><span>도마·냄비·프라이팬 사용과 대표 조합을 확인합니다.</span></a>
   <a class="content-card" href="/guide/fishing"><span class="card-icon">🎣</span><strong>낚시</strong><span>추가 전리품, 활용, 경제와 현재 차원별 검증 상태를 확인합니다.</span></a>
   <a class="content-card" href="/guide/fishing-catalog"><span class="card-icon">%</span><strong>물고기 확률 & 낚싯대</strong><span>바이옴·날씨·차원 가중치와 장비 획득법을 봅니다.</span></a>
   <a class="content-card" href="/guide/building"><span class="card-icon">🏠</span><strong>건축 & 가구</strong><span>세로 반블록, 가구, 수납과 안전한 배치 흐름을 정리합니다.</span></a>
