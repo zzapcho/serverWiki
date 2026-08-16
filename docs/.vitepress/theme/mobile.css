@@ -1,95 +1,57 @@
-/* Mobile polish ------------------------------------------------------- */
+/* Adaptive/mobile layer. Base components stay usable at 320 CSS px. */
 
-/* Keep one clear focus ring around the search bar. The global focus
-   outline is useful elsewhere, but looked like a second green rectangle
-   inside the mobile search field. */
-.VPLocalSearchBox input:focus,
-.VPLocalSearchBox input:focus-visible,
-.VPLocalSearchBox .search-input:focus,
-.VPLocalSearchBox .search-input:focus-visible {
-  outline: none !important;
-  box-shadow: none !important;
+@media (min-width: 960px) {
+  .VPNavBarSearch button,
+  .DocSearch-Button {
+    width: clamp(190px, 17vw, 246px);
+    justify-content: flex-start;
+    padding-inline: 12px !important;
+  }
 }
 
-.VPLocalSearchBox .search-bar {
-  border: 1px solid var(--vp-c-divider);
-  transition:
-    border-color var(--zz-fast) var(--zz-ease),
-    box-shadow var(--zz-fast) var(--zz-ease),
-    background-color var(--zz-fast) var(--zz-ease);
-}
-
-.VPLocalSearchBox .search-bar:focus-within {
-  border-color: color-mix(in srgb, var(--vp-c-brand-1) 72%, var(--vp-c-divider));
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--vp-c-brand-soft) 72%, transparent);
+@media (max-width: 1100px) {
+  .VPFeatures .items { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .home-status { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .home-status-item:nth-child(2) { border-inline-end: 0; }
+  .home-status-item:nth-child(-n+2) { border-block-end: 1px solid var(--vp-c-divider); }
 }
 
 @media (max-width: 959px) {
-  /* Contextual sidebar: touchable, stable and not edge-to-edge. */
+  .VPNavBar { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .VPHomeHero { padding-block: 64px 42px; }
+  .VPHomeHero .container,
+  .VPHomeFeatures .container,
+  .VPHome .vp-doc { width: min(var(--zz-page-max), calc(100% - 32px)); }
+  .home-section-head { grid-template-columns: 1fr; gap: 8px; align-items: start; }
+
   .VPSidebar {
-    width: min(88vw, 390px) !important;
+    width: min(88%, 390px) !important;
     max-width: 390px !important;
     padding: 22px 18px calc(30px + env(safe-area-inset-bottom)) !important;
-    scrollbar-gutter: stable;
     overscroll-behavior: contain;
-    transition: transform 260ms var(--zz-ease), opacity 200ms var(--zz-ease) !important;
   }
 
-  .VPSidebar .nav {
-    padding-bottom: env(safe-area-inset-bottom);
-  }
+  .VPSidebar .nav { min-height: 0; padding-block-end: env(safe-area-inset-bottom); }
 
   .VPSidebarItem.level-0 {
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid color-mix(in srgb, var(--vp-c-divider) 76%, transparent);
+    margin-block-end: 10px;
+    padding-block-end: 10px;
+    border-block-end: 1px solid color-mix(in srgb, var(--vp-c-divider) 76%, transparent);
   }
 
-  .VPSidebarItem.level-0:last-child {
-    margin-bottom: 0;
-    border-bottom: 0;
-  }
-
-  .VPSidebarItem.level-0 > .item {
-    min-height: 46px;
-  }
-
-  .VPSidebarItem.level-0 > .item > .text {
-    font-size: 12.5px;
-    font-weight: 800;
-  }
-
-  .VPSidebarItem .item {
-    min-height: 44px;
-  }
-
-  .VPSidebarItem .link {
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    border-radius: 11px;
-  }
-
-  .VPSidebarItem.is-active > .item .link {
-    background: color-mix(in srgb, var(--vp-c-brand-soft) 92%, transparent);
-  }
-
+  .VPSidebarItem.level-0:last-child { margin-block-end: 0; border-block-end: 0; }
+  .VPSidebarItem.level-0 > .item { min-height: 46px; }
+  .VPSidebarItem.level-0 > .item > .text { font-size: 12.5px; font-weight: 800; }
+  .VPSidebarItem .item { min-height: var(--zz-touch); }
+  .VPSidebarItem .link { min-height: var(--zz-touch); display: flex; align-items: center; border-radius: 11px; }
   .VPNavBarHamburger,
-  .VPLocalNavOutlineDropdown button {
-    min-width: 44px;
-    min-height: 44px;
-  }
+  .VPLocalNavOutlineDropdown button { min-width: var(--zz-touch); min-height: var(--zz-touch); }
 }
 
 @media (max-width: 767px) {
-  /* Search is a focused task on phones: a padded full-screen sheet with
-     one stable search field and scrollable results. */
   .VPLocalSearchBox {
     align-items: flex-start !important;
-    padding:
-      max(14px, env(safe-area-inset-top))
-      14px
-      max(14px, env(safe-area-inset-bottom)) !important;
+    padding: max(14px, env(safe-area-inset-top)) 14px max(14px, env(safe-area-inset-bottom)) !important;
     background: color-mix(in srgb, var(--vp-c-bg) 96%, transparent) !important;
   }
 
@@ -97,8 +59,9 @@
     width: 100% !important;
     max-width: none !important;
     max-height: calc(100dvh - 28px) !important;
+    min-height: 0;
     margin: 0 !important;
-    overflow: hidden;
+    overflow: clip;
     border: 0 !important;
     border-radius: 16px !important;
     background: transparent !important;
@@ -108,7 +71,7 @@
   .VPLocalSearchBox .search-bar {
     min-height: 56px;
     margin: 0 !important;
-    padding: 0 10px !important;
+    padding-inline: 10px !important;
     border-radius: 14px !important;
     background: color-mix(in srgb, var(--vp-c-bg-soft) 84%, transparent) !important;
   }
@@ -123,37 +86,64 @@
   }
 
   .VPLocalSearchBox .results {
+    min-height: 0;
     max-height: calc(100dvh - 92px) !important;
     padding: 10px 2px 18px !important;
     overflow-y: auto !important;
     overscroll-behavior: contain;
-    scrollbar-gutter: stable;
   }
 
-  .VPLocalSearchBox .result {
-    min-height: 48px;
-    border-radius: 11px !important;
-  }
+  .VPLocalSearchBox .result { min-height: 48px; border-radius: 11px !important; }
+  .VPLocalSearchBox .result + .result { margin-block-start: 4px; }
+  .VPLocalSearchBox .result .title { line-height: 1.45; }
+}
 
-  .VPLocalSearchBox .result + .result {
-    margin-top: 4px;
-  }
+@media (max-width: 700px) {
+  .VPFeatures .items,
+  .quick-grid,
+  .step-grid,
+  .content-grid { grid-template-columns: 1fr; }
+  .flow-grid { grid-template-columns: 1fr; }
+  .stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .VPFeature { min-height: 0; padding: 20px !important; }
+  .quick-card { min-height: 0; }
+  .step-card { padding-inline: 0; }
+  .home-status { margin-block-end: 42px; }
+  .VPHomeHero .actions { align-items: stretch; }
+  .VPHomeHero .actions .action,
+  .VPHomeHero .actions .VPButton { width: 100%; }
 
-  .VPLocalSearchBox .result .title {
-    line-height: 1.45;
-  }
+  .zz-table-shell { margin-inline: -2px; width: calc(100% + 4px); }
+  .vp-doc .zz-table-shell table:not(.zz-table--compact) { min-width: 680px; }
+  .vp-doc .zz-table-shell table.zz-table--wide { min-width: 900px; }
+  .vp-doc .zz-table-shell th,
+  .vp-doc .zz-table-shell td { padding: 11px 12px; }
+}
+
+@media (max-width: 460px) {
+  .stat-card { padding: 14px; }
+  .stat-value { font-size: 17px; }
 }
 
 @media (max-width: 420px) {
-  .VPSidebar {
-    width: min(90vw, 374px) !important;
-    padding-inline: 16px !important;
-  }
+  .VPHomeHero .container,
+  .VPHomeFeatures .container,
+  .VPHome .vp-doc { width: calc(100% - 28px); }
+  .VPHomeHero { padding-block: 48px 34px; }
+  .VPHomeHero .name { font-size: 36px; }
+  .VPHomeHero .text { font-size: 30px; }
+  .VPHomeHero .tagline { font-size: 15px; line-height: 1.68; }
+  .home-status { grid-template-columns: 1fr; }
+  .home-status-item { border-inline-end: 0; border-block-end: 1px solid var(--vp-c-divider); }
+  .home-status-item:last-child { border-block-end: 0; }
+  .quick-card { grid-template-columns: 34px minmax(0, 1fr); }
+  .quick-arrow { display: none; }
+  .vp-doc h1 { font-size: 30px; }
+  .VPSidebar { width: min(90%, 374px) !important; padding-inline: 16px !important; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .VPSidebar,
-  .VPLocalSearchBox .search-bar {
-    transition: none !important;
-  }
+@media (orientation: landscape) and (max-height: 520px) {
+  .VPLocalSearchBox { padding-block: 8px !important; }
+  .VPLocalSearchBox .shell { max-height: calc(100dvh - 16px) !important; }
+  .VPLocalSearchBox .results { max-height: calc(100dvh - 80px) !important; }
 }

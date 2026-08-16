@@ -1,7 +1,9 @@
 import DefaultTheme from 'vitepress/theme'
 import type { Theme } from 'vitepress'
-import './custom.css'
-import './enhancements.css'
+import './tokens.css'
+import './base.css'
+import './components.css'
+import './motion.css'
 import './mobile.css'
 import { installEnhancements } from './enhancements'
 

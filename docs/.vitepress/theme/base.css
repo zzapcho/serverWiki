@@ -1,0 +1,51 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  min-width: 320px;
+  min-height: 100%;
+  scrollbar-gutter: stable;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 88px;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+  overflow-x: clip;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1;
+}
+
+button,
+input,
+select,
+textarea { font: inherit; }
+
+img,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+.vp-doc pre,
+.vp-doc code,
+.vp-doc a { overflow-wrap: anywhere; }
+
+::selection { background: var(--vp-c-brand-soft); }
+
+:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--vp-c-brand-1) 52%, transparent);
+  outline-offset: 2px;
+}
+
+[hidden] { display: none !important; }
+
+.vp-doc > *,
+.VPFeatures .item,
+.quick-card,
+.content-card,
+.stat-card,
+.flow-card { min-width: 0; }

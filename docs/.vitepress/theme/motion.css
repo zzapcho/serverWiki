@@ -1,0 +1,100 @@
+/* Interaction motion is intentionally limited to transform/opacity/color. */
+
+.VPNavBarSearch button,
+.DocSearch-Button,
+.VPLocalSearchBox .search-bar,
+.VPLocalSearchBox .result,
+.VPSidebarItem .link,
+.VPButton,
+.VPFeature,
+.quick-card,
+.quick-arrow,
+.content-card,
+.zz-copy-command,
+.VPDocFooter .pager-link,
+.zz-toast {
+  transition-duration: var(--zz-fast);
+  transition-timing-function: var(--zz-ease);
+}
+
+.VPNavBarSearch button,
+.DocSearch-Button,
+.VPLocalSearchBox .search-bar,
+.VPSidebarItem .link,
+.zz-copy-command,
+.VPDocFooter .pager-link {
+  transition-property: color, background-color, border-color, box-shadow, transform;
+}
+
+.VPLocalSearchBox .result,
+.VPButton,
+.VPFeature,
+.quick-card,
+.content-card {
+  transition-property: transform, border-color, background-color;
+}
+
+.quick-arrow { transition-property: transform, color; }
+.zz-toast { transition-property: opacity, transform; transition-duration: 180ms, 220ms; }
+
+@media (hover: hover) {
+  .VPNavBarSearch button:hover,
+  .DocSearch-Button:hover {
+    border-color: color-mix(in srgb, var(--vp-c-brand-1) 46%, var(--vp-c-divider)) !important;
+    background: color-mix(in srgb, var(--vp-c-bg-soft) 92%, var(--vp-c-brand-soft)) !important;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--vp-c-brand-soft) 55%, transparent);
+  }
+
+  .VPLocalSearchBox .result:hover { transform: translateX(2px); }
+  .VPButton:hover { transform: translateY(-1px); }
+
+  .VPFeature:hover,
+  .quick-card:hover,
+  .content-card:hover {
+    transform: translateY(-1px);
+    border-color: color-mix(in srgb, var(--vp-c-brand-1) 45%, var(--vp-c-divider)) !important;
+    background: color-mix(in srgb, var(--vp-c-bg-soft) 94%, var(--vp-c-brand-soft)) !important;
+  }
+
+  .quick-card:hover .quick-arrow { transform: translateX(2px); color: var(--vp-c-brand-1); }
+  .zz-copy-command:hover { color: var(--vp-c-brand-1); border-color: color-mix(in srgb, var(--vp-c-brand-1) 44%, var(--vp-c-divider)); }
+  .vp-doc .zz-table-shell tbody tr:hover { background: color-mix(in srgb, var(--vp-c-brand-soft) 42%, transparent); }
+  .VPDocFooter .pager-link:hover { transform: translateY(-1px); border-color: color-mix(in srgb, var(--vp-c-brand-1) 42%, var(--vp-c-divider)); }
+}
+
+.VPButton:active,
+.quick-card:active,
+.VPFeature:active,
+.content-card:active,
+.zz-copy-command:active,
+.VPDocFooter .pager-link:active { transform: scale(.985); }
+
+.zz-reveal {
+  opacity: 0;
+  transform: translate3d(0, 10px, 0);
+  transition: opacity var(--zz-slow) var(--zz-ease) var(--zz-reveal-delay, 0ms), transform 420ms var(--zz-ease) var(--zz-reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.zz-reveal.is-visible { opacity: 1; transform: none; will-change: auto; }
+
+.zz-route-enter .VPDoc .content-container,
+.zz-route-enter .VPHomeHero .container,
+.zz-route-enter .VPHomeFeatures .container,
+.zz-route-enter .VPHome .vp-doc { animation: zz-route-in 240ms var(--zz-ease) both; }
+
+@keyframes zz-route-in {
+  from { opacity: .82; transform: translate3d(0, 4px, 0); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  .zz-reveal, .zz-reveal.is-visible { opacity: 1 !important; transform: none !important; }
+}
