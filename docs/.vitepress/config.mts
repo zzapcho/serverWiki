@@ -13,17 +13,28 @@ export default defineConfig({
     ['meta', { name: 'color-scheme', content: 'light dark' }],
     ['meta', { name: 'mobile-web-app-capable', content: 'yes' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
-    ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' }]
+    ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' }],
+    ['meta', { property: 'og:site_name', content: 'ZZAPCHO SERVER WIKI' }],
+    ['meta', { property: 'og:title', content: 'ZZAPCHO SERVER WIKI' }],
+    ['meta', { property: 'og:description', content: '서버 플레이에 필요한 가이드, 명령어, 경제, 조작법을 한 곳에서 확인하세요.' }]
   ],
 
   themeConfig: {
     siteTitle: 'ZZAPCHO SERVER',
 
     nav: [
-      { text: '가이드', link: '/guide/' },
-      { text: '조작법', link: '/controls/' },
-      { text: '명령어', link: '/commands/' },
-      { text: '경제', link: '/economy/' }
+      { text: '가이드', link: '/guide/', activeMatch: '^/guide/' },
+      { text: '명령어', link: '/commands/', activeMatch: '^/commands/' },
+      { text: '경제', link: '/economy/', activeMatch: '^/economy/' },
+      { text: '조작법', link: '/controls/', activeMatch: '^/controls/' },
+      {
+        text: '더보기',
+        items: [
+          { text: 'Discord & Voice', link: '/community/' },
+          { text: '문제 해결', link: '/troubleshooting/' },
+          { text: '업데이트', link: '/changelog/' }
+        ]
+      }
     ],
 
     search: {
@@ -57,31 +68,24 @@ export default defineConfig({
         ]
       },
       {
-        text: '가이드',
+        text: '서버 가이드',
         collapsed: false,
         items: [
           { text: '가이드 개요', link: '/guide/' },
-          { text: '바닐라와 달라진 점', link: '/guide/vanilla-differences' }
+          { text: '바닐라와 달라진 점', link: '/guide/vanilla-differences' },
+          { text: '농사 & 요리', link: '/guide/farming-cooking' },
+          { text: '낚시', link: '/guide/fishing' },
+          { text: '건축 & 가구', link: '/guide/building' },
+          { text: '탐험 & 월드', link: '/guide/exploration' },
+          { text: '생존 & 죽음', link: '/guide/survival' }
         ]
       },
       {
-        text: '조작법',
+        text: '플레이',
         collapsed: false,
         items: [
-          { text: '조작법 & 단축키', link: '/controls/' }
-        ]
-      },
-      {
-        text: '명령어',
-        collapsed: false,
-        items: [
-          { text: '전체 명령어', link: '/commands/' }
-        ]
-      },
-      {
-        text: '경제',
-        collapsed: false,
-        items: [
+          { text: '조작법 & 단축키', link: '/controls/' },
+          { text: '전체 명령어', link: '/commands/' },
           { text: '경제 시스템', link: '/economy/' }
         ]
       },
@@ -93,7 +97,7 @@ export default defineConfig({
         ]
       },
       {
-        text: '도움말',
+        text: '지원',
         collapsed: false,
         items: [
           { text: '문제 해결', link: '/troubleshooting/' },

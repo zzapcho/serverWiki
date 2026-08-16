@@ -33,84 +33,38 @@ features:
 ---
 
 <div class="home-status" aria-label="서버 위키 상태">
-  <div class="home-status-item">
-    <span class="home-status-label">GAME</span>
-    <strong>Minecraft 26.2</strong>
-  </div>
-  <div class="home-status-item">
-    <span class="home-status-label">LOADER</span>
-    <strong>Fabric</strong>
-  </div>
-  <div class="home-status-item">
-    <span class="home-status-label">VOICE</span>
-    <strong>Simple Voice Chat</strong>
-  </div>
-  <div class="home-status-item">
-    <span class="home-status-label">WIKI</span>
-    <strong>Preview</strong>
-  </div>
+  <div class="home-status-item"><span class="home-status-label">GAME</span><strong>Minecraft 26.2</strong></div>
+  <div class="home-status-item"><span class="home-status-label">LOADER</span><strong>Fabric</strong></div>
+  <div class="home-status-item"><span class="home-status-label">VOICE</span><strong>Simple Voice Chat</strong></div>
+  <div class="home-status-item"><span class="home-status-label">DOCS</span><strong>v0.2</strong></div>
 </div>
 
 <section class="home-section">
   <div class="home-section-head">
     <div>
       <span class="section-kicker">QUICK ACCESS</span>
-      <h2>필요한 정보로 바로 이동</h2>
+      <h2>지금 필요한 정보로 바로 이동</h2>
     </div>
-    <p>긴 설명을 처음부터 읽지 않아도 됩니다. 지금 필요한 항목만 골라 확인하세요.</p>
+    <p>처음부터 전부 읽을 필요 없습니다. 검색하거나, 지금 하려는 행동을 기준으로 문서를 골라보세요.</p>
   </div>
 
   <div class="quick-grid">
-    <a class="quick-card" href="/guide/vanilla-differences">
-      <span class="quick-icon">V</span>
-      <div>
-        <strong>바닐라와 달라진 점</strong>
-        <span>추가된 콘텐츠와 기존 플레이 방식의 차이를 빠르게 확인합니다.</span>
-      </div>
-      <span class="quick-arrow" aria-hidden="true">→</span>
-    </a>
-    <a class="quick-card" href="/community/">
-      <span class="quick-icon">D</span>
-      <div>
-        <strong>Discord & Voice</strong>
-        <span>Discord 연동과 인게임 음성채팅 사용법을 확인합니다.</span>
-      </div>
-      <span class="quick-arrow" aria-hidden="true">→</span>
-    </a>
-    <a class="quick-card" href="/troubleshooting/">
-      <span class="quick-icon">?</span>
-      <div>
-        <strong>문제 해결</strong>
-        <span>접속, 모드, 음성채팅 등 자주 생기는 문제부터 확인합니다.</span>
-      </div>
-      <span class="quick-arrow" aria-hidden="true">→</span>
-    </a>
-    <a class="quick-card" href="/changelog/">
-      <span class="quick-icon">↻</span>
-      <div>
-        <strong>최근 업데이트</strong>
-        <span>서버와 위키에서 최근 무엇이 바뀌었는지 확인합니다.</span>
-      </div>
-      <span class="quick-arrow" aria-hidden="true">→</span>
-    </a>
+    <a class="quick-card" href="/guide/vanilla-differences"><span class="quick-icon">V</span><div><strong>바닐라와 달라진 점</strong><span>추가된 콘텐츠와 플레이 방식의 차이를 한 번에 확인합니다.</span></div><span class="quick-arrow" aria-hidden="true">→</span></a>
+    <a class="quick-card" href="/economy/"><span class="quick-icon">₩</span><div><strong>돈 벌기 & 상점</strong><span>잔액, 일일 보상, 서버 상점, 개인 상점과 거래 구조를 확인합니다.</span></div><span class="quick-arrow" aria-hidden="true">→</span></a>
+    <a class="quick-card" href="/community/"><span class="quick-icon">D</span><div><strong>Discord & Voice</strong><span>Discord 인증, 채팅 연동과 인게임 음성채팅 사용법을 확인합니다.</span></div><span class="quick-arrow" aria-hidden="true">→</span></a>
+    <a class="quick-card" href="/troubleshooting/"><span class="quick-icon">?</span><div><strong>문제 해결</strong><span>접속, 모드, 음성채팅 등 자주 생기는 문제부터 빠르게 확인합니다.</span></div><span class="quick-arrow" aria-hidden="true">→</span></a>
   </div>
 </section>
 
 <section class="home-section home-guide-strip">
-  <div class="home-section-head compact">
-    <div>
-      <span class="section-kicker">HOW TO USE</span>
-      <h2>이 위키는 이렇게 사용합니다</h2>
-    </div>
-  </div>
-
+  <div class="home-section-head compact"><div><span class="section-kicker">HOW TO USE</span><h2>빠르게 찾는 3가지 방법</h2></div></div>
   <div class="step-grid">
-    <div class="step-card"><span>01</span><strong>검색</strong><p>상단 검색에서 기능·명령어·아이템 이름을 검색합니다.</p></div>
-    <div class="step-card"><span>02</span><strong>가이드</strong><p>처음 보는 시스템은 왼쪽 가이드에서 사용법을 확인합니다.</p></div>
-    <div class="step-card"><span>03</span><strong>바로가기</strong><p>자주 쓰는 페이지는 URL로 바로 열 수 있습니다.</p></div>
+    <div class="step-card"><span>01</span><strong>검색부터</strong><p><kbd>Ctrl</kbd> + <kbd>K</kbd> 또는 <kbd>/</kbd>를 눌러 기능·명령어·아이템 이름을 검색합니다.</p></div>
+    <div class="step-card"><span>02</span><strong>행동 기준으로</strong><p>“돈 벌기”, “죽었을 때”, “낚시”처럼 지금 하려는 행동을 기준으로 가이드를 찾습니다.</p></div>
+    <div class="step-card"><span>03</span><strong>명령어는 복사</strong><p>명령어 표에서 복사 버튼을 눌러 바로 클립보드에 넣을 수 있습니다.</p></div>
   </div>
 </section>
 
-::: tip 현재는 테스트 버전입니다
-디자인과 구조를 먼저 완성하는 단계입니다. 실제 서버 기능이 확정되는 순서대로 문서를 정식 내용으로 채웁니다.
+::: tip 문서화가 본격적으로 시작되었습니다
+현재 서버에서 실제로 사용하는 기능부터 순서대로 내용을 채우고 있습니다. 아직 확정되지 않은 기능은 **계획** 또는 **베타**로 표시합니다.
 :::
