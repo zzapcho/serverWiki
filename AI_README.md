@@ -6,9 +6,9 @@ Last reviewed: 2026-08-17
 
 ## 1. Product goal
 
-`wiki.zzapcho.kr`은 **Minecraft Java 26.2 Fabric Vanilla+ 서버의 플레이어용 위키**다. 구현 용어보다 `어디서 찾는가`, `몇 Y에서 나오는가`, `무엇을 눌러야 하는가`, `기본값은 무엇인가`를 먼저 설명한다.
+`wiki.zzapcho.kr`은 **Minecraft Java 26.2 Fabric Vanilla+ 서버의 플레이어용 위키**다. 구현 용어보다 `어디서 찾는가`, `몇 Y에서 나오는가`, `무엇을 눌러야 하는가`, `현재 서버값은 무엇인가`를 먼저 설명한다.
 
-확률, 생성 높이, 기본 시간, 명령어처럼 플레이에 직접 영향을 주는 값은 가능한 한 표로 정리한다. 확인할 수 없는 숫자는 추측하지 않는다.
+확률, 생성 높이, 시간, 명령어처럼 플레이에 직접 영향을 주는 값은 가능한 한 표로 정리한다. 확인할 수 없는 숫자는 추측하지 않는다.
 
 ## 2. Verified server baseline
 
@@ -47,11 +47,11 @@ Bkups, Death Backup, Chunky, C2ME, FerriteCore, Krypton, Lithium, Noisium, Scala
 - `fabric-api` mod id가 같은 JAR 2개가 포함되어 있다. 배포본에는 하나만 둔다.
 - `sodium` mod id가 같은 0.9.1과 0.9.2-alpha.4가 동시에 있다. 배포본에는 하나만 둔다.
 - Nvidium 0.4.4-beta3의 metadata는 Sodium `0.9.1`을 요구한다. 현재 조합을 유지한다면 Sodium 0.9.1이 일치한다.
-- Chat Heads와 Simple Fog Control 파일명은 26.1 계열이지만 metadata는 각각 Minecraft `>=26.1`을 허용한다. 그래도 실제 26.2 실행 검증 전에는 완전 호환을 단정하지 않는다.
+- Chat Heads와 Simple Fog Control 파일명은 26.1 계열이지만 metadata는 각각 Minecraft `>=26.1`을 허용한다. 실제 26.2 실행 검증 전에는 완전 호환을 단정하지 않는다.
 
-## 4. Configuration baseline
+## 4. Live configuration baseline
 
-이번 제공물에는 live `config/`가 포함되지 않았다. 따라서 현재 문서의 `기본값`은 **설치된 JAR의 default config/code**를 뜻한다.
+2026-08-17 제공 `_config.zip`을 **현재 서버 설정의 최우선 근거**로 사용한다.
 
 문서 숫자 우선순위:
 
@@ -61,12 +61,16 @@ Bkups, Death Backup, Chunky, C2ME, FerriteCore, Krypton, Lithium, Noisium, Scala
 4. 위키 기존 문서
 5. 다른 버전 자료
 
-중요한 verified defaults:
+### 현재 확인된 live 값
 
-- FallingTree `requireEnchantment=false`; Enchantments 데이터팩 설치 자체와 인챈트 필수 설정은 별개다.
-- Universal Graves `protectionTime=900`, `breakingTime=-1`; 기본 자동 만료 없음.
-- Terralith `recipe_changes=false`; 선택형 레시피 변경은 기본 적용되지 않는다.
-- Elytra Slot은 `DataComponents.GLIDER`가 있는 아이템을 전용 슬롯에 허용한다.
+- **FallingTree:** `requireEnchantment=true`. Chopper 계열 인챈트가 붙은 도끼에서만 FallingTree가 발동한다. 이 값은 사용자가 의도적으로 바꾼 설정이다.
+- FallingTree 나머지 핵심 값은 현재 config에서 기본 constructor 값과 일치한다: `INSTANTANEOUS`, `WHOLE_TREE`, max scan 500, max tree 100, `SNEAK_DISABLE`, durability `NORMAL`.
+- **Universal Graves live config:** XP **80%**, `non_owner_protection_time=-1`, `self_destruction_time=1209600`(14일), expiration drop true, remote protection removal/breaking/unlocking false, `generate_on_top_of_fluids=true`.
+- Universal Graves의 위 live 값 일부는 설치 JAR constructor 기본값(예: XP 100%, protection 900, breaking -1, remote actions true, fluid false)과 다르다. 사용자가 “나머지는 기본 설정”으로 인식하더라도 **실제 서버 동작 문서는 config를 우선**한다. 서버 config를 리셋했다는 확인이 있기 전까지 live 값을 유지한다.
+- **Simple Voice Chat:** UDP `24454`, normal distance `48`, whisper `24`, groups enabled, recording allowed, `force_voice_chat=false`.
+- **Terralith:** `recipe_changes=false`.
+- **Elytra Slot:** `showInventoryPanel=false`.
+- SimpleOres/Tectonic 등은 제공 config의 현재값을 사용하고, 별도 변경이 확인되지 않은 항목은 설치 버전 기본값으로 설명한다.
 
 ## 5. Player commands only
 
@@ -142,7 +146,7 @@ tokens.css → base.css → components.css → outline-fix.css → motion.css �
 
 ## 12. QA and release
 
-최소 320, 360, 412, 768, 1024, 1440 폭을 확인한다. 특히 `/mods/simpleores`, `/mods/dungeons-taverns`, `/mods/end-structures`, `/mods/graves`, `/guide/client`, `/troubleshooting/`의 표/outline/search를 확인한다.
+최소 320, 360, 412, 768, 1024, 1440 폭을 확인한다. 특히 `/mods/simpleores`, `/mods/dungeons-taverns`, `/mods/end-structures`, `/mods/graves`, `/mods/fallingtree`, `/mods/voice-chat`, `/guide/client`, `/troubleshooting/`의 표/outline/search를 확인한다.
 
 ```bash
 npm ci

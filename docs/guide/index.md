@@ -10,17 +10,19 @@ ZZAPCHO SERVER는 **바닐라의 흐름을 유지하면서 건축·광질·벌�
 | --- | --- | --- |
 | 건축 | 세로 반블록, SimpleOres 금속 건축 블록 | [건축](/guide/building) |
 | 광질 | 주석·미스릴·아다만티움·오닉스 | [SimpleOres](/mods/simpleores) |
-| 벌목 | 나무 전체 즉시 벌목, Shift로 일시 비활성 | [FallingTree](/mods/fallingtree) |
+| 벌목 | **Chopper 계열 인챈트 도끼**로 나무 전체 벌목, Shift로 일시 비활성 | [FallingTree](/mods/fallingtree) |
 | 장비 | 겉날개 전용 슬롯으로 흉갑과 동시 장착 | [Elytra Slot](/mods/elytra-slot) |
 | 월드 | 95개 Terralith 커스텀 바이옴 + Tectonic 지형 | [월드젠](/mods/worldgen) |
 | 구조물 | Dungeons & Taverns + MES | [탐험](/guide/exploration) |
-| 죽음 | 아이템/XP 무덤 저장, 15분 소유자 보호 | [Universal Graves](/mods/graves) |
-| 음성 | 근접 보이스챗 | [Voice Chat](/mods/voice-chat) |
+| 죽음 | 아이템 무덤 저장, **XP 80%**, 무덤 **14일 만료** | [Universal Graves](/mods/graves) |
+| 음성 | 근접 보이스챗 · UDP 24454 | [Voice Chat](/mods/voice-chat) |
 | Discord | 게임 채팅 ↔ Discord 연동 | [Discord](/mods/discord) |
 
 ## 이 위키의 숫자 기준
 
-2026-08-17에 제공된 서버/클라이언트 모드 묶음을 직접 검사했습니다. `config/`는 제공되지 않았기 때문에 **기본값 표시는 설치된 JAR 기본값**을 뜻합니다. 운영자가 실제 서버 config를 바꾸면 그 값이 최우선입니다.
+2026-08-17 제공 `서버모드.zip`, `클라모드.zip`, `_config.zip`을 직접 검사했습니다. **현재 서버 config가 있는 값은 config를 최우선**으로 하고, config에서 확인할 수 없는 데이터는 설치 JAR/데이터팩의 실제 값을 사용합니다.
+
+현재 특히 중요한 설정은 FallingTree `requireEnchantment=true`, Universal Graves XP 80%/14일 만료, Simple Voice Chat UDP 24454입니다.
 
 ## 추천 읽는 순서
 

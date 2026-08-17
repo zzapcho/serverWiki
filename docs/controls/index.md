@@ -6,12 +6,15 @@
 
 | 기능 | 조작 |
 | --- | --- |
+| FallingTree 사용 조건 | **Chopper 계열 인챈트가 붙은 도끼** 사용 |
 | FallingTree 잠시 끄기 | <kbd>Shift</kbd> 누른 채 통나무 캐기 |
 | FallingTree 자기 토글 | `/fallingtree toggle` |
 | 자기 무덤 목록 | `/graves` |
 | 무덤 GUI | 무덤 클릭 |
-| 무덤 빠른 회수 | 기본값: 빈손 + <kbd>Shift</kbd> 상호작용 |
+| 무덤 빠른 회수 | 빈손 + <kbd>Shift</kbd> 상호작용 |
 | Elytra Slot | 인벤토리의 별도 겉날개 슬롯에 넣기 |
+
+`/fallingtree toggle`은 자기 기능을 켜고 끄는 명령일 뿐, 현재 서버의 **Chopper 인챈트 필수 조건을 우회하지 않습니다.**
 
 ## Simple Voice Chat 2.6.22
 

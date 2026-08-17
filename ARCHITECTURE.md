@@ -14,15 +14,16 @@
 
 ## Verified snapshot — 2026-08-17
 
-플레이 콘텐츠 기준은 `AI_README.md`의 verified baseline을 따른다. `서버모드.zip` / `클라모드.zip`의 JAR·데이터팩이 이번 문서 개편의 1차 근거다.
+`서버모드.zip` / `클라모드.zip` / `_config.zip`을 현재 스냅샷 근거로 사용한다. 플레이 콘텐츠 기준은 `AI_README.md`의 verified baseline을 따른다.
 
-특히 이전 문서와 달라진 핵심:
+핵심 live 설정:
 
-- Elytra Slot과 Dungeons & Taverns가 실제 서버 묶음에 존재한다.
-- FallingTree Enchantments 데이터팩이 실제 서버 묶음에 존재한다.
-- Universal Graves 3.12.0 기본 `breakingTime=-1`이므로 기본값에서는 자동 만료되지 않는다.
-- Terralith의 `recipe_changes` 기본값은 꺼져 있다.
-- 클라이언트 검수본에는 동일 mod id의 Fabric API/Sodium 중복 JAR이 있어 배포 전 정리가 필요하다.
+- FallingTree `requireEnchantment=true` — Chopper 계열 인챈트 도끼 필수
+- Universal Graves — XP 80%, 타인 보호 타이머 `-1`, 14일 자동 만료, 만료 시 아이템 드롭
+- Simple Voice Chat — UDP 24454, 일반 거리 48, 속삭임 24
+- Terralith `recipe_changes=false`
+
+Universal Graves처럼 live config가 JAR constructor 기본값과 다르면 **실제 config를 우선**한다.
 
 ## Source of truth
 
@@ -31,8 +32,6 @@
 3. 설치 버전 공식 소스/문서
 4. wiki prose
 5. 다른 버전 자료 또는 추측
-
-`config/`가 제공되지 않은 상태에서는 문서에 `기본값`이라고 명시하고 서버 운영자가 바꾼 값이라고 단정하지 않는다.
 
 ## Information architecture
 

@@ -8,15 +8,15 @@
 | --- | ---: | --- |
 | Enchanted Vertical Slabs | 2.7.0 | 세로 반블록 |
 | SimpleOres Fabric | 1.9.10 | 주석·미스릴·아다만티움·오닉스 + 장비/블록 |
-| FallingTree | 25 | 나무 전체 벌목 |
-| FallingTree Enchantments | 26.2.0-1 | Chopper 계열 인챈트 데이터팩 |
+| FallingTree | 25 | **Chopper 계열 인챈트 도끼**로 나무 전체 벌목 |
+| FallingTree Enchantments | 26.2.0-1 | 벌목 조건/방식용 Chopper 계열 인챈트 데이터팩 |
 | Elytra Slot | 2.0.0 | 겉날개 전용 장비 슬롯 |
 | Terralith | 2.6.4 | 95개 커스텀 바이옴/월드젠 |
 | Tectonic | 3.0.26 | 대규모 지형 형상 |
 | Dungeons and Taverns | 5.3.0 | 던전·선술집·요새·마을 등 구조물 |
 | Moog's End Structures | 2.0.3 | 엔드 구조물/전리품 |
-| Universal Graves | 3.12.0 | 사망 아이템/XP 무덤 |
-| Simple Voice Chat | 2.6.22 | 근접 음성채팅 |
+| Universal Graves | 3.12.0 | 사망 아이템 + 현재 XP 80% 무덤 저장 |
+| Simple Voice Chat | 2.6.22 | 근접 음성채팅 · UDP 24454 |
 | Discord Integration | 3.2.0 | 게임 채팅 ↔ Discord 브리지 |
 
 ## 서버 뒤에서 돌아가는 모드

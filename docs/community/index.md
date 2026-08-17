@@ -4,13 +4,14 @@
 
 ## Voice Chat
 
-Simple Voice Chat 2.6.22가 서버/클라이언트에 같이 들어 있습니다.
+Simple Voice Chat 2.6.22가 서버/클라이언트에 같이 들어 있습니다. 현재 서버는 **UDP 24454**, 일반 음성 거리 **48블록**, 속삭임 **24블록** 설정입니다.
 
 - 메뉴: <kbd>V</kbd>
 - 마이크 음소거: <kbd>M</kbd>
 - 전체 보이스 비활성: <kbd>N</kbd>
 - 아이콘 숨기기: <kbd>H</kbd>
 - PTT/그룹/설정 키: 기본 미지정
+- 그룹 기능: 활성화
 
 [보이스챗 전체 설정 →](/mods/voice-chat)
 
@@ -22,7 +23,7 @@ Discord Integration 3.2.0이 게임 채팅과 Discord 채널을 연결하는 ser
 
 ## 문제를 구분하는 법
 
-- **마이크/주변 음성이 안 됨:** Voice Chat 문제
+- **마이크/주변 음성이 안 됨:** Voice Chat 문제 — 특히 UDP 24454 확인
 - **Discord 채널과 게임 채팅이 안 오감:** Discord Integration/봇 문제
 - **서버 입장 인증이 안 됨:** Velocity/프록시 인증 문제
 
