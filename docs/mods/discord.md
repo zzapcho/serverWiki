@@ -1,56 +1,26 @@
-<span class="page-kicker">MOD · COMMUNITY</span>
-
 # Discord 연동
 
-<p class="page-lead">ZZAPCHO SERVER는 “입장 인증”과 “게임 채팅 연동”을 서로 다른 계층으로 나눕니다. 그래서 한 봇/모드가 모든 권한을 떠안지 않습니다.</p>
+서버는 Discord를 **접속 인증/화이트리스트와 Minecraft 채팅 연결**에 사용합니다.
 
-<span class="status-chip is-live">사용 중</span>
+## 무엇이 연결되나요?
 
-## 구조
+- 프록시 쪽 Discord 시스템: 계정 인증과 화이트리스트 흐름
+- Minecraft 서버 쪽 Discord Integration: Minecraft ↔ Discord 채팅 및 서버 이벤트 연결
 
-```text
-Discord
-  ├─ DiscordIO / Velocity → 계정 연결 · 화이트리스트 · 역할
-  └─ Discord Integration / Fabric → Minecraft 채팅 · 이벤트
-```
+플레이어는 봇 이름이나 내부 채널 ID를 알 필요가 없습니다. 서버 Discord에서 안내되는 인증 절차만 따르면 됩니다.
 
-## DiscordIO / Velocity
+## Minecraft 채팅
 
-서버에 들어오기 **전**의 인증 계층입니다.
+서버에서 보낸 일반 채팅이 Discord 채널에 표시될 수 있고, 허용된 Discord 채널의 메시지가 Minecraft 안에 표시될 수 있습니다.
 
-- Discord 계정과 Minecraft 계정 연결.
-- 화이트리스트 처리.
-- 인증 완료 역할 부여.
-- 백엔드 Fabric 서버가 아니라 Velocity 입구에서 접근을 관리.
+## 조합법 / 단축키
 
-플레이어는 Discord 안내 채널의 절차만 따르면 됩니다.
+없습니다. Discord 연동은 서버 통신 기능입니다.
 
-## Discord Integration / Fabric
+## 문제가 생기면
 
-서버에 들어온 **후**의 커뮤니티 계층입니다.
+- 인증은 됐는데 접속이 거절됨 → Discord 역할/화이트리스트 상태를 확인
+- Discord 메시지만 Minecraft에 안 보임 → 다른 사람도 같은지 확인 후 관리자에게 알림
+- Minecraft 채팅만 Discord에 안 감 → 보낸 시각과 Minecraft 닉네임을 함께 알림
 
-- Minecraft 채팅 → Discord.
-- Discord 채팅 → Minecraft.
-- 접속/퇴장.
-- 사망.
-- 발전과제.
-- 서버 시작/종료 상태.
-
-## 플레이어 스킨 웹훅
-
-현재 26.2용 Discord Integration 3.2.0의 플레이어 채팅 웹훅 동작을 서버에서 로컬 패치해, Minecraft 채팅이 Discord에 **서버 공용 이름이 아니라 플레이어 닉네임 + UUID 기반 스킨 아바타**로 표시되도록 수정해 사용 중입니다.
-
-업스트림 모드를 업데이트할 때는 이 로컬 패치가 공식 버전에 반영됐는지 확인한 뒤 교체해야 합니다.
-
-## 보안 / 권한 분리
-
-- DiscordIO가 화이트리스트/역할을 담당.
-- Discord Integration은 채팅/이벤트를 담당.
-- 역할 관리가 필요 없는 채팅 봇에 불필요한 Manage Roles 권한을 주지 않는 방향이 안전합니다.
-- 봇 토큰은 위키/로그/스크린샷에 공개하지 않습니다.
-
-## 플레이어가 할 일
-
-별도 Minecraft 단축키는 없습니다. 일반 채팅을 사용하고, 서버 입장 전 Discord 인증만 완료하면 됩니다.
-
-→ [Discord & Voice](/community/) · [처음 접속하기](/getting-started)
+관련: [Discord & Voice](/community/) · [문제 해결](/troubleshooting/)
