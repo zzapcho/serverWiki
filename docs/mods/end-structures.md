@@ -91,4 +91,4 @@ Mega Ship treasure의 두 번째 pool은 **1회 확정 draw**이며:
 - `/locate` 같은 관리자 도구가 없는 일반 플레이에서는 넓은 범위를 이동해야 할 수 있습니다.
 - Dungeons & Taverns의 엔드 구조물도 별도로 존재하므로 “새 엔드 구조물”이 모두 MES는 아닙니다.
 
-공식 자료: [Moog's End Structures](https://modrinth.com/mod/moogs-end-structures)
+공식 자료: [Moog's End Structures](https://modrinth.com/mod/mes-moogs-end-structures)

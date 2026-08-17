@@ -78,4 +78,4 @@ FallingTree 25는 통나무 하나를 부쉈을 때 감지된 나무 전체를 �
 4. 감지 크기가 100블록을 넘는 거대 구조물인지 확인합니다.
 5. 서로 다른 통나무가 섞였는지 확인합니다.
 
-공식 자료: [FallingTree GitHub](https://github.com/Rakambda/FallingTree)
+공식 자료: [FallingTree GitHub](https://github.com/RakambdaOrg/FallingTree)
