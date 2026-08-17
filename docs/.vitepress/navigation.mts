@@ -15,7 +15,7 @@ const sidebarSections = [
       { text: '모드 한눈에 보기', link: '/mods/' },
       { text: '세로 반블록', link: '/mods/vertical-slabs' },
       { text: '광물 · SimpleOres', link: '/mods/simpleores' },
-      { text: '계절 · Homeostatic Seasons', link: '/mods/seasons' },
+      { text: '벌목 · FallingTree', link: '/mods/fallingtree' },
       { text: '지형 · Terralith + Tectonic', link: '/mods/worldgen' },
       { text: '엔드 구조물 · MES', link: '/mods/end-structures' },
       { text: '무덤 · Universal Graves', link: '/mods/graves' },

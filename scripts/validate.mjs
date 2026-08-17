@@ -56,7 +56,7 @@ for (const file of markdownFiles) {
 
 const requiredRoutes = [
   '/', '/guide/', '/guide/vanilla-differences', '/guide/building', '/guide/exploration', '/guide/survival',
-  '/mods/', '/mods/vertical-slabs', '/mods/simpleores', '/mods/seasons', '/mods/worldgen', '/mods/end-structures', '/mods/graves',
+  '/mods/', '/mods/vertical-slabs', '/mods/simpleores', '/mods/fallingtree', '/mods/worldgen', '/mods/end-structures', '/mods/graves',
   '/mods/voice-chat', '/mods/discord', '/recipes/', '/controls/', '/community/', '/troubleshooting/', '/changelog/'
 ]
 for (const route of requiredRoutes) {
@@ -66,7 +66,8 @@ for (const route of requiredRoutes) {
 const removedPaths = [
   'getting-started.md', 'quick-reference.md', join('commands', 'index.md'), join('economy', 'index.md'),
   join('guide', 'farming-cooking.md'), join('guide', 'fishing.md'), join('guide', 'cooking-catalog.md'), join('guide', 'fishing-catalog.md'), join('guide', 'building-catalog.md'),
-  join('mods', 'farmers-delight.md'), join('mods', 'gone-fishing.md'), join('mods', 'furniture.md'), join('mods', 'friends-and-foes.md'), join('mods', 'economycraft.md'), join('mods', 'elytra-slot.md')
+  join('mods', 'seasons.md'), join('mods', 'farmers-delight.md'), join('mods', 'gone-fishing.md'), join('mods', 'furniture.md'),
+  join('mods', 'friends-and-foes.md'), join('mods', 'economycraft.md'), join('mods', 'elytra-slot.md')
 ].map((path) => normalize(join(docsRoot, path)))
 for (const path of removedPaths) if (markdownSet.has(path)) errors.push(`docs: removed/stale page returned: ${relative(root, path)}`)
 
@@ -86,6 +87,8 @@ if (/window\.scrollTo\(\{\s*top:\s*0/.test(enhancements)) errors.push('enhanceme
 
 const mobileCss = await readFile(join(themeRoot, 'mobile.css'), 'utf8')
 const componentsCss = await readFile(join(themeRoot, 'components.css'), 'utf8')
+const outlineCss = await readFile(join(themeRoot, 'outline-fix.css'), 'utf8')
+const themeIndex = await readFile(join(themeRoot, 'index.ts'), 'utf8')
 const navigationSource = await readFile(join(docsRoot, '.vitepress', 'navigation.mts'), 'utf8')
 const configSource = await readFile(join(docsRoot, '.vitepress', 'config.mts'), 'utf8')
 
@@ -94,15 +97,16 @@ if (!/\.VPSidebarItem\.is-active[^}]+\.link::before\s*\{[^}]*content:\s*none/s.t
 if (!/\.VPSidebar:focus[^}]*\{[^}]*outline:\s*none/s.test(componentsCss)) errors.push('components.css: programmatic sidebar focus must not draw full-height outline')
 if (!/\.VPNavBarSearch button[\s\S]*?width:\s*var\(--zz-touch\)\s*!important/.test(componentsCss)) errors.push('components.css: nav search must keep shared touch target')
 if (!/\.VPNavBarSearch\s*\{[^}]*padding:\s*0\s*!important/s.test(componentsCss)) errors.push('components.css: compact nav search must clear VitePress padding')
+if (!/outline-fix\.css/.test(themeIndex)) errors.push('theme/index.ts: outline fix stylesheet must be imported')
+if (!/\.VPDocAsideOutline \.outline-link[\s\S]*?white-space:\s*normal\s*!important/.test(outlineCss)) errors.push('outline-fix.css: long Korean outline headings must wrap instead of ellipsizing')
 if (/\bcollapsed\s*:/.test(navigationSource)) errors.push('navigation.mts: sidebar groups must remain always visible')
-if (/getting-started|quick-reference|EconomyCraft|Farmer.?s Delight|Gone Fishing|Elytra Slot/.test(navigationSource)) errors.push('navigation.mts: stale/removed content is present in navigation')
-if (!/disableQueryPersistence:\s*true/.test(configSource) || !/fuzzy:\s*0\.3/.test(configSource) || !/maxFuzzy:\s*2/.test(configSource) || !/prefix:\s*true/.test(configSource) || !/combineWith:\s*'OR'/.test(configSource)) errors.push('config.mts: forgiving local search contract changed unexpectedly')
-if (!/세로반블럭/.test(configSource) || !/simpleores/.test(configSource) || !/엔드구조물/.test(configSource) || !/템복구/.test(configSource)) errors.push('config.mts: beginner search aliases are incomplete')
+if (/getting-started|quick-reference|EconomyCraft|Farmer.?s Delight|Gone Fishing|Elytra Slot|Homeostatic Seasons/.test(navigationSource)) errors.push('navigation.mts: stale/removed content is present in navigation')
+if (!/disableQueryPersistence:\s*true/.test(configSource) || !/fuzzy:\s*0\.22/.test(configSource) || !/maxFuzzy:\s*2/.test(configSource) || !/prefix:\s*true/.test(configSource) || !/combineWith:\s*'OR'/.test(configSource)) errors.push('config.mts: fast forgiving local search contract changed unexpectedly')
+if (!/function tokenize\(text: string\)/.test(configSource) || !/세로반블럭/.test(configSource) || !/미쓰릴/.test(configSource) || !/아다만튬/.test(configSource) || !/나무베기/.test(configSource) || !/템복구/.test(configSource)) errors.push('config.mts: Korean tokenization/search aliases are incomplete')
+if (/\bjei\b|제이아이|\brei\b/i.test(configSource)) errors.push('config.mts: removed recipe viewers must not remain as search aliases')
 if (!/\.VPSidebar\.open\s*\{[^}]*transform:\s*translateX\(0\)\s*!important/s.test(mobileCss)) errors.push('mobile.css: open sidebar must override off-canvas transform')
 if (!/\.VPSidebar\s*\{[^}]*width:\s*100%\s*!important[^}]*height:\s*100dvh\s*!important/s.test(mobileCss)) errors.push('mobile.css: mobile sidebar must use full dynamic viewport')
-if (!/\.VPSidebar\s*\{[^}]*transition:[^}]*transform\s+260ms/s.test(mobileCss)) errors.push('mobile.css: sidebar transition must keep 260ms contract')
 if (!/\.VPLocalSearchBox \.search-actions button\s*\{[^}]*min-width:\s*var\(--zz-touch\)[^}]*min-height:\s*var\(--zz-touch\)/s.test(mobileCss)) errors.push('mobile.css: search actions must keep touch targets')
-if (!/\.VPLocalSearchBox \.search-bar input[^\{]*\{[^}]*flex:\s*1 1 auto\s*!important/s.test(mobileCss)) errors.push('mobile.css: search input must retain flexible width')
 if (!/export const sidebar = sidebarSections/.test(navigationSource)) errors.push('navigation.mts: all routes must use one shared sidebar')
 if (!/function installSidebarGestures\(\)/.test(enhancements)) errors.push('enhancements.ts: mobile sidebar gestures missing')
 

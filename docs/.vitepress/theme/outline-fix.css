@@ -1,0 +1,38 @@
+/* Right-side page outline ------------------------------------------------
+   VitePress defaults can ellipsize long Korean headings. The outline is a
+   navigation aid, so keep every heading readable instead of clipping it. */
+.VPDocAside,
+.VPDocAsideOutline,
+.VPDocAsideOutline .content,
+.VPDocAsideOutline .outline-link {
+  min-width: 0;
+}
+
+.VPDocAsideOutline .content {
+  overflow: visible;
+}
+
+.VPDocAsideOutline .outline-link {
+  display: block;
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  overflow-wrap: anywhere;
+  word-break: keep-all;
+  hyphens: none;
+}
+
+.VPDocAsideOutline .outline-marker {
+  max-height: 100%;
+}
+
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .VPDocAsideOutline .content {
+    padding-inline: 12px;
+  }
+
+  .VPDocAsideOutline .outline-link {
+    font-size: 12px;
+    line-height: 1.42;
+  }
+}

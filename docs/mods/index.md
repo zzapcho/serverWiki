@@ -1,32 +1,38 @@
 # 모드 한눈에 보기
 
-이 서버의 모드는 **바닐라에 기능을 조금 더하는 것**에 초점을 맞춥니다. 이름을 외울 필요 없이 하고 싶은 일로 찾으면 됩니다.
+이 서버는 **바닐라 진행은 유지하고, 실제로 체감되는 편의·탐험 요소만 더하는 Vanilla+** 구성을 사용합니다. 서버 설정은 별도 언급이 없는 한 각 모드의 기본값입니다.
 
 ## 플레이에 직접 보이는 모드
 
-| 하고 싶은 것 | 모드 | 핵심 |
+| 하고 싶은 것 | 모드 | 꼭 알아둘 것 |
 | --- | --- | --- |
-| 세로 반블록으로 건축 | Enchanted Vertical Slabs | 바닐라 반블록의 세로형 추가 |
-| 새 광물 찾기 | SimpleOres | 주석·미스릴·아다만티움·오닉스 |
-| 계절 변화 보기 | Homeostatic Seasons | 봄·여름·가을·겨울과 하위 계절 |
-| 더 다양한 오버월드 탐험 | Terralith + Tectonic | 바이옴과 지형 형태 확장 |
-| 엔드에서 구조물 찾기 | MES | 바닐라풍 엔드 구조물 추가 |
-| 죽은 아이템 회수 | Universal Graves | 사망 위치에 무덤 생성 |
+| 세로 반블록으로 건축 | Enchanted Vertical Slabs | 세로 방향 반블록 추가 |
+| 새 광물 찾기 | SimpleOres | 주석·미스릴·아다만티움·오닉스, 광물별 Y/생성량 존재 |
+| 나무를 편하게 베기 | FallingTree | 기본은 즉시 벌목, Shift 중에는 비활성 |
+| 더 다양한 오버월드 탐험 | Terralith + Tectonic | 바이옴·지형 생성 변경, 새 청크에서 적용 |
+| 엔드에서 구조물 찾기 | MES | structure-set 규칙으로 엔드 구조물 추가 |
+| 죽은 아이템 회수 | Universal Graves | 기본 15분 보호, 30분 후 무덤 만료 |
 | 근처 사람과 말하기 | Simple Voice Chat | 거리 기반 음성 채팅 |
 | Discord와 채팅 연결 | Discord Integration | Minecraft ↔ Discord 채팅 연결 |
 
-## 무엇부터 보면 되나요?
+## 플레이어가 실제로 쓸 명령어
 
-건축 중이면 [세로 반블록](/mods/vertical-slabs), 광질 중이면 [SimpleOres](/mods/simpleores), 탐험 중이면 [월드 생성](/mods/worldgen)과 [엔드 구조물](/mods/end-structures)을 보면 됩니다. 죽었다면 바로 [무덤](/mods/graves)으로 가세요.
+| 명령어 | 기능 |
+| --- | --- |
+| `/graves` | 자신의 무덤 목록 열기 |
+| `/fallingtree toggle` | 자기 FallingTree 기능 켜기/끄기 |
 
-## 조합법이 있는 모드
+관리자용 reload, 다른 플레이어 조회, 서버 설정 명령은 플레이어 위키에 넣지 않습니다.
 
-조합법이 플레이에 중요한 모드는 **그 모드 페이지 안에서 바로 설명합니다.** 현재 버전의 모든 세부 조합은 JEI가 가장 정확합니다.
+## 숫자가 궁금하면
 
-- [세로 반블록 제작법](/mods/vertical-slabs#제작법)
-- [SimpleOres 제작과 제련](/mods/simpleores#제작법)
-- [조합법 빠른 찾기](/recipes/)
+- 광물 Y좌표·광맥 크기·시도 횟수 → [SimpleOres](/mods/simpleores#광물-생성-높이와-양)
+- 무덤 보호/만료 시간 → [Universal Graves](/mods/graves#보호-시간과-만료)
+- FallingTree 최대 나무 크기·스캔 범위·내구도 방식 → [FallingTree](/mods/fallingtree#기본-설정-상세)
+- 월드젠과 MES는 하나의 `% 확률`이나 Y값으로 생성되는 방식이 아니므로 각 페이지에서 배치 방식을 설명합니다.
 
-::: info 서버 전용 모드
-Terralith, MES, Universal Graves 같은 기능은 서버에서만 처리할 수 있습니다. 반대로 세로 반블록, SimpleOres, 계절처럼 새 블록·아이템·표현이 필요한 기능은 배포된 클라이언트 모드팩을 그대로 사용하는 것이 가장 안전합니다.
-:::
+## 조합법
+
+JEI와 REI는 현재 클라이언트 구성에서 사용하지 않습니다. 제작이 필요한 모드는 **위키 안에서 검증된 조합법을 그림 중심으로 정리**하고, 정확하지 않은 레시피는 추측해서 싣지 않습니다.
+
+[조합법 빠른 찾기](/recipes/)에서 제작이 필요한 모드만 빠르게 찾을 수 있습니다.

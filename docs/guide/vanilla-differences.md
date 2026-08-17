@@ -7,27 +7,27 @@
 | 분야 | 바닐라와 다른 점 | 알아둘 것 |
 | --- | --- | --- |
 | 건축 | 세로 반블록 추가 | 일반 반블록과 비슷하게 제작·배치 |
-| 광질 | 주석·미스릴·아다만티움·오닉스 추가 | 오닉스는 네더, 나머지는 오버월드 |
-| 오버월드 | 바이옴과 지형 모양이 크게 다양해짐 | 새로 생성되는 청크에서 체감 |
-| 계절 | 봄·여름·가을·겨울이 순환 | 색감·날씨·눈/얼음 같은 환경이 변할 수 있음 |
-| 엔드 | 바닐라풍 구조물 추가 | 구조물 안의 적과 전리품 주의 |
-| 죽음 | 아이템이 무덤에 보관됨 | `/graves`로 자신의 무덤 목록 확인 가능 |
-| 음성 | 근처 플레이어와 보이스챗 가능 | 키는 현재 클라이언트 설정이 기준 |
-| Discord | Minecraft 채팅 일부가 Discord와 연결됨 | 서버 인증/안내는 Discord에서 진행될 수 있음 |
+| 광질 | 주석·미스릴·아다만티움·오닉스 추가 | 광물마다 생성 높이와 빈도가 다름 |
+| 벌목 | FallingTree 추가 | 기본은 즉시 벌목, Shift 중 비활성 |
+| 오버월드 | Terralith + Tectonic | 새로 생성되는 청크에서 지형 체감 |
+| 엔드 | MES 구조물 추가 | 구조물마다 배치 규칙이 다름 |
+| 죽음 | Universal Graves | `/graves`로 자신의 무덤 목록 확인 가능 |
+| 음성 | Simple Voice Chat | 실제 키는 현재 클라이언트 조작키 설정이 기준 |
+| Discord | Minecraft 채팅 일부가 Discord와 연결 | 서버 안내/인증은 Discord와 연동될 수 있음 |
 
 ## 그대로인 것
 
-기본 제작대, 화로, 인챈트, 주민, 네더, 엔더 드래곤 같은 **바닐라의 핵심 진행을 대체하지 않습니다.** 새 콘텐츠를 꼭 써야만 진행할 수 있는 구조도 아닙니다.
+기본 제작대, 화로, 인챈트, 주민, 네더, 엔더 드래곤 같은 **바닐라 핵심 진행을 대체하지 않습니다.**
 
-## 모드별로 자세히 보기
+## 모드별 자세히 보기
 
-- [Enchanted Vertical Slabs](/mods/vertical-slabs) — 세로 반블록, 제작법, 배치법
-- [SimpleOres](/mods/simpleores) — 새 광물, 어디서 찾는지, 제작 확인법
-- [Homeostatic Seasons](/mods/seasons) — 계절이 무엇을 바꾸는지
+- [Enchanted Vertical Slabs](/mods/vertical-slabs) — 제작과 배치
+- [SimpleOres](/mods/simpleores) — Y좌표, 생성량, 도구·방어구 기본 능력치
+- [FallingTree](/mods/fallingtree) — 기본 벌목 설정과 `/fallingtree toggle`
 - [Terralith + Tectonic](/mods/worldgen) — 오버월드 지형
 - [MES](/mods/end-structures) — 엔드 구조물
-- [Universal Graves](/mods/graves) — 죽음과 아이템 회수
+- [Universal Graves](/mods/graves) — 보호 시간, 만료, 회수
 
-::: info 정확한 현재값
-아이템 조합법, 키 설정처럼 버전에 따라 바뀔 수 있는 값은 **현재 배포된 클라이언트와 게임 안 JEI/조작키 화면**을 최종 기준으로 합니다.
+::: info 조합법 확인
+현재 클라이언트에서는 JEI/REI를 사용하지 않습니다. 조합법은 [위키 조합법](/recipes/)과 각 모드 페이지를 기준으로 확인합니다.
 :::
