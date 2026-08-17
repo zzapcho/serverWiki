@@ -1,27 +1,32 @@
+<span class="page-kicker">PLAY GUIDE</span>
+
 # 서버 가이드
 
-이 서버는 **바닐라 마인크래프트를 크게 바꾸지 않는 Vanilla+ 서버**입니다. 처음 보는 모드 이름을 외우기보다, 필요한 순간에 해당 가이드를 찾으면 됩니다.
+ZZAPCHO SERVER는 **바닐라의 흐름을 유지하면서 건축·광질·벌목·탐험·죽음 복구·음성채팅을 확장한 26.2 Fabric 서버**입니다.
 
-## 상황별로 바로 찾기
+## 처음 접속하면 달라지는 것
 
-| 상황 | 읽을 문서 |
-| --- | --- |
-| 세로 반블록으로 건축하고 싶다 | [건축](/guide/building) |
-| 광물 Y좌표나 장비 성능이 궁금하다 | [SimpleOres](/mods/simpleores) |
-| 나무를 한 번에 베고 싶다 | [FallingTree](/mods/fallingtree) |
-| 새 지형·엔드 구조물이 궁금하다 | [탐험 & 월드](/guide/exploration) |
-| 죽었는데 아이템이 어디 갔는지 모르겠다 | [생존 & 죽음](/guide/survival) |
-| 만드는 법이 궁금하다 | [조합법 빠른 찾기](/recipes/) |
+| 분야 | 달라지는 점 | 자세히 |
+| --- | --- | --- |
+| 건축 | 세로 반블록, SimpleOres 금속 건축 블록 | [건축](/guide/building) |
+| 광질 | 주석·미스릴·아다만티움·오닉스 | [SimpleOres](/mods/simpleores) |
+| 벌목 | 나무 전체 즉시 벌목, Shift로 일시 비활성 | [FallingTree](/mods/fallingtree) |
+| 장비 | 겉날개 전용 슬롯으로 흉갑과 동시 장착 | [Elytra Slot](/mods/elytra-slot) |
+| 월드 | 95개 Terralith 커스텀 바이옴 + Tectonic 지형 | [월드젠](/mods/worldgen) |
+| 구조물 | Dungeons & Taverns + MES | [탐험](/guide/exploration) |
+| 죽음 | 아이템/XP 무덤 저장, 15분 소유자 보호 | [Universal Graves](/mods/graves) |
+| 음성 | 근접 보이스챗 | [Voice Chat](/mods/voice-chat) |
+| Discord | 게임 채팅 ↔ Discord 연동 | [Discord](/mods/discord) |
 
-## 기본 원칙
+## 이 위키의 숫자 기준
 
-바닐라의 채굴, 제작, 전투, 네더 진행, 엔드 진입 같은 큰 흐름은 그대로입니다.
+2026-08-17에 제공된 서버/클라이언트 모드 묶음을 직접 검사했습니다. `config/`는 제공되지 않았기 때문에 **기본값 표시는 설치된 JAR 기본값**을 뜻합니다. 운영자가 실제 서버 config를 바꾸면 그 값이 최우선입니다.
 
-- 건축: 세로 방향 반블록이 추가됩니다.
-- 광질: 주석·미스릴·아다만티움·오닉스가 추가됩니다.
-- 벌목: FallingTree로 나무를 빠르게 벨 수 있습니다.
-- 월드: Terralith + Tectonic으로 오버월드 지형이 더 다양해집니다.
-- 엔드: MES 구조물을 더 만날 수 있습니다.
-- 죽음: 아이템과 경험치가 Universal Graves 무덤에 보관됩니다.
+## 추천 읽는 순서
 
-현재 서버 설정은 특별히 바꿨다고 적힌 항목 외에는 **모드 기본값**을 기준으로 합니다.
+1. [바닐라와 달라진 점](/guide/vanilla-differences)
+2. [클라이언트 모드](/guide/client)
+3. 자주 쓰는 [조작법 & 단축키](/controls/)
+4. 필요한 기능만 검색
+
+검색은 `미쓰릴`, `아다만튬`, `세로반블럭`, `템복구`, `선술집`, `겉날개` 같은 표현도 찾도록 맞춰져 있습니다.

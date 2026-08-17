@@ -1,35 +1,50 @@
+<span class="page-kicker">WORLDGEN</span>
+
 # 지형 · Terralith + Tectonic
 
-오버월드의 **바이옴 구성과 지형의 모양**을 풍부하게 만드는 월드 생성 조합입니다. 플레이어가 켜거나 조작하는 기능이 아니라 새 청크가 생성될 때 자동으로 적용됩니다.
+Terralith 2.6.4와 Tectonic 3.0.26은 같은 일을 중복하는 모드가 아닙니다. **Tectonic이 지형의 큰 형태를 만들고, Terralith가 그 위에 다양한 바이옴과 세부 월드젠을 얹는 조합**으로 이해하면 편합니다.
 
-## Terralith는 무엇을 바꾸나요?
+## Terralith
 
-Terralith는 바닐라 블록을 활용해 많은 바이옴과 풍경을 추가합니다. 새 전용 건축 재료를 외우는 모드라기보다 **바닐라 블록으로 더 다양한 월드**를 만드는 쪽입니다.
+설치 JAR의 `data/terralith/worldgen/biome/`에서 **95개의 커스텀 biome JSON**을 확인했습니다. 지상 바이옴뿐 아니라 cave/skylands 계열도 포함됩니다.
 
-## Tectonic은 무엇을 바꾸나요?
+예시:
 
-Tectonic은 땅의 규모와 형태를 크게 바꿉니다. 넓은 대륙과 섬, 큰 산맥과 계곡, 절벽, 거대한 지형 연결을 만들 수 있습니다. Terralith가 `어떤 풍경인가`를 풍부하게 한다면 Tectonic은 `땅이 어떤 모양인가`를 크게 만드는 역할에 가깝습니다.
+- Alpine Grove / Alpine Highlands
+- Amethyst Canyon / Amethyst Rainforest
+- Desert Canyon / Desert Oasis / Desert Spires
+- Lavender Forest / Valley
+- Moonlight Grove / Valley
+- Sakura Grove / Valley
+- Volcanic Crater / Peaks
+- Yellowstone / Yosemite 계열
+- Andesite/Deep/Diorite/Fungal/Granite/Thermal/Tuff Caves 등
+- Skylands Spring/Summer/Autumn/Winter
 
-## 확률이나 Y좌표가 있나요?
+## Terralith 기본 토글
 
-이 두 모드는 SimpleOres처럼 `Y -40에서 광맥 4회` 같은 단순 확률형 콘텐츠가 아닙니다. 바이옴 선택과 노이즈 기반 지형 생성에 참여하므로 **하나의 고정 생성 확률이나 추천 Y좌표로 설명할 수 없습니다.**
+설치 버전 코드의 기본값:
 
-특정 광물 높이를 찾는다면 [SimpleOres 광물 표](/mods/simpleores#광물-생성-높이와-양)를 보세요.
+| 항목 | 기본값 |
+| --- | --- |
+| custom structures | true |
+| fog tweaks | true |
+| intro message | true |
+| skylands | true |
+| terrain slabs | true |
+| vanilla stone gen | false |
+| **recipe changes** | **false** |
 
-## 새 청크가 중요한 이유
+따라서 `enable.recipe_changes` 아래에 들어 있는 dispenser/dropper/lever/observer/piston 등의 선택형 레시피 변경은 **기본값에서는 활성화되지 않습니다.**
 
-이미 한 번 생성된 청크는 월드 생성 모드를 설치하거나 업데이트했다고 자동으로 다시 깎이지 않습니다. 현재 Terralith/Tectonic 결과를 보려면 **아직 생성되지 않은 지역**을 탐험해야 합니다.
+## Tectonic
 
-이 때문에 오래된 지역과 새 지역의 경계에서는 지형이 갑자기 바뀌어 보일 수 있습니다.
+Tectonic은 terrain shaping을 크게 바꿔 산맥, 대륙, 계곡과 고저차를 더 다양하게 만듭니다. 플레이어 입장에서 특정 `%`나 Y 하나로 설명하는 기능이 아니라 지형 noise/router 수준의 변경입니다.
 
-## 명령어와 조합법
+## 광물/구조물과의 관계
 
-플레이어가 사용할 전용 명령어도, 제작해야 할 아이템도 없습니다. 그냥 탐험하면 됩니다.
+- SimpleOres 광물은 별도 placed feature로 배치되며 Y 범위는 [광물 표](/mods/simpleores#광물-생성-높이와-양)를 따릅니다.
+- Dungeons & Taverns/MES 구조물은 별도 structure set 규칙을 사용합니다.
+- 실제 노출 정도/발견 난이도는 새 지형과 바이옴 조건 때문에 달라질 수 있습니다.
 
-## 탐험 팁
-
-- 멀리 갈수록 아직 생성되지 않은 청크를 만날 가능성이 높습니다.
-- 새 광물 찾기가 목적이면 지형 자체보다 SimpleOres의 차원/Y 범위를 기준으로 광질하세요.
-- 지형이 비정상적으로 끊겼다면 좌표와 스크린샷, `기존 청크인지 새 청크인지`를 같이 알려주면 원인 확인이 쉽습니다.
-
-관련: [탐험 & 월드](/guide/exploration) · [엔드 구조물](/mods/end-structures)
+공식 자료: [Terralith](https://github.com/Stardust-Labs-MC/Terralith) · [Tectonic](https://modrinth.com/project/tectonic)

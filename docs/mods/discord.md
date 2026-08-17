@@ -1,26 +1,28 @@
+<span class="page-kicker">COMMUNITY</span>
+
 # Discord 연동
 
-서버는 Discord를 **접속 인증/화이트리스트와 Minecraft 채팅 연결**에 사용합니다.
+서버 ZIP에는 **Discord Integration 3.2.0**이 설치되어 있으며 metadata상 server-side 모드입니다. 역할은 Minecraft 서버 채팅과 지정 Discord 채널을 연결하는 것입니다.
 
-## 무엇이 연결되나요?
+## 플레이어가 체감하는 것
 
-- 프록시 쪽 Discord 시스템: 계정 인증과 화이트리스트 흐름
-- Minecraft 서버 쪽 Discord Integration: Minecraft ↔ Discord 채팅 및 서버 이벤트 연결
+- 게임에서 친 채팅이 설정된 Discord 채널로 전달될 수 있습니다.
+- Discord 채널의 메시지가 게임 채팅으로 전달될 수 있습니다.
+- 서버 시작/종료, 접속/퇴장 등 어떤 이벤트를 Discord로 보낼지는 서버 설정에 따라 달라집니다.
 
-플레이어는 봇 이름이나 내부 채널 ID를 알 필요가 없습니다. 서버 Discord에서 안내되는 인증 절차만 따르면 됩니다.
+## 계정 인증과는 구분
 
-## Minecraft 채팅
+현재 서버 구조에서 Discord 계정 인증/화이트리스트 흐름은 **Velocity/프록시 측 기능**과 분리해서 봐야 합니다. Discord Integration JAR 자체의 설명은 채팅 브리지이며, 이번 ZIP에는 프록시의 실제 Discord 인증 config가 포함되지 않았습니다.
 
-서버에서 보낸 일반 채팅이 Discord 채널에 표시될 수 있고, 허용된 Discord 채널의 메시지가 Minecraft 안에 표시될 수 있습니다.
+따라서 이 위키는 확인되지 않은 `/link` 같은 명령을 임의로 만들어 안내하지 않습니다. 실제 인증 명령/버튼이 확정되면 live 프록시 설정을 기준으로 추가해야 합니다.
 
-## 조합법 / 단축키
+## 채팅이 안 넘어갈 때
 
-없습니다. Discord 연동은 서버 통신 기능입니다.
+플레이어가 확인할 수 있는 것은 많지 않습니다.
 
-## 문제가 생기면
+1. Minecraft 채팅 자체가 전송되는지 확인합니다.
+2. Discord 서버/채널이 정상인지 확인합니다.
+3. 브리지 봇이 오프라인이면 운영자에게 알립니다.
+4. 인증 문제와 채팅 브리지 문제를 구분합니다.
 
-- 인증은 됐는데 접속이 거절됨 → Discord 역할/화이트리스트 상태를 확인
-- Discord 메시지만 Minecraft에 안 보임 → 다른 사람도 같은지 확인 후 관리자에게 알림
-- Minecraft 채팅만 Discord에 안 감 → 보낸 시각과 Minecraft 닉네임을 함께 알림
-
-관련: [Discord & Voice](/community/) · [문제 해결](/troubleshooting/)
+Discord/Voice를 한 번에 보려면 [Discord & Voice](/community/)를 확인하세요.

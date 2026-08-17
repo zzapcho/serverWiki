@@ -1,17 +1,28 @@
+<span class="page-kicker">CHANGELOG</span>
+
 # 업데이트
 
-플레이어가 알아야 할 변화만 정리합니다.
+## 2026-08-17 — 실제 모드 묶음 전면 재검수
 
-## 2026-08-17 · 기본 설정 상세화
+`서버모드.zip`과 `클라모드.zip`의 JAR/데이터팩을 직접 검사해 위키 전체를 현재 구성에 맞췄습니다.
 
-- 복잡했던 계절 시스템(Homeostatic Seasons)을 현재 서버 구성과 위키에서 제거했습니다.
-- FallingTree 가이드를 추가하고 기본 벌목 방식, 나무 크기/스캔 제한, 내구도 처리, `/fallingtree toggle`을 정리했습니다.
-- SimpleOres의 기본 생성 높이, 청크당 시도 횟수, 광맥 크기, 도구·방어구 기본 능력치를 소스 기준으로 상세화했습니다.
-- Universal Graves의 기본 15분 보호, 30분 만료, XP 저장, 배치 범위와 `/graves`를 정리했습니다.
-- JEI/REI를 현재 클라이언트 기준에서 제거하고 위키 자체 조합법 안내를 기준으로 바꿨습니다.
-- 오른쪽 `이 페이지에서` 목차가 긴 한글 제목을 말줄임표로 잘라 버리지 않고 줄바꿈하도록 수정했습니다.
-- 검색 토큰화를 개선해 띄어쓰기 조합, 한글 흔한 오타, 영문 모드명 검색을 더 잘 잡도록 변경했습니다.
+### 추가/복원
 
-## 문서 원칙
+- Elytra Slot 2.0.0 문서 추가
+- Dungeons & Taverns 5.3.0 구조물 배치표 추가
+- FallingTree Enchantments 데이터팩 실제 설치 상태 반영
+- 클라이언트 모드 전체 역할/호환성 가이드 추가
+- SimpleOres 202개 recipe JSON을 패턴 단위로 재정리
+- Universal Graves의 Emptied Grave 실제 제작법 추가
 
-확률/Y좌표/기본 설정은 **현재 서버가 사용하는 기본 설정과 해당 버전의 공식 소스**로 확인할 수 있는 값만 적습니다. 확인되지 않은 숫자는 추측해서 채우지 않습니다.
+### 중요 정정
+
+- Universal Graves 기본 자동 만료: **30분 → 자동 만료 꺼짐(-1)**
+- FallingTree: Enchantments 데이터팩이 있어도 기본 `requireEnchantment=false`
+- Terralith 선택형 `recipe_changes=false` 기본값 명시
+- Simple Voice Chat PTT/그룹 키를 임의 기본키로 고정하지 않고 26.2 JAR 실제 key registration 반영
+- MES spacing이 Moog's Structure Lib에서 1.65배 적용되는 점 반영
+
+### 배포 전 클라이언트 검수 메모
+
+제공된 클라 ZIP에는 Fabric API 중복 JAR과 Sodium 중복 버전이 발견되었습니다. Nvidium 0.4.4-beta3가 Sodium 0.9.1을 요구하므로 배포 모드팩은 중복을 제거해 검증해야 합니다.

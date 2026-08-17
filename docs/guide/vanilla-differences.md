@@ -1,33 +1,31 @@
+<span class="page-kicker">QUICK DIFF</span>
+
 # 바닐라와 달라진 점
 
-바닐라를 이미 할 줄 안다면 이 페이지만 읽고 바로 플레이해도 됩니다.
+## 플레이에 직접 영향을 주는 변경
 
-## 한눈에 보기
+| 바닐라에서 | 이 서버에서는 |
+| --- | --- |
+| 반블록은 수평 배치 중심 | **세로 반블록**을 제작·배치 가능 |
+| 광물 종류가 바닐라 재료 중심 | 주석·미스릴·아다만티움·오닉스와 장비 추가 |
+| 나무를 한 블록씩 벰 | FallingTree가 나무 전체를 감지해 즉시 처리 |
+| 흉갑과 겉날개 중 하나 선택 | 겉날개 전용 슬롯으로 **동시 장착** 가능 |
+| 기본 지형/바이옴 | Terralith 95개 커스텀 바이옴 + Tectonic 대규모 지형 |
+| 구조물 종류 제한 | Dungeons & Taverns의 던전·선술집·요새·마을 계열 추가 |
+| 엔드 구조물 제한 | MES의 25개 structure set 추가 |
+| 죽으면 아이템 바닥 드롭 | Universal Graves가 무덤에 아이템/XP 저장 |
+| 텍스트 채팅 중심 | Simple Voice Chat 근접 음성 + Discord 채팅 브리지 |
 
-| 분야 | 바닐라와 다른 점 | 알아둘 것 |
-| --- | --- | --- |
-| 건축 | 세로 반블록 추가 | 일반 반블록과 비슷하게 제작·배치 |
-| 광질 | 주석·미스릴·아다만티움·오닉스 추가 | 광물마다 생성 높이와 빈도가 다름 |
-| 벌목 | FallingTree 추가 | 기본은 즉시 벌목, Shift 중 비활성 |
-| 오버월드 | Terralith + Tectonic | 새로 생성되는 청크에서 지형 체감 |
-| 엔드 | MES 구조물 추가 | 구조물마다 배치 규칙이 다름 |
-| 죽음 | Universal Graves | `/graves`로 자신의 무덤 목록 확인 가능 |
-| 음성 | Simple Voice Chat | 실제 키는 현재 클라이언트 조작키 설정이 기준 |
-| Discord | Minecraft 채팅 일부가 Discord와 연결 | 서버 안내/인증은 Discord와 연동될 수 있음 |
+## 그대로인 것 또는 오해하기 쉬운 것
 
-## 그대로인 것
+- Terralith는 **기본값에서 recipe changes가 꺼져 있어** 바닐라 레드스톤 레시피를 임의로 바꾸지 않습니다.
+- FallingTree Enchantments 데이터팩은 설치되어 있지만 **기본 `requireEnchantment=false`**라 Chopper가 없다고 벌목이 막히는 설정은 아닙니다.
+- Universal Graves 기본값은 **30분 자동 소멸이 아닙니다.** `breakingTime=-1`이라 자동 만료가 꺼져 있습니다.
+- Dungeons & Taverns/MES 구조물의 `spacing`은 “그 거리마다 무조건 생성”이라는 뜻이 아닙니다. 바이옴·제외구역·frequency 조건이 추가로 적용됩니다.
+- 서버에 성능/관리 모드가 많아도 일반 플레이어가 별도 명령을 배워야 하는 것은 아닙니다.
 
-기본 제작대, 화로, 인챈트, 주민, 네더, 엔더 드래곤 같은 **바닐라 핵심 진행을 대체하지 않습니다.**
+## 다음으로 보기
 
-## 모드별 자세히 보기
-
-- [Enchanted Vertical Slabs](/mods/vertical-slabs) — 제작과 배치
-- [SimpleOres](/mods/simpleores) — Y좌표, 생성량, 도구·방어구 기본 능력치
-- [FallingTree](/mods/fallingtree) — 기본 벌목 설정과 `/fallingtree toggle`
-- [Terralith + Tectonic](/mods/worldgen) — 오버월드 지형
-- [MES](/mods/end-structures) — 엔드 구조물
-- [Universal Graves](/mods/graves) — 보호 시간, 만료, 회수
-
-::: info 조합법 확인
-현재 클라이언트에서는 JEI/REI를 사용하지 않습니다. 조합법은 [위키 조합법](/recipes/)과 각 모드 페이지를 기준으로 확인합니다.
-:::
+- [클라이언트 모드](/guide/client)
+- [조합법 빠른 찾기](/recipes/)
+- [문제 해결](/troubleshooting/)

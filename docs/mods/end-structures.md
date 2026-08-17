@@ -1,38 +1,94 @@
-# 엔드 구조물 · MES
+<span class="page-kicker">THE END</span>
 
-**MES - Moog's End Structures**는 엔드에 바닐라풍 구조물을 더합니다. 엔드 전체를 새 바이옴 모드처럼 갈아엎기보다, 외곽 섬을 돌아다닐 때 발견할 목적지를 늘리는 쪽입니다.
+# 엔드 구조물 · Moog's End Structures
 
-## 어떻게 생성되나요?
+Moog's End Structures 2.0.3(MES) + Moog's Structure Lib 3.0.6은 엔드에 바닐라 스타일 구조물을 추가합니다. 설치 JAR 기준 **25개 structure set**이 있습니다.
 
-MES 구조물은 Moog's Structure Lib의 structure-set 배치 규칙을 사용합니다. 구조물마다 `spacing`, `separation`, 가중치, 바이옴 조건 등이 달라질 수 있으므로 **모든 MES 구조물을 하나의 `% 확률`로 표현하는 것은 정확하지 않습니다.**
+## 가장 중요한 조건: 원점 1000블록
 
-- `spacing`은 같은 구조물 세트의 배치 간격을 결정합니다. 값이 클수록 드뭅니다.
-- `separation`은 서로 너무 가까이 붙지 않도록 하는 최소 간격 역할을 합니다.
-- 여러 구조물이 한 세트에 있으면 각 구조물의 weight로 선택 비중이 달라질 수 있습니다.
+25개 set 모두 placement에 `min_distance_from_world_origin: 1000`이 들어 있습니다. Moog's Structure Lib 구현은 chunk 좌표를 블록 좌표로 환산해 이 값을 비교하므로 **원점에서 최소 1000블록 밖**이라는 뜻입니다.
 
-따라서 `엔드 청크 하나마다 X%`처럼 생각하지 말고 **외곽을 계속 탐험하면서 structure-set 배치 지점을 만난다**고 이해하면 쉽습니다.
+엔드 중앙 섬/입구 근처만 돌아다니면 구조물이 거의 안 보이는 것이 정상일 수 있습니다.
 
-## 어디서 찾나요?
+## 실제 spacing은 JSON보다 1.65배
 
-1. 바닐라처럼 엔드에 진입합니다.
-2. 엔더 드래곤 진행 뒤 외곽 섬으로 이동합니다.
-3. 이미 탐험한 청크보다 아직 생성되지 않은 지역을 탐험합니다.
-4. 처음 보는 구조물은 적과 전리품이 있을 수 있으므로 주변부터 확인합니다.
+Moog's Structure Lib의 `AdvancedRandomSpread`는 JSON의 `spacing`과 `separation`을 런타임에서 **1.65배 후 반올림**합니다. 따라서 아래 effective 값을 플레이 체감 기준으로 봐야 합니다.
 
-MES는 바닐라 블록과 엔티티를 중심으로 구조물을 구성하므로 별도 제작 아이템을 들고 구조물을 소환하는 방식이 아닙니다.
+| Structure set | JSON spacing/separation | 런타임 effective |
+| --- | ---: | ---: |
+| `astral_hideaway` | 40/18 | **66/30** |
+| `astral_meteorite` | 27/12 | **45/20** |
+| `ender_spire` | 46/38 | **76/63** |
+| `enderbloom_grove` | 36/12 | **59/20** |
+| `enderkeep_courtyard` | 44/25 | **73/41** |
+| `enderpin_spikes` | 31/8 | **51/13** |
+| `enderskog` | 52/22 | **86/36** |
+| `enderwatch_tower` | 42/12 | **69/20** |
+| `endscraps` | 37/7 | **61/12** |
+| `manuscript_shrine` | 41/27 | **68/45** |
+| `mega_ship` | 77/15 | **127/25** |
+| `mega_ship_basic` | 80/60 | **132/99** |
+| `mega_ship_crashed` | 75/46 | **124/76** |
+| `mega_ship_crashed_2` | 72/48 | **119/79** |
+| `mega_ship_crashed_deepslate` | 79/52 | **130/86** |
+| `mega_ship_deepslate` | 88/65 | **145/107** |
+| `mega_ship_deepslate_2` | 82/46 | **135/76** |
+| `mega_ship_deepslate_3` | 84/52 | **139/86** |
+| `monolith` | 36/21 | **59/35** |
+| `mystical_archway` | 44/32 | **73/53** |
+| `mythic_garden` | 38/27 | **63/45** |
+| `phantom_citadel` | 31/14 | **51/23** |
+| `placid_prairie` | 32/22 | **53/36** |
+| `ruined_pillar` | 12/7 | **20/12** |
+| `starlight_voyager` | 32/17 | **53/28** |
 
-## Y좌표나 고정 위치가 있나요?
+`spacing`은 보장 생성 간격이 아니며 biome/배치 조건을 통과해야 합니다.
 
-광물처럼 고정 Y층을 파서 찾는 콘텐츠가 아닙니다. 각 구조물의 구조/지형 조건과 배치 규칙에 따라 위치가 정해지므로 특정 Y만 돌아다니는 방식은 권장하지 않습니다.
+## 전리품 확률 — JAR loot table 기준
 
-## 명령어와 조합법
+### End common
 
-일반 플레이어가 MES 사용을 위해 입력할 전용 명령어는 없습니다. 조합법도 없습니다.
+2~4회 draw, 총 weight 112입니다. **한 draw 기준** 선택 확률:
 
-## 구조물이 안 보일 때
+| 항목 | weight | 1회 선택 확률 |
+| --- | ---: | ---: |
+| Chorus Fruit | 20 | 17.86% |
+| Iron Ingot | 20 | 17.86% |
+| Ender Pearl | 15 | 13.39% |
+| Lapis Lazuli | 15 | 13.39% |
+| Popped Chorus Fruit | 12 | 10.71% |
+| Gold Ingot | 10 | 8.93% |
+| Experience Bottle | 8 | 7.14% |
+| Enchanted Book entry | 6 | 5.36% |
+| End Crystal | 4 | 3.57% |
+| Shulker Shell | 2 | 1.79% |
 
-- 이미 생성된 엔드 지역만 반복해서 돌고 있지 않은지 확인하세요.
-- 구조물은 모든 청크에 생기지 않습니다. 외곽 섬을 충분히 이동해야 할 수 있습니다.
-- 이상하게 겹치거나 잘린 구조물을 발견하면 좌표와 스크린샷을 남겨 주세요.
+여러 번 draw하므로 “상자에서 한 번이라도 나올 확률”은 위 1회 확률과 다릅니다.
 
-공식 자료: [Moog's End Structures](https://github.com/FinnSetchell/MoogsEndStructures) · [Moog's Structure Lib](https://github.com/FinnSetchell/MoogsStructureLib)
+### End rare 보너스 pool
+
+희귀 loot table의 두 번째 pool은 1회 draw:
+
+- Netherite Scrap **4.76%**
+- Gold Block **6.35%**
+- Iron Block **9.52%**
+- Empty **79.37%**
+
+### Mega Ship treasure
+
+Mega Ship treasure의 두 번째 pool은 **1회 확정 draw**이며:
+
+- Netherite Ingot **50%**
+- Iron Block **25%**
+- Nether Star **25%**
+
+첫 pool은 4~8회 draw이고 다이아 장비, 셜커 상자, 드래곤 머리, 황금 당근, 엔드 수정 등이 가중치로 섞입니다. 세 번째 pool은 0~2회 범위 + bonus roll 구조라 단일 고정 확률로 단순화하지 않습니다.
+
+## 문제 해결
+
+- 원점 1000블록 조건부터 확인합니다.
+- 새 청크를 탐험합니다.
+- `/locate` 같은 관리자 도구가 없는 일반 플레이에서는 넓은 범위를 이동해야 할 수 있습니다.
+- Dungeons & Taverns의 엔드 구조물도 별도로 존재하므로 “새 엔드 구조물”이 모두 MES는 아닙니다.
+
+공식 자료: [Moog's End Structures](https://modrinth.com/mod/moogs-end-structures)

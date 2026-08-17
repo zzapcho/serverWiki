@@ -1,23 +1,25 @@
+<span class="page-kicker">EXPLORATION</span>
+
 # 탐험 & 월드
 
-탐험에서 크게 달라지는 것은 **오버월드 지형, 새 광물, 엔드 구조물**입니다. 바닐라 차원 진행 순서는 그대로입니다.
+이 서버의 탐험은 세 층으로 나뉩니다.
+
+1. **Tectonic** — 대륙·산맥·계곡 같은 지형 스케일을 바꿈
+2. **Terralith** — 95개의 커스텀 바이옴과 여러 지형/구조 요소를 추가
+3. **Dungeons & Taverns / MES** — 오버월드·네더·엔드에 탐험 구조물을 추가
 
 ## 오버월드
 
-[Terralith + Tectonic](/mods/worldgen)이 함께 지형을 만듭니다. Terralith는 바닐라 블록으로 다양한 바이옴과 풍경을 만들고, Tectonic은 산맥·절벽·계곡 같은 지형의 모양과 규모를 크게 바꿉니다.
+Terralith + Tectonic 때문에 같은 시드라도 바닐라 지형과 인상이 크게 다릅니다. SimpleOres 광물 배치는 이 월드젠 위에 별도로 적용되므로 광물 Y 범위는 [SimpleOres 표](/mods/simpleores#광물-생성-높이와-양)를 기준으로 봅니다.
 
-이미 생성된 청크는 그대로 남을 수 있으므로 새로운 풍경을 보려면 **아직 생성되지 않은 지역**으로 이동하세요.
+Dungeons & Taverns는 tavern, crypt, shrine, illager 구조물, cave 구조물, 추가 village 등 **32개 structure set**을 정의합니다. [배치값 전체 표](/mods/dungeons-taverns#구조물-배치표)에서 spacing/separation과 가중치를 확인할 수 있습니다.
 
-## 광질
+## 네더
 
-[SimpleOres](/mods/simpleores)로 주석, 미스릴, 아다만티움, 오닉스가 추가됩니다. 이 서버는 기본 생성값을 사용하므로 위키에 실제 Y범위, 시도/청크, 광맥 크기를 정리했습니다.
-
-바로 보기: [광물 생성 높이와 양](/mods/simpleores#광물-생성-높이와-양)
+Dungeons & Taverns의 Nether encampments/structures가 추가됩니다. SimpleOres의 오닉스도 네더 Y 10~245 범위에서 균등 배치 시도를 합니다.
 
 ## 엔드
 
-[MES - Moog's End Structures](/mods/end-structures)가 바닐라 블록과 엔티티를 이용한 구조물을 추가합니다. 구조물은 단순 고정 확률이 아니라 structure-set의 spacing/separation 등 배치 규칙으로 생성됩니다.
+Dungeons & Taverns의 End Castle/Lighthouse/Ship과 MES 구조물이 함께 존재합니다. MES 구조물은 모두 **월드 원점에서 최소 1000블록 밖**을 요구하므로 엔드 입구 주변만 보고 “안 나온다”고 판단하면 안 됩니다.
 
-## 새 청크와 경계
-
-월드 생성 구성이 적용된 뒤 새로 만든 청크와 예전에 만든 청크의 경계에서는 지형이 갑자기 달라져 보일 수 있습니다. 이상한 지형을 발견하면 좌표와 스크린샷, 새 청크인지 여부를 같이 알려 주세요.
+[MES 배치·전리품 확률 →](/mods/end-structures)

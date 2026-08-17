@@ -4,7 +4,7 @@ layout: home
 hero:
   name: ZZAPCHO SERVER
   text: VANILLA+ WIKI
-  tagline: 바닐라는 그대로. 건축·광질·벌목·탐험에 필요한 기능만 자연스럽게 더했습니다.
+  tagline: 실제 배포 모드를 기준으로 광질·벌목·건축·탐험·죽음·보이스챗까지 필요한 수치와 사용법을 한곳에 정리했습니다.
   actions:
     - theme: brand
       text: 바닐라와 달라진 점
@@ -16,20 +16,20 @@ hero:
 features:
   - icon: 🧱
     title: 건축
-    details: 세로 반블록으로 바닐라 건축의 빈틈을 채웁니다.
-    link: /mods/vertical-slabs
+    details: 세로 반블록과 SimpleOres 건축 블록의 실제 제작법을 확인합니다.
+    link: /guide/building
   - icon: ⛏️
     title: 광질
-    details: SimpleOres의 정확한 기본 Y범위와 생성량을 확인합니다.
+    details: 주석·미스릴·아다만티움·오닉스의 Y범위와 배치 시도 횟수를 확인합니다.
     link: /mods/simpleores
-  - icon: 🪓
-    title: 벌목
-    details: FallingTree 기본 동작과 켜기/끄기, 인챈트 제한 방법을 확인합니다.
-    link: /mods/fallingtree
-  - icon: 🏔️
+  - icon: 🏰
     title: 탐험
-    details: Terralith·Tectonic 지형과 MES 엔드 구조물을 탐험합니다.
+    details: Terralith 지형, Dungeons & Taverns, MES 구조물 배치값을 확인합니다.
     link: /guide/exploration
+  - icon: 🪦
+    title: 생존
+    details: 무덤 보호시간·회수법, 겉날개 슬롯, 벌목과 보이스챗을 확인합니다.
+    link: /guide/survival
 ---
 
 ## 필요한 것만 바로 찾기
@@ -37,12 +37,15 @@ features:
 | 궁금한 것 | 바로 보기 |
 | --- | --- |
 | 광물은 Y 몇에서 나오나요? | [SimpleOres 생성표](/mods/simpleores#광물-생성-높이와-양) |
+| SimpleOres 장비는 어떻게 만드나요? | [전체 제작 패턴](/recipes/simpleores) |
 | 나무 한 번에 베는 법은? | [FallingTree](/mods/fallingtree) |
-| 죽은 아이템은 어디 있나요? | [Universal Graves](/mods/graves) |
-| 새 지형은 어디서 보나요? | [Terralith + Tectonic](/mods/worldgen) |
-| 엔드 구조물이 안 보여요 | [MES](/mods/end-structures) |
-| 조합법은 어디서 보나요? | [조합법 빠른 찾기](/recipes/) |
+| 겉날개와 흉갑을 같이 입을 수 있나요? | [Elytra Slot](/mods/elytra-slot) |
+| 던전/선술집이 얼마나 자주 나오나요? | [Dungeons & Taverns](/mods/dungeons-taverns) |
+| 엔드의 새 구조물은 어디부터 나오나요? | [MES](/mods/end-structures) |
+| 죽은 아이템은 언제 사라지나요? | [Universal Graves](/mods/graves) |
+| 보이스챗 기본키가 뭔가요? | [조작법](/controls/) |
+| 클라에 무슨 모드가 들어가나요? | [클라이언트 모드](/guide/client) |
 
-::: tip 검색 팁
-검색창은 `세로반블럭`, `미쓰릴`, `아다만튬`, `곡갱이`, `나무베기`, `템복구`처럼 띄어쓰기나 흔한 오타가 있어도 관련 문서를 찾기 쉽게 조정되어 있습니다.
+::: tip 숫자 읽는 법
+`10회/청크`, `spacing 50` 같은 값은 **보장 개수**가 아닙니다. 각 페이지에서 그 값이 시도 횟수인지, 후보 지역 간격인지, 조건부 가중치인지 함께 설명합니다.
 :::

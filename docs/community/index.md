@@ -1,29 +1,29 @@
+<span class="page-kicker">COMMUNITY</span>
+
 # Discord & Voice
 
-친구들과 플레이할 때 필요한 통신 기능만 모았습니다.
+## Voice Chat
+
+Simple Voice Chat 2.6.22가 서버/클라이언트에 같이 들어 있습니다.
+
+- 메뉴: <kbd>V</kbd>
+- 마이크 음소거: <kbd>M</kbd>
+- 전체 보이스 비활성: <kbd>N</kbd>
+- 아이콘 숨기기: <kbd>H</kbd>
+- PTT/그룹/설정 키: 기본 미지정
+
+[보이스챗 전체 설정 →](/mods/voice-chat)
 
 ## Discord
 
-서버 Discord는 접속 인증/화이트리스트와 Minecraft 채팅 연결에 사용됩니다. 인증이 필요한 경우 Discord에서 표시되는 안내 순서대로 진행하면 됩니다.
+Discord Integration 3.2.0이 게임 채팅과 Discord 채널을 연결하는 server-side 브리지 역할을 합니다. 계정 인증/화이트리스트는 프록시 쪽 기능과 구분해야 합니다.
 
-Minecraft 채팅과 Discord 채팅은 서버 설정에 따라 서로 전달될 수 있습니다. 봇의 내부 설정이나 채널 ID를 플레이어가 따로 입력할 필요는 없습니다.
+[Discord 연동 설명 →](/mods/discord)
 
-자세히: [Discord 연동](/mods/discord)
+## 문제를 구분하는 법
 
-## 보이스챗
+- **마이크/주변 음성이 안 됨:** Voice Chat 문제
+- **Discord 채널과 게임 채팅이 안 오감:** Discord Integration/봇 문제
+- **서버 입장 인증이 안 됨:** Velocity/프록시 인증 문제
 
-Simple Voice Chat이 설치되어 있으면 게임 안에서 가까운 플레이어와 음성 대화를 할 수 있습니다.
-
-### 마이크가 안 될 때
-
-1. 운영체제에서 Minecraft/Java의 마이크 권한을 확인합니다.
-2. 게임의 Simple Voice Chat 설정에서 입력 장치를 확인합니다.
-3. `설정 → 조작키`에서 음소거/PTT 키를 확인합니다.
-4. 보이스챗 연결 상태에 오류가 없는지 확인합니다.
-5. Discord 같은 다른 앱에서도 같은 마이크가 정상인지 비교합니다.
-
-자세히: [보이스챗 가이드](/mods/voice-chat)
-
-## 접속 인증은 됐는데 서버에 못 들어갈 때
-
-Discord 인증과 Minecraft 클라이언트 모드 문제는 서로 다릅니다. 인증이 끝났다면 [문제 해결](/troubleshooting/)의 `접속이 안 돼요` 순서로 클라이언트 버전과 필수 모드를 확인하세요.
+각각 별도 계층이므로 한쪽이 고장났다고 다른 두 기능도 반드시 고장난 것은 아닙니다.

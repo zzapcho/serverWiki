@@ -6,14 +6,17 @@ const searchAliases = [
   ['세로반블록', '세로 반블록', '세로반블럭', '세로 반블럭', '세로슬랩', '세로 슬랩', 'vertical', 'slab', 'vertical slab', 'evs', '반블록', '반블럭', '슬랩'],
   ['광물', '광석', 'simpleores', 'simple ores', 'tin', '주석', 'mythril', '미스릴', '미쓰릴', 'adamantium', '아다만티움', '아다만튬', 'onyx', '오닉스'],
   ['벌목', '나무베기', '나무 베기', '나무캐기', '나무 캐기', 'fallingtree', 'falling tree', 'chopper', '초퍼', '도끼', '통나무'],
+  ['겉날개', '엘리트라', 'elytra', 'elytraslot', 'elytra slot', '흉갑', '갑옷슬롯', '갑옷 슬롯'],
   ['지형', '월드젠', 'worldgen', '월드생성', '월드 생성', 'terralith', '테랄리스', '테라리스', 'tectonic', '텍토닉', '바이옴', '산맥'],
-  ['엔드', 'end', 'mes', 'moog', 'moogs', '엔드구조물', '엔드 구조물', 'structure', 'structures', '구조물'],
-  ['무덤', 'grave', 'graves', '죽음', '사망', '아이템복구', '아이템 복구', '템복구', '템 복구'],
-  ['음성', '보이스', 'voice', 'voicechat', 'voice chat', '마이크', 'mic', 'ptt'],
-  ['디스코드', 'discord', '디코', '채팅연동', '채팅 연동'],
+  ['던전', '선술집', '구조물', 'dungeons', 'taverns', 'dungeons and taverns', 'dnt', '요새', '타번'],
+  ['엔드', 'end', 'mes', 'moog', 'moogs', '엔드구조물', '엔드 구조물', 'structure', 'structures', '메가쉽', 'mega ship'],
+  ['무덤', 'grave', 'graves', '죽음', '사망', '아이템복구', '아이템 복구', '템복구', '템 복구', '죽음나침반'],
+  ['음성', '보이스', 'voice', 'voicechat', 'voice chat', '마이크', 'mic', 'ptt', '푸시투톡'],
+  ['디스코드', 'discord', '디코', '채팅연동', '채팅 연동', '계정연동', '계정 연동'],
+  ['클라이언트', '클라', 'client', '모드팩', 'mods', 'sodium', '소듐', 'iris', '아이리스', 'journeymap', '저니맵', 'shader', '쉐이더'],
   ['단축키', '키설정', '키 설정', '키바인드', 'keybind', 'controls', '조작키'],
   ['렉', 'lag', '핑', 'ping', '버벅임', '성능', 'performance', '최적화', 'fps', '청크', 'chunk'],
-  ['접속', '연결', '로그인', '인증', '화이트리스트'],
+  ['접속', '연결', '로그인', '인증', '화이트리스트', '튕김', '충돌', '크래시'],
   ['곡괭이', '곡갱이', 'pickaxe'],
   ['아다만티움', '아다만튬', 'adamantium'],
   ['미스릴', '미쓰릴', 'mythril']
@@ -63,7 +66,7 @@ function expandSearchTerm(term: string) {
 export default defineConfig({
   lang: 'ko-KR',
   title: 'ZZAPCHO SERVER WIKI',
-  description: '바닐라에 필요한 기능만 더한 ZZAPCHO SERVER Vanilla+ 플레이 가이드',
+  description: 'Minecraft 26.2 Fabric Vanilla+ 서버의 광물, 벌목, 구조물, 무덤, 보이스챗, 조합법 플레이 가이드',
   base: '/',
   cleanUrls: true,
   lastUpdated: true,
@@ -77,7 +80,7 @@ export default defineConfig({
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' }],
     ['meta', { property: 'og:site_name', content: 'ZZAPCHO SERVER WIKI' }],
     ['meta', { property: 'og:title', content: 'ZZAPCHO SERVER WIKI' }],
-    ['meta', { property: 'og:description', content: '세로 반블록, 광물, 벌목, 지형, 엔드 구조물, 무덤을 초보자도 쉽게 확인하세요.' }]
+    ['meta', { property: 'og:description', content: '26.2 Vanilla+ 서버의 실제 설치 모드를 기준으로 사용법·Y값·구조물·확률·조합법을 확인하세요.' }]
   ],
 
   themeConfig: {
@@ -89,10 +92,7 @@ export default defineConfig({
         detailedView: 'auto',
         disableQueryPersistence: true,
         miniSearch: {
-          options: {
-            tokenize,
-            processTerm: expandSearchTerm
-          },
+          options: { tokenize, processTerm: expandSearchTerm },
           searchOptions: {
             prefix: true,
             fuzzy: 0.22,
@@ -120,9 +120,6 @@ export default defineConfig({
     darkModeSwitchLabel: '테마 변경',
     returnToTopLabel: '맨 위로',
     socialLinks: [{ icon: 'github', link: 'https://github.com/zzapcho/serverWiki' }],
-    footer: {
-      message: 'ZZAPCHO SERVER · Vanilla+',
-      copyright: 'Minecraft 26.2 · Fabric'
-    }
+    footer: { message: 'ZZAPCHO SERVER · Vanilla+', copyright: 'Minecraft 26.2 · Fabric' }
   }
 })

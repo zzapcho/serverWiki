@@ -1,80 +1,81 @@
+<span class="page-kicker">TREE CUTTING</span>
+
 # 벌목 · FallingTree
 
-나무의 통나무 하나를 베었을 때 **나무 전체를 한 번에 처리**해 주는 벌목 편의 모드입니다. 서버는 별도 설정을 바꾸지 않은 기본값을 기준으로 설명합니다.
+FallingTree 25는 통나무 하나를 부쉈을 때 감지된 나무 전체를 처리합니다. 아래 값은 설치 JAR의 실제 기본 config constructor를 확인한 값입니다.
 
-## 가장 먼저 알아둘 것
+## 바로 쓰는 법
 
-- 기본 벌목 방식은 **Instantaneous**입니다. 나무로 판정되면 통나무 하나를 부쉈을 때 나머지 나무도 즉시 부서집니다.
-- 기본적으로 **웅크리기(Shift) 중에는 FallingTree가 꺼집니다.** 한 블록만 평범하게 캐고 싶을 때 유용합니다.
-- 기본 설정은 인챈트를 요구하지 않습니다.
-- 도구 내구도는 `NORMAL`, 손상 배수는 `1.0`이라 나무를 여러 블록 부순 만큼 도구 내구도도 정상적으로 소모됩니다.
-- 나뭇잎도 기본적으로 함께 처리합니다.
+- 평소: 도끼로 나무를 캐면 **Instantaneous** 방식으로 전체 나무를 즉시 처리합니다.
+- 한 블록만 캐기: **Shift를 누른 채** 캐면 기본 `SNEAK_DISABLE` 때문에 FallingTree가 잠시 꺼집니다.
+- 자기 기능 토글: `/fallingtree toggle`
 
 ## 기본 설정 상세
 
-| 항목 | 기본값 | 플레이할 때 뜻 |
+| 항목 | 기본값 | 의미 |
 | --- | --- | --- |
-| 벌목 방식 | `INSTANTANEOUS` | 통나무 하나를 부수면 감지된 나무를 즉시 처리 |
-| 감지 방식 | `WHOLE_TREE` | 연결된 나무 전체를 스캔 |
-| 최대 스캔 블록 | `500` | 한 번의 나무 판정에서 최대 500블록까지 조사 |
-| 최소 크기 | `0` | 작은 나무도 별도 최소 제한 없이 판정 가능 |
-| 최대 나무 크기 | `100` | 감지된 나무가 100블록을 넘으면 기본 동작은 중단 |
-| 최대 크기 초과 동작 | `ABORT` | 너무 큰 구조물은 실수로 싹 베지 않도록 취소 |
-| 나뭇잎과 통나무 최대 거리 | `15` | 나무 판정용 잎 탐색 범위 |
-| 필요한 주변 잎 수 | `1` | 나무로 인정하려면 기본적으로 잎이 최소 1개 필요 |
-| 영구 잎도 잎 수에 포함 | `true` | 플레이어가 놓은 persistent leaves도 판정 수에 포함될 수 있음 |
-| 나무 부수기 | `true` | 기능 활성 |
-| 나뭇잎 부수기 | `true` | 잎도 함께 처리 |
-| 서로 다른 통나무 섞기 | `false` | 기본적으로 혼합 수종을 한 나무처럼 처리하지 않음 |
-| 네더 나무 wart 처리 | `true` | 네더의 나무형 식생도 대응 |
-| 맹그로브 뿌리 처리 | `true` | 맹그로브 뿌리도 대응 |
-| 아이템을 첫 타격 지점에 모으기 | `false` | 드롭은 기본 위치 규칙을 따름 |
-| 통나무 전리품 비율 | `1.0` | 통나무 전리품 100% |
-| 크리에이티브에서 기능 작동 | `false` | 크리에이티브에서는 일반적으로 FallingTree를 사용하지 않음 |
-| 크리에이티브 전리품 | `true` | 관련 전리품 옵션 기본값 |
-| 알림 위치 | `ACTION_BAR` | 모드 알림은 액션바 사용 |
-| 인챈트 필요 | `false` | 기본값에서는 Chopper 없이 작동 |
-
-::: tip 집의 통나무를 실수로 부술까 걱정되면
-**Shift를 누른 채 통나무를 캐세요.** 기본 `SNEAK_DISABLE` 설정에서는 웅크리는 동안 FallingTree가 작동하지 않습니다.
-:::
+| 벌목 방식 | `INSTANTANEOUS` | 감지된 나무를 즉시 처리 |
+| 감지 방식 | `WHOLE_TREE` | 연결된 나무 전체 스캔 |
+| 최대 스캔 | **500블록** | 한 번의 감지에서 조사 상한 |
+| 최소 크기 | 0 | 작은 나무 별도 제한 없음 |
+| 최대 나무 크기 | **100블록** | 넘으면 기본 동작 중단 |
+| 초과 동작 | `ABORT` | 거대 구조물을 통째로 베는 실수 방지 |
+| 잎 최대 거리 | **15** | 나무 판정용 잎 탐색 범위 |
+| 최소 주변 잎 | **1** | 나무 판정에 필요한 잎 수 |
+| persistent 잎 포함 | true | 플레이어 설치 잎도 판정 수에 포함 가능 |
+| 나뭇잎 함께 처리 | true | 잎도 같이 처리 |
+| 서로 다른 통나무 혼합 | false | 혼합 수종을 한 나무로 취급하지 않음 |
+| 네더 wart tree 대응 | true | 네더 나무형 식생 대응 |
+| 맹그로브 뿌리 대응 | true | 맹그로브 뿌리 대응 |
+| 아이템을 첫 타격점에 모음 | false | 드롭은 기본 위치 규칙 |
+| 통나무 loot 비율 | **1.0** | 100% loot 처리 |
+| 크리에이티브 작동 | false | 크리에이티브에서는 기본 비활성 |
+| 알림 | `ACTION_BAR` | 액션바 표시 |
+| 인챈트 필수 | **false** | 기본값에서는 Chopper 없이 작동 |
 
 ## 도구와 내구도
 
-기본 허용/차단 도구 목록은 비어 있고, FallingTree의 기본 도끼 판정을 사용합니다. 내구도 모드는 `NORMAL`, 손상 배수 `1.0`, 손상 반올림은 `ROUND_DOWN`입니다. 즉 한 번에 많이 베는 것이 공짜 내구도가 되는 설정은 아닙니다.
+| 항목 | 기본값 |
+| --- | --- |
+| durability mode | `NORMAL` |
+| damage multiplicand | **1.0** |
+| damage rounding | `ROUND_DOWN` |
+| ignore tools | false |
+| force tool usage | false |
 
-## 플레이어가 쓸 수 있는 명령어
+한 번에 많이 베는 것이 공짜 내구도가 되도록 설정된 상태는 아닙니다.
+
+## FallingTree Enchantments 데이터팩
+
+서버 ZIP에는 `FallingTree Enchantments 26.2.0-1` 데이터팩이 **실제로 포함**되어 있습니다. 데이터팩은 도끼용 레벨 1 Chopper 변형 6종을 정의합니다.
+
+- Chopper
+- Chopper (fall all block)
+- Chopper (fall block)
+- Chopper (fall item)
+- Chopper (instantaneous)
+- Chopper (shift down)
+
+각 인챈트는 `#minecraft:axes`, mainhand, 최대 레벨 1, anvil cost 6, weight 1이고 서로 배타적입니다.
+
+::: warning 설치됨 ≠ 필수
+데이터팩이 있어도 FallingTree JAR의 기본 `requireEnchantment=false`입니다. 실제 서버 `config/fallingtree.json`에서 이 값을 `true`로 바꾸지 않았다면 Chopper 없이도 기본 벌목이 작동합니다. 이번 제공물에는 live config가 없으므로 “현재 서버가 Chopper 필수”라고 단정하지 않습니다.
+:::
+
+## 플레이어 명령
 
 ```text
 /fallingtree toggle
 ```
 
-자기 자신에게 FallingTree를 켜거나 끕니다. 다시 입력하면 원래 상태로 돌아옵니다. 관리자용 설정 명령은 이 위키에 넣지 않습니다.
-
-## 특정 인챈트가 있을 때만 작동하게 할 수 있나요?
-
-**가능합니다.** 다만 이것은 기본값이 아니므로 서버 설정과 공식 데이터팩을 같이 바꿔야 합니다.
-
-`config/fallingtree.json`의 인챈트 설정을 다음처럼 바꿉니다.
-
-```json
-"enchantment": {
-  "requireEnchantment": true
-}
-```
-
-그리고 Minecraft 26.2용 **FallingTree Enchantments** 데이터팩을 월드에 설치하면 `Chopper` 인챈트가 추가됩니다. 이 상태에서는 Chopper가 붙은 도끼에서만 FallingTree를 활성화하도록 만들 수 있습니다.
-
-::: warning 인챈트 제한을 켤 때
-FallingTree 공식 안내상 **enchant 설정을 사용하는 서버는 클라이언트에도 FallingTree가 필요합니다.** 서버 전용으로만 두던 구성이라면 클라이언트 모드팩에도 같은 호환 버전을 넣어야 합니다.
-:::
+자기 FallingTree 상태만 켜고 끕니다.
 
 ## 작동하지 않을 때
 
 1. Shift를 누르고 있지 않은지 확인합니다.
-2. `/fallingtree toggle`로 자신이 기능을 꺼 둔 상태인지 확인합니다.
-3. 실제 나무처럼 통나무 주변에 잎이 있는지 확인합니다.
-4. 너무 거대한 통나무 구조물이라면 기본 최대 크기 100 때문에 중단될 수 있습니다.
-5. 서로 다른 종류의 통나무가 섞여 있다면 기본 `allowMixedLogs=false` 때문에 한 덩어리로 처리되지 않을 수 있습니다.
+2. `/fallingtree toggle`로 꺼 둔 상태인지 확인합니다.
+3. 통나무 주변에 잎이 최소 1개 있는 실제 나무 형태인지 확인합니다.
+4. 감지 크기가 100블록을 넘는 거대 구조물인지 확인합니다.
+5. 서로 다른 통나무가 섞였는지 확인합니다.
 
-공식 자료: [FallingTree](https://modrinth.com/mod/fallingtree) · [FallingTree GitHub](https://github.com/RakambdaOrg/FallingTree) · [FallingTree Enchantments](https://modrinth.com/datapack/fallingtree-enchantments)
+공식 자료: [FallingTree GitHub](https://github.com/Rakambda/FallingTree)

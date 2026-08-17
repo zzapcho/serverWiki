@@ -2,79 +2,78 @@
 
 ## Product goal
 
-이 위키는 개발자용 모드 문서가 아니라 **처음 보는 플레이어도 바로 행동할 수 있는 Vanilla+ 서버 가이드**다. 문서는 모드 이름보다 플레이어 질문을 먼저 해결한다.
+이 위키는 개발자용 모드 문서가 아니라 **처음 접속한 플레이어가 바로 행동할 수 있는 ZZAPCHO SERVER 가이드**다.
 
-1. 무엇이 달라졌는가?
-2. 어디서 얻거나 어떻게 만드는가?
-3. 무엇을 클릭하거나 눌러야 하는가?
-4. 문제가 생기면 무엇을 확인해야 하는가?
+각 페이지는 아래 질문을 우선 해결한다.
 
-## Current content baseline
+1. 바닐라와 무엇이 달라졌는가?
+2. 어디서 얻고, 어느 높이/차원에서 찾는가?
+3. 어떻게 제작하고 어떤 키/명령을 쓰는가?
+4. 확률이나 배치값은 정확히 무엇을 의미하는가?
+5. 문제가 생기면 무엇을 먼저 확인하는가?
 
-- Minecraft Java 26.2 + Fabric
-- Enchanted Vertical Slabs
-- SimpleOres
-- Homeostatic Seasons
-- Terralith + Tectonic
-- MES - Moog's End Structures
-- Universal Graves
-- Simple Voice Chat
-- Discord Integration / proxy-side Discord authentication
+## Verified snapshot — 2026-08-17
 
-이전의 Farmer's Delight, Gone Fishing, Skniro Furniture, Friends&Foes, EconomyCraft, Elytra Slot 문서는 현재 플레이 가이드로 다시 넣지 않는다. 서버 구성이 실제로 바뀌었다는 확인이 있을 때만 복원한다.
+플레이 콘텐츠 기준은 `AI_README.md`의 verified baseline을 따른다. `서버모드.zip` / `클라모드.zip`의 JAR·데이터팩이 이번 문서 개편의 1차 근거다.
+
+특히 이전 문서와 달라진 핵심:
+
+- Elytra Slot과 Dungeons & Taverns가 실제 서버 묶음에 존재한다.
+- FallingTree Enchantments 데이터팩이 실제 서버 묶음에 존재한다.
+- Universal Graves 3.12.0 기본 `breakingTime=-1`이므로 기본값에서는 자동 만료되지 않는다.
+- Terralith의 `recipe_changes` 기본값은 꺼져 있다.
+- 클라이언트 검수본에는 동일 mod id의 Fabric API/Sodium 중복 JAR이 있어 배포 전 정리가 필요하다.
 
 ## Source of truth
 
-1. 현재 서버와 배포 클라이언트의 실제 동작/설정
-2. 현재 설치 모드 JAR, JEI, 조작키 화면
-3. 설치 버전의 공식 소스/문서
-4. 이 위키
-5. 추측이나 오래된 인터넷 글
+1. live runtime/configuration
+2. 제공된 설치 JAR/데이터팩
+3. 설치 버전 공식 소스/문서
+4. wiki prose
+5. 다른 버전 자료 또는 추측
 
-레시피와 키처럼 바뀌기 쉬운 값은 틀린 숫자를 고정하지 않는다. 정확히 검증한 대표 조합은 모드 페이지에 넣고 전체 그래프는 JEI를 최종 기준으로 한다.
+`config/`가 제공되지 않은 상태에서는 문서에 `기본값`이라고 명시하고 서버 운영자가 바꾼 값이라고 단정하지 않는다.
+
+## Information architecture
+
+- `docs/guide/` — 서버 전체 흐름, 클라이언트, 활동별 가이드
+- `docs/mods/` — 플레이 콘텐츠 모드의 동작·수치·확률·문제 해결
+- `docs/recipes/` — 실제 JAR에서 확인한 제작/제련 패턴
+- `docs/controls/` — 플레이어 키·명령·상호작용
+- `docs/community/` — Voice/Discord
+- `docs/troubleshooting/` — 증상 중심 해결
+
+`navigation.mts`가 모든 페이지에서 하나의 전체 sidebar를 소유한다.
 
 ## Theme ownership
 
-스타일 소유 순서를 유지한다.
-
 ```text
-tokens.css → base.css → components.css → motion.css → mobile.css
+tokens.css → base.css → components.css → outline-fix.css → motion.css → mobile.css
 ```
 
 - `tokens.css`: 색, 간격, radius, motion 상수
-- `base.css`: 문서 안전성, focus/overflow 기본 규칙
-- `components.css`: 데스크톱/기본 컴포넌트
-- `motion.css`: 상태 전환과 reduced-motion
-- `mobile.css`: 반응형 적응만 담당
+- `base.css`: 안전성/focus/overflow 기본 규칙
+- `components.css`: 기본 컴포넌트
+- `outline-fix.css`: 긴 한글 outline 줄바꿈
+- `motion.css`: 상태 전환, reduced-motion
+- `mobile.css`: 반응형 적응
 - `enhancements.ts`: SPA에서 필요한 점진적 기능
-
-나중 CSS에서 앞 레이어의 책임을 통째로 덮어쓰지 않는다.
-
-## Navigation
-
-`navigation.mts`가 하나의 전체 sidebar를 소유한다. 현재는 별도 `시작하기` 그룹을 두지 않는다. 사용자는 `가이드 → 모드 → 조합법/도움말` 흐름으로 찾는다.
 
 ## Search
 
-VitePress local search + MiniSearch를 사용한다.
+VitePress local MiniSearch를 사용한다.
 
-- prefix 검색
-- 최대 2자 정도의 fuzzy 검색
-- 한국어 쉬운 표현/오타/영문 모드명 alias
-- 검색어 persistence 비활성화
-- `/`, `Ctrl/Cmd+K` 단축키는 `enhancements.ts`가 담당
+- `prefix: true`
+- `fuzzy: 0.22`, `maxFuzzy: 2`
+- compact bigram + 한글 오타/영문명 alias
+- `combineWith: 'OR'`
+- query persistence 비활성화
 
-검색 alias는 실제 현재 콘텐츠에만 유지한다. 제거된 모드의 별칭이 검색에 다시 나타나지 않게 한다.
+실제로 설치되지 않은 오래된 콘텐츠 alias는 넣지 않는다.
 
-## Runtime safety
+## Responsive & release contract
 
-`enhancements.ts`는 SPA 재진입을 고려한다. 전역 listener는 한 번만 설치하고 Observer/RAF/timer는 교체 전에 정리한다. 라우트 변경 뒤 강제 `scrollTo(0)`를 호출하지 않는다.
-
-## Responsive contract
-
-테마 변경 시 최소 320, 360, 412, 768, 1024, 1440 CSS px를 확인한다. 페이지 자체의 가로 스크롤을 만들지 않는다. 표가 넓으면 `.zz-table-shell`만 가로 스크롤한다. 모바일 검색 입력은 16px 이상, 터치 대상은 약 44px를 유지한다.
-
-## Release gates
+최소 320, 360, 412, 768, 1024, 1440 CSS px에서 표/검색/sidebar/오른쪽 outline을 확인한다. 페이지 자체 가로 스크롤은 만들지 않고 넓은 표만 `.zz-table-shell` 내부에서 스크롤한다.
 
 ```bash
 npm ci
@@ -82,5 +81,3 @@ npm run docs:check
 npm run docs:build
 npm run docs:verify
 ```
-
-GitHub Pages는 위 단계가 모두 성공한 뒤에만 배포한다.
